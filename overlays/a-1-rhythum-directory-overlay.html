@@ -242,6 +242,90 @@
       text-align: justify;
       color: #000000;
     }
+
+    /* Image Viewer Styles */
+    .pdf-container {
+      position: absolute;
+      width: 916px;
+      height: 648px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 800px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      margin-bottom: 100px;
+    }
+
+    .image-viewer-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pdf-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.1s ease;
+      transform-origin: center center;
+    }
+
+    .pdf-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .pdf-controls button {
+      padding: 5px 10px;
+      cursor: pointer;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-family: 'Inconsolata';
+      font-size: 12px;
+    }
+
+    .pdf-controls button:hover {
+      background: #e0e0e0;
+    }
+
+    .pdf-page-info {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Inconsolata';
+      font-size: 13px;
+    }
+
+    .pdf-page-input {
+      width: 40px;
+      padding: 3px;
+      text-align: center;
+      font-family: 'Inconsolata';
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .image-viewer-wrapper.grabbing {
+      cursor: grabbing;
+    }
+
+    .image-viewer-wrapper:hover {
+      cursor: grab;
+    }
   </style>
 </head>
 <body>
@@ -276,6 +360,213 @@
     <div class="description-english">
       This project was completed during my junior year as a course assignment, with the theme focused on hotel design. The site is located in Sangwan Lane, Suzhou. Drawing from the historical and cultural context of the area, I chose Suzhou Kunqu Opera as the core design concept. The spatial design responds to the performative nature of Kunqu through controlled rhythm and circulation, while the interior incorporates more explicit Kunqu elements, such as opera scores and traditional costumes. Although the work is still quite immature, it marked a significant turning point in the development of my architectural thinking.
     </div>
+
+    <!-- Image Viewer Section -->
+    <div class="pdf-container">
+      <div class="image-viewer-wrapper" id="image-viewer-wrapper">
+        <img id="pdf-image" class="pdf-image" src="" alt="PDF Page">
+      </div>
+      <div class="pdf-controls">
+        <button id="prev-page">Previous</button>
+        <span class="pdf-page-info">
+          Page <input type="number" id="page-input" class="pdf-page-input" min="1" value="1"> 
+          of <span id="page-count">10</span>
+        </span>
+        <button id="next-page">Next</button>
+        <button id="zoom-in">Zoom In</button>
+        <button id="zoom-out">Zoom Out</button>
+        <button id="fit-page">Fit Page</button>
+      </div>
+    </div>
   </div>
+
+  <script>
+    // Image viewer variables
+    const totalPages = 10; // Total number of pages/images (from your PNG)
+    let currentPage = 1;
+    let scale = 1.0;
+    let isDragging = false;
+    let startPos = { x: 0, y: 0 };
+    let currentTranslate = { x: 0, y: 0 };
+    const maxScale = 3.0;
+    const minScale = 0.5;
+    
+    const imageElement = document.getElementById('pdf-image');
+    const wrapper = document.getElementById('image-viewer-wrapper');
+    const pageCountElement = document.getElementById('page-count');
+    const pageInput = document.getElementById('page-input');
+    
+    // Initialize the viewer
+    function initViewer() {
+      pageCountElement.textContent = totalPages;
+      pageInput.max = totalPages;
+      loadPage(1);
+    }
+    
+    // Load a specific page
+    function loadPage(pageNum) {
+      if (pageNum < 1 || pageNum > totalPages) return;
+      
+      currentPage = pageNum;
+      // Use the exact filenames from your PNG (1.png, 2.png, etc.)
+      const imageFile = pageNum <= 6 ? `${pageNum}.png` : `${pageNum}.jpg`;
+      imageElement.src = `../assets/doc/a-1/${imageFile}`;
+      pageInput.value = pageNum;
+      
+      // Reset zoom and position when changing pages
+      scale = 1.0;
+      currentTranslate = { x: 0, y: 0 };
+      updateImageTransform();
+    }
+    
+    // Update the image transform (scale + position)
+    function updateImageTransform() {
+      imageElement.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px) scale(${scale})`;
+    }
+    
+    // Fit the image to the container
+    function fitToPage() {
+      const containerWidth = wrapper.offsetWidth;
+      const containerHeight = wrapper.offsetHeight;
+      
+      imageElement.onload = function() {
+        const imgWidth = this.naturalWidth;
+        const imgHeight = this.naturalHeight;
+        
+        const widthRatio = containerWidth / imgWidth;
+        const heightRatio = containerHeight / imgHeight;
+        
+        scale = Math.min(widthRatio, heightRatio);
+        currentTranslate = { x: 0, y: 0 };
+        updateImageTransform();
+      };
+      
+      // Reload the image to trigger onload if it's already loaded
+      if (imageElement.complete) {
+        imageElement.onload();
+      }
+    }
+    
+    // Zoom in
+    function zoomIn() {
+      if (scale >= maxScale) return;
+      scale *= 1.2;
+      updateImageTransform();
+    }
+    
+    // Zoom out
+    function zoomOut() {
+      if (scale <= minScale) return;
+      scale /= 1.2;
+      updateImageTransform();
+    }
+    
+    // Go to previous page
+    function prevPage() {
+      loadPage(currentPage - 1);
+    }
+    
+    // Go to next page
+    function nextPage() {
+      loadPage(currentPage + 1);
+    }
+    
+    // Handle page input change
+    function handlePageInput() {
+      let newPage = parseInt(pageInput.value);
+      
+      if (isNaN(newPage)) {
+        newPage = currentPage;
+      } else if (newPage < 1) {
+        newPage = 1;
+      } else if (newPage > totalPages) {
+        newPage = totalPages;
+      }
+      
+      pageInput.value = newPage;
+      
+      if (newPage !== currentPage) {
+        loadPage(newPage);
+      }
+    }
+    
+    // Mouse wheel zoom
+    function handleWheel(e) {
+      e.preventDefault();
+      
+      // Get mouse position relative to image
+      const rect = imageElement.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      
+      // Calculate scale factor
+      const delta = -e.deltaY;
+      let scaleFactor = 1.1;
+      if (delta < 0) {
+        scaleFactor = 1 / scaleFactor;
+      }
+      
+      // Calculate new scale with limits
+      const newScale = scale * scaleFactor;
+      if (newScale < minScale || newScale > maxScale) return;
+      
+      // Calculate mouse position in image coordinates
+      const imgX = (mouseX - currentTranslate.x) / scale;
+      const imgY = (mouseY - currentTranslate.y) / scale;
+      
+      // Apply new scale
+      scale = newScale;
+      
+      // Calculate new translation to keep mouse position stable
+      currentTranslate.x = mouseX - imgX * scale;
+      currentTranslate.y = mouseY - imgY * scale;
+      
+      updateImageTransform();
+    }
+    
+    // Dragging functionality
+    function startDrag(e) {
+      isDragging = true;
+      startPos = {
+        x: e.clientX - currentTranslate.x,
+        y: e.clientY - currentTranslate.y
+      };
+      wrapper.style.cursor = 'grabbing';
+      e.preventDefault();
+    }
+    
+    function drag(e) {
+      if (!isDragging) return;
+      
+      currentTranslate.x = e.clientX - startPos.x;
+      currentTranslate.y = e.clientY - startPos.y;
+      
+      updateImageTransform();
+    }
+    
+    function endDrag() {
+      isDragging = false;
+      wrapper.style.cursor = 'grab';
+    }
+    
+    // Event listeners
+    document.getElementById('prev-page').addEventListener('click', prevPage);
+    document.getElementById('next-page').addEventListener('click', nextPage);
+    document.getElementById('zoom-in').addEventListener('click', zoomIn);
+    document.getElementById('zoom-out').addEventListener('click', zoomOut);
+    document.getElementById('fit-page').addEventListener('click', fitToPage);
+    pageInput.addEventListener('change', handlePageInput);
+    
+    // Mouse events for dragging
+    wrapper.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', drag);
+    window.addEventListener('mouseup', endDrag);
+    
+    // Mouse wheel for zooming
+    wrapper.addEventListener('wheel', handleWheel, { passive: false });
+    
+    // Initialize the viewer when the page loads
+    window.addEventListener('load', initViewer);
+  </script>
 </body>
 </html>
