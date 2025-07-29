@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Xiushui</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 126px;
+      height: 38px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tutor-label {
+      position: absolute;
+      width: 33px;
+      height: 14px;
+      left: 59px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 189px;
+      height: 14px;
+      left: 165px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 215px;
+      height: 14px;
+      left: 139px;
+      top: 330px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author {
+      position: absolute;
+      width: 46px;
+      height: 14px;
+      left: 308px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor {
+      position: absolute;
+      width: 46px;
+      height: 14px;
+      left: 308px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 287px; }
+    .line6 { top: 307px; }
+    .line7 { top: 347px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 203px;
+      left: 54px;
+      top: 397px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 287px;
+      left: 537px;
+      top: 397px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Xiushui</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    <div class="tutor-label">Tutor</div>
+    
+    <div class="location">Xiushui, Fujian</div>
+    <div class="date">2024.02-2024.06</div>
+    <div class="tags1">Architectural Design Project,</div>
+    <div class="tags2">Preservation / Adaptive Project</div>
+    <div class="author">Mai Cao</div>
+    <div class="tutor">Hui Luo</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    <div class="line7"></div>
+    
+    <div class="description-chinese">
+      这是我的毕业设计项目，能够走进乡村与田野开展调研，是一次非常宝贵且难忘的经历。在调研过程中，我接触到不同姓氏和年龄的人，通过一个个线索的整合与推理，逐步还原出场地的历史。每一次发现都像是挖掘出一件珍贵宝藏——比如乾隆年间的大火、地震遗留下来的建筑残迹、家族之间围绕土地的纷争、以及时代变迁中家族的兴衰……我们走访的过程中，秀水的历史一点点被拼凑出来。我从领土层级、村落层级到建筑层级三个层面，对场地进行了全面的理解，结合资料查阅、实地调研与测绘分析，最终基于这些认识，提出了地方规划与观音堂片区更新的详细设计方案。
+    </div>
+    
+    <div class="description-english">
+      This is my graduation design project. Being able to explore the countryside and engage with the land firsthand was an incredibly valuable and unforgettable experience. During the research, I interacted with people of various surnames and ages, collecting clues piece by piece, which I then integrated and analyzed to reconstruct the site's history. Each new discovery felt like unearthing a hidden treasure—whether it was a great fire during the Qianlong period, remnants of buildings left by earthquakes, family disputes over land, or the rise and fall of lineages shaped by changing times. Through field visits, the layered history of Xiushui gradually came to light. I developed a comprehensive understanding of the site at the territorial, village, and architectural levels by conducting data analysis, on-site research, and surveying. Based on this foundation, I proposed a detailed plan for regional development and the renewal of the Guanyin Temple area.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Street</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 144px;
+      height: 38px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 91px;
+      height: 14px;
+      left: 263px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 189px;
+      height: 14px;
+      left: 165px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 169px;
+      height: 14px;
+      left: 185px;
+      top: 330px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author1 {
+      position: absolute;
+      width: 117px;
+      height: 14px;
+      left: 237px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author2 {
+      position: absolute;
+      width: 169px;
+      height: 14px;
+      left: 185px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 307px; }
+    .line6 { top: 347px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 301px;
+      left: 54px;
+      top: 397px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 305px;
+      left: 537px;
+      top: 397px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">"Street"</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    
+    <div class="location">Turku, Finland</div>
+    <div class="date">2023.11-2024.01</div>
+    <div class="tags1">Architectural Design Project,</div>
+    <div class="tags2">Museum Design, Competition</div>
+    <div class="author1">Mai Cao, Yifan Ji,</div>
+    <div class="author2">Shenchen Peng, Xince Huang</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    
+    <div class="description-chinese">
+      本项目为芬兰图尔库"历史与未来博物馆"国际建筑设计竞赛的参赛作品。项目选址于图尔库港口区域，兼具悠久的历史与广阔的发展前景。设计的核心理念在于消解建筑体量，使其自然融入城市肌理，并以一条贯穿性的公共空间组织建筑，满足多样化的活动需求，激活场地的城市活力。建筑结构采用CLT（交错层压木）系统，强调可持续性与生态责任。该博物馆不仅是承载历史记忆与未来想象的文化载体，更被设想为一个激发灵感的公共空间，成为连接本地与国际的文化地标。博物馆将成为图尔库市民的重要交流场所，讲述芬兰最古老城市的历史与当代生活故事，增强人们对过去与当下的理解与共鸣。
+    </div>
+    
+    <div class="description-english">
+      This project is a competition entry for the International Architectural Design Competition for the Museum of History and the Future in Turku, Finland. The site is located in the port area of Turku—a place rich in history and full of promise for future development. The design aims to dissolve the building's mass, allowing it to blend into the surrounding urban fabric. A continuous public space runs through the structure, supporting diverse activities and reactivating the vibrancy of the site. The building adopts a CLT (Cross-Laminated Timber) structural system, highlighting principles of sustainability and environmental responsibility. The museum is envisioned as both a cultural archive and a platform for future imagination—a source of inspiration and a landmark for both local and international communities. As a civic space, the museum will serve as a meeting point for the people of Turku, telling the stories of Finland's oldest city and its people, and deepening our collective understanding of the past and the present.
+    </div>
+  </div>
+</body>
+</html>

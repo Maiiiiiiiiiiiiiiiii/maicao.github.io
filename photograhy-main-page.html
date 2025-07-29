@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai photography</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-photography-main-page.css" />
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+
+
+    /* 图层顺序控制 */
+    .svg-architecture-directory-bottom,
+    .svg-tech-directory-bottom,
+    .svg-photography-directory-bottom-black,
+    .svg-music-directory-bottom,
+    .svg-countries {
+      position: absolute;
+      z-index: 0;
+    }
+
+
+    .svg-china,
+    .svg-france3,
+    .svg-france1,
+    .svg-italy {
+      position: absolute;
+      z-index: 1;
+    }
+    .svg-france2,
+    .svg-switzerland {
+      position: absolute;
+      z-index: 2;
+    }
+
+
+    .cao-mai {
+      position: absolute;
+      width: 112px;
+      height: 34px;
+      left: 31px;
+      top: 27px;
+      font-family: 'Inconsolata';
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .back {
+      position: absolute;
+      width: 64px;
+      height: 34px;
+      left: 1337px;
+      top: 27px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+    }
+
+    .country {
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+    .country:hover {
+      filter: brightness(0);
+    }
+    .france {
+      position: absolute;
+      width: 72px;
+      height: 25px;
+      left: 684px;
+      top: 36px;
+      font-family: 'Inconsolata', monospace;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 25px;
+      text-align: center;
+      color: #000000;
+      z-index: 1000;
+    }
+    .switzerland {
+      position: absolute;
+      width: 132px;
+      height: 25px;
+      left: 654px;
+      top: 36px;
+      font-family: 'Inconsolata', monospace;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 25px;
+      text-align: center;
+      color: #000000;
+      z-index: 1000;
+    }
+    .italy {
+      position: absolute;
+      width: 60px;
+      height: 25px;
+      left: 690px;
+      top: 36px;
+      font-family: 'Inconsolata', monospace;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 25px;
+      text-align: center;
+      color: #000000;
+      z-index: 1000;
+    }
+    .china {
+      position: absolute;
+      width: 60px;
+      height: 25px;
+      left: 690px;
+      top: 36px;
+      font-family: 'Inconsolata', monospace;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 25px;
+      text-align: center;
+      color: #000000;
+      z-index: 1000;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="photography-main-page">
+      <span class="cao-mai">Cao Mai</span>
+      <div class="country-name france" style="display: none;">France</div>
+      <div class="country-name switzerland" style="display: none;">Switzerland</div>
+      <div class="country-name italy" style="display: none;">Italy</div>
+      <div class="country-name china" style="display: none;">China</div>
+
+      <a href="index.html">
+        <span class="back">Back</span>
+      </a>
+
+      
+      <!--page-directory -->
+      <a href="architecture-main-page.html">
+      <img class="svg-architecture-directory-bottom" src="assets/architecture-directory-bottom.svg" style="left:40.78px; top:873px; width:142.73px; height:26.51px;" alt="architecture-directory-bottom" />
+      </a>
+      <a href="tech-main-page.html">
+      <img class="svg-tech-directory-bottom" src="assets/tech-directory-bottom.svg" style="left:424.51px; top:873px; width:184.53px; height:26.51px;" alt="tech-directory-bottom" />
+      </a>
+      <img class="svg-photography-directory-bottom-black" src="assets/photography-directory-bottom-black.svg" style="left:871.01px; top:869px; width:142.73px; height:30.58px;" alt="photography-directory-bottom-black" />
+      <a href="music-main-page.html">
+      <img class="svg-music-directory-bottom" src="assets/music-directory-bottom.svg" style="left:1319.87px; top:869px; width:61.17px; height:30.58px;" alt="music-directory-bottom" />
+      </a>
+      <!-- map -->
+      <!-- 中国 -->
+<a href="china.html">
+    <img class="svg-china country" src="assets/china.svg" style="left:964px; top:329.5px; width:239px; height:159.45px;" alt="china" />
+  </a>
+  
+  <!-- 瑞士 -->
+  <a href="switzerland.html">
+    <img class="svg-switzerland country" src="assets/switzerland.svg" style="left:694px; top:358.91px; width:30px; height:12px;" alt="switzerland" />
+  </a>
+  
+  <!-- 法国1 -->
+  <a href="france.html">
+    <img class="svg-france1 country" src="assets/france1.svg " style="left:660px; top:342px; width:50.22px; height:42.96px;" alt="france1" />
+  </a>
+  
+  <!-- 法国2 -->
+  <a href="france.html">
+    <img class="svg-france2 country" src="assets/france2.svg" style="left:711px; top:381px; width:5px; height:9px;" alt="france2" />
+  </a>
+  
+  <!-- 法国3 -->
+  <a href="france.html">
+    <img class="svg-france3 country" src="assets/france3.svg" style="left:465.2px; top:536.9px; width:13px; height:16px;" alt="france3" />
+  </a>
+  
+  <!-- 意大利 -->
+  <a href="italy.html">
+    <img class="svg-italy country" src="assets/italy.svg" style="left:702.5px; top:349.5px; width:49px; height:75px;" alt="italy" />
+  </a> 
+  <img class="svg-countries" src="assets/countries.svg" style="left:20px; top:118px; width:1400px; height:700.77px;" alt="countries" />
+
+    
+      
+    </div>
+  </div>
+
+  <script>
+    // 存储原始图片路径
+const franceMaps = [
+  { element: document.querySelector('.svg-france1'), originalSrc: 'assets/france1.svg' },
+  { element: document.querySelector('.svg-france2'), originalSrc: 'assets/france2.svg' },
+  { element: document.querySelector('.svg-france3'), originalSrc: 'assets/france3.svg' }
+].filter(item => item.element !== null); // 过滤掉null元素
+
+// 预加载黑色图片
+function preloadImages() {
+  franceMaps.forEach(item => {
+    const img = new Image();
+    img.src = item.originalSrc.replace('.svg', '-black.svg');
+  });
+}
+preloadImages();
+
+// 修改法国的悬停逻辑
+franceMaps.forEach(item => {
+  const { element, originalSrc } = item;
+  const countryNameEl = document.querySelector('.country-name.france'); // 使用正确的选择器
+  
+  element.addEventListener('mouseover', () => {
+    franceMaps.forEach(m => {
+      m.element.src = m.originalSrc.replace('.svg', '-black.svg');
+    });
+    if (countryNameEl) countryNameEl.style.display = 'block'; // 显示法国名称
+  });
+
+  element.addEventListener('mouseout', () => {
+    franceMaps.forEach(m => {
+      m.element.src = m.originalSrc;
+    });
+    if (countryNameEl) countryNameEl.style.display = 'none'; // 隐藏法国名称
+  });
+});
+  
+    // 其他国家的悬停效果
+    const otherCountries = {
+      'china': document.querySelector('.svg-china'),
+      'switzerland': document.querySelector('.svg-switzerland'),
+      'italy': document.querySelector('.svg-italy')
+    };
+  
+    Object.entries(otherCountries).forEach(([country, element]) => {
+      if (!element) return;
+      
+      const countryNameEl = document.querySelector(`.country-name.${country}`);
+      
+      element.addEventListener('mouseover', () => {
+        if (countryNameEl) countryNameEl.style.display = 'block';
+        element.src = element.src.replace('.svg', '-black.svg');
+      });
+      
+      element.addEventListener('mouseout', () => {
+        if (countryNameEl) countryNameEl.style.display = 'none';
+        element.src = element.src.replace('-black.svg', '.svg');
+      });
+    });
+  
+    // 页面缩放函数（保持不变）
+    function resizePhotographyMainPage() {
+      const scale = Math.min(
+        window.innerWidth / 1440,
+        window.innerHeight / 900
+      );
+      const photographyMainPage = document.querySelector('.photography-main-page');
+      if (photographyMainPage) {
+        photographyMainPage.style.transform = `scale(${scale})`;
+        photographyMainPage.style.position = 'absolute';
+        photographyMainPage.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+        photographyMainPage.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+      }
+    }
+  
+    window.addEventListener('resize', resizePhotographyMainPage);
+    window.addEventListener('DOMContentLoaded', resizePhotographyMainPage);
+  </script>
+  
+  
+  
+</body>
+</html>

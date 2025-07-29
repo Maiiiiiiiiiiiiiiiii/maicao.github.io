@@ -1,0 +1,36 @@
+/* 通用过渡动画 */
+img {
+    transition: transform 0.3s ease;
+  }
+  
+  /* 所有 rectangle（矩形标签）向上移动 4px */
+  [class^="svg-rectangle-"]:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* 四个目录按钮向上移动 50px */
+  .svg-photography-directory:hover,
+  .svg-tech-directory:hover,
+  .svg-music:hover,
+  .svg-architecture-directory:hover {
+    transform: translateY(-50px);
+  }
+ 
+  /* === 图片初始隐藏、悬停出现 === */
+
+  .go-to-my-desk {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    width: 177px;
+    height: 271px;
+    left: 515px;
+    top: 451px;
+    z-index: 100;
+  }
+  
+  a:hover + .go-to-my-desk {
+    opacity: 1;
+  }

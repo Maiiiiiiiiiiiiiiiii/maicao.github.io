@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai Desk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+    
+    .svg-my-desk-dark {
+      position: absolute;
+      z-index: 0;
+    }
+    .back {
+      position: absolute;
+      width: 64px;
+      height: 34px;
+      left: 1337px;
+      top: 27px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #ffffff;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="mydesk">
+      
+      <a href="MyDesk.html">
+        <span class="back">Back</span>
+      </a>
+      <img class="svg-my-desk-dark" src="assets/my-desk-dark.svg" style="left:0px; top:0px; width:1440px; height:900px;" alt="my-desk-dark" />
+    </div>
+  </div>
+  <script>
+  // 缩放函数
+  function resizeMyDesk() {
+    const scale = Math.min(
+      window.innerWidth / 1440,
+      window.innerHeight / 900
+    );
+    const mydesk = document.querySelector('.mydesk');
+    mydesk.style.transform = `scale(${scale})`;
+    mydesk.style.position = 'absolute';
+    mydesk.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+    mydesk.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+  }
+  window.addEventListener('resize', resizeMyDesk);
+    window.addEventListener('DOMContentLoaded', resizeMyDesk);
+</script>
+
+    </body>
+</html>

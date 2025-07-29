@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-tech-main-page.css" />
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+
+
+    /* 图层顺序控制 */
+    .svg-architecture-directory-bottom,
+    .svg-tech-directory-bottom,
+    .svg-photography-directory-bottom,
+    .svg-music-directory-bottom-black,
+    .svg-record-player-grey,
+    .svg-pic-local-valley,
+    .svg-pic-to-enjoy-is-the-only-thing,
+    .svg-pic-winter-companion,
+    .svg-pic-a-moon-shaped-pool,
+    .svg-pic-hit-me-hard-and-soft,
+    .svg-pic-carrie-lowell,
+    .svg-pic-folklore,
+    .svg-pic-evermore {
+      position: absolute;
+      z-index: 0;
+    }
+
+
+
+
+
+    .cao-mai {
+      position: absolute;
+      width: 112px;
+      height: 34px;
+      left: 31px;
+      top: 27px;
+      font-family: 'Inconsolata';
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .back {
+      position: absolute;
+      width: 64px;
+      height: 34px;
+      left: 1337px;
+      top: 27px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+    }
+
+    .coming-soon {
+      position: absolute;
+      width: 176px;
+      height: 34px;
+      left: 632px;
+      top: 27px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+    }
+
+    .my-favourites {
+      position: absolute;
+      width: 91px;
+      height: 15px;
+      left: 684px;
+      top: 820px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 15px;
+      color: #000000;
+      z-index: 1000;
+    }
+
+    .my-favourites-bottom-line {
+      position: absolute;
+      width: 1095.5px;
+      height: 0px;
+      left: 172px;
+      top: 817px;
+      border: 0.5px solid #000000;
+
+    }
+      /* 专辑封面基础样式 */
+.album-cover {
+  cursor: pointer;
+  position: absolute;
+  filter: grayscale(100%) !important; /* 初始为黑白，使用!important覆盖内联样式 */
+  transition: all 0.3s ease !important; /* 平滑过渡效果，使用!important */
+}
+
+/* 专辑封面悬停效果 */
+.album-cover:hover {
+  transform: translateY(-10px) !important; /* 上移10px */
+  filter: grayscale(0%) !important; /* 变为彩色 */
+}
+
+/* 通知元素样式 */
+.notification {
+  position: absolute;
+  z-index: 10;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="music-main-page">
+      <span class="cao-mai">Cao Mai</span>
+      <span class="coming-soon">COMING SOON</span>
+      <span class="my-favourites">My favourites</span>
+      
+      <a href="index.html">
+        <span class="back">Back</span>
+      </a>
+      <a href="architecture-main-page.html">
+        <img class="svg-architecture-directory-bottom" src="assets/architecture-directory-bottom.svg" style="left:40.78px; top:873px; width:142.73px; height:26.51px;" alt="architecture-directory-bottom" />
+     </a>
+     <a href="tech-main-page.html">
+        <img class="svg-tech-directory-bottom" src="assets/tech-directory-bottom.svg" style="left:424.51px; top:873px; width:184.53px; height:26.51px;" alt="tech-directory-bottom" />
+     </a>
+     <a href="photograhy-main-page.html">
+        <img class="svg-photography-directory-bottom" src="assets/photography-directory-bottom.svg" style="left:871.01px; top:869px; width:142.73px; height:30.58px;" alt="photography-directory-bottom" />
+     </a>
+     
+     <img class="svg-music-directory-bottom-black" src="assets/music-directory-bottom-black.svg" style="left:1319.87px; top:869px; width:61.17px; height:30.58px;" alt="music-directory-bottom-black" />
+    
+      <!--album -->
+      <img class="svg-pic-folklore" src="assets/pic-folklore.svg" style="left:180px; top:700px; width:100px; height:100px;" alt="pic-folklore" class="album-cover"/>
+      <img class="svg-pic-evermore" src="assets/pic-evermore.svg" style="left:320px; top:700px; width:100px; height:100px;" alt="pic-evermore" class="album-cover"/>
+      <img class="svg-pic-carrie-lowell" src="assets/pic-carrie-lowell.svg" style="left:460px; top:700px; width:100px; height:100px;" alt="pic-carrie-lowell" class="album-cover"/>
+      <img class="svg-pic-hit-me-hard-and-soft" src="assets/pic-hit-me-hard-and-soft.svg" style="left:600px; top:700px; width:100px; height:100px;" alt="pic-hit-me-hard-and-soft" class="album-cover"/>
+      <img class="svg-pic-a-moon-shaped-pool" src="assets/pic-a-moon-shaped-pool.svg" style="left:740px; top:700px; width:100px; height:100px;" alt="pic-a-moon-shaped-pool" class="album-cover"/>
+      <img class="svg-pic-winter-companion" src="assets/pic-winter-companion.svg" style="left:880px; top:700px; width:100px; height:100px;" alt="pic-winter-companion" class="album-cover"/>
+      <img class="svg-pic-to-enjoy-is-the-only-thing" src="assets/pic-to-enjoy-is-the-only-thing.svg" style="left:1020px; top:700px; width:100px; height:100px;" alt="pic-to-enjoy-is-the-only-thing" class="album-cover"/>
+      <img class="svg-pic-local-valley" src="assets/pic-local-valley.svg" style="left:1160px; top:700px; width:100px; height:100px;" alt="pic-local-valley" class="album-cover"/>
+      
+      <!-- 通知元素 -->
+      <img class="notification-folklore notification" src="assets/notification-folklore.svg" style="display: none; left:180px; top:639px; width:100px; height:42px;" alt="folklore notification" class="notification"/>
+      <img class="notification-evermore notification" src="assets/notification-evermore.svg" style="display: none; left:320px; top:639px; width:100px; height:42px;" alt="evermore notification" class="notification"/>
+      <img class="notification-carrie-lowell notification" src="assets/notification-carrie-lowell.svg" style="display: none; left:460px; top:639px; width:100px; height:42px;" alt="carrie-lowell notification" class="notification"/>
+      <img class="notification-hit-me-hard-and-soft notification" src="assets/notification-hit-me-hard-and-soft.svg" style="display: none; left:600px; top:639px; width:100px; height:42px;" alt="hit-me-hard-and-soft notification" class="notification"/>
+      <img class="notification-a-moon-shaped-pool notification" src="assets/notification-a-moon-shaped-pool.svg" style="display: none; left:740px; top:639px; width:100px; height:42px;" alt="a-moon-shaped-pool notification" class="notification"/>
+      <img class="notification-winter-companion notification" src="assets/notification-winter-companion.svg" style="display: none; left:880px; top:639px; width:100px; height:42px;" alt="winter-companion notification" class="notification"/>
+      <img class="notification-to-enjoy-is-the-only-thing notification" src="assets/notification-to-enjoy-is-the-only-thing.svg" style="display: none; left:1020px; top:639px; width:100px; height:42px;" alt="to-enjoy-is-the-only-thing notification" class="notification"/>
+      <img class="notification-local-valley notification" src="assets/notification-local-valley.svg" style="display: none; left:1160px; top:639px; width:100px; height:42px;" alt="local-valley notification" class="notification"/>
+      
+      <!-- project -->
+      <img class="svg-record-player-grey" src="assets/record-player-grey.svg" style="left:458px; top:107px; width:524.1px; height:520px;" alt="record-player-grey" />
+      <span class="my-favourites-bottom-line">
+    </div>
+  </div>
+
+  <script>
+    // 获取所有专辑封面和对应通知
+const albums = [
+  { cover: '.svg-pic-folklore', notification: '.notification-folklore' },
+  { cover: '.svg-pic-evermore', notification: '.notification-evermore' },
+  { cover: '.svg-pic-carrie-lowell', notification: '.notification-carrie-lowell' },
+  { cover: '.svg-pic-hit-me-hard-and-soft', notification: '.notification-hit-me-hard-and-soft' },
+  { cover: '.svg-pic-a-moon-shaped-pool', notification: '.notification-a-moon-shaped-pool' },
+  { cover: '.svg-pic-winter-companion', notification: '.notification-winter-companion' },
+  { cover: '.svg-pic-to-enjoy-is-the-only-thing', notification: '.notification-to-enjoy-is-the-only-thing' },
+  { cover: '.svg-pic-local-valley', notification: '.notification-local-valley' }
+];
+
+// 为每个专辑添加悬停事件
+albums.forEach(album => {
+  const cover = document.querySelector(album.cover);
+  const notification = document.querySelector(album.notification);
+  
+  if (cover && notification) {
+    // 确保封面元素有album-cover类
+    cover.classList.add('album-cover');
+    
+    // 鼠标进入
+    cover.addEventListener('mouseenter', () => {
+      notification.style.display = 'block';
+    });
+    
+    // 鼠标离开
+    cover.addEventListener('mouseleave', () => {
+      notification.style.display = 'none';
+    });
+  }
+});
+
+// 页面缩放函数（保持不变）
+function resizeMusicMainPage() {
+  const scale = Math.min(
+    window.innerWidth / 1440,
+    window.innerHeight / 900
+  );
+  const musicMainPage = document.querySelector('.music-main-page');
+  if (musicMainPage) {
+    musicMainPage.style.transform = `scale(${scale})`;
+    musicMainPage.style.position = 'absolute';
+    musicMainPage.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+    musicMainPage.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+  }
+}
+
+window.addEventListener('resize', resizeMusicMainPage);
+window.addEventListener('DOMContentLoaded', resizeMusicMainPage);
+  </script>
+  
+  
+</body>
+</html>

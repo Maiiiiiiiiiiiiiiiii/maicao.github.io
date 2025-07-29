@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <title>Roma</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inconsolata', monospace;
+      background: #fff;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .overlay-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    .image-title {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      z-index: 10;
+    }
+    
+    .image-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .image-container img {
+      max-width: 90%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+    
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    
+    .prev {
+      left: 20px;
+    }
+    
+    .next {
+      right: 20px;
+    }
+    
+    .image-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay-container">
+    <div class="image-title">无</div>
+    
+    <div class="image-container">
+      <button class="nav-button prev">←</button>
+      <img id="current-image" src="../assets/pic-roma/P1015626.jpg" alt="Roma Photo">
+      <button class="nav-button next">→</button>
+    </div>
+    
+    <div class="image-counter">
+      <span id="current-index">1</span> / <span id="total-count">39</span>
+    </div>
+  </div>
+
+  <script>
+    // 按文件名排序后的图片列表（已删除指定图片）
+    const images = [
+      'P1015626.jpg', 'P1015634.jpg', 'P1015674.jpg',
+      'P1015689.jpg', 'P1015702.jpg', 'P1015705.jpg',
+      'P1015720.jpg', 'P1015730-2.jpg', 'P1015748-2.jpg',
+      'P1015751.jpg', 'P1015755.jpg', 'P1015760.jpg',
+      'P1015768.jpg', 'P1015772.jpg', 'P1015779.jpg',
+      'P1015784.jpg', 'P1015815.jpg', 'P1015818.jpg',
+      'P1015819.jpg', 'P1015820.jpg', 'P1015826.jpg',
+      'P1015829.jpg', 'P1015837.jpg', 'P1015839.jpg',
+      'P1015841.jpg', 'P1015842.jpg', 
+      'P1015852.jpg', 'P1015875.jpg', 'P1015877.jpg',
+      'P1015879.jpg', 'P1015891.jpg', 'P1015900.jpg',
+      'P1015902.jpg', 'P1015909.jpg', 'P1015912.jpg',
+      'P1015914.jpg', 'P1015919.jpg', 'P1015921.jpg',
+      'P1015926.jpg', 'P1015928.jpg', 'P1015933.jpg',
+      'P1015958.jpg'
+    ].sort(); // 确保按字母顺序排序
+    
+    // 标题列表 (在此处直接修改每个图片的标题)
+    const titles = [
+      "Roma-Colosseum",
+      "Roma-Colosseum",
+      "Roma-Colosseum",
+      "Roma-Colosseum",
+      "Roma-Palatine Hill",
+      "Roma-Palatine Hill",
+      "Roma-Roman Forum",
+      "Roma-Roman Forum",
+      "Roma-Bronze statue of Roman Emperor Nerva in Rome",
+      "Roma-Trajan's Forum",
+      "Roma-Monument to Victor Emmanuel II",
+      "Roma-Monument to Victor Emmanuel II",
+      "Roma-Piazza del Campidoglio",
+      "Roma-Teatro di Marcello",
+      "Roma-Mouth of Truth",
+      "Roma-Ponte Cestio",
+      "Roma-Pantheon",
+      "Roma-Pantheon",
+      "Roma-Pantheon",
+      "Roma-Pantheon",
+      "Roma-Chiesa di Sant'Ignazio di Loyola",
+      "Roma-Chiesa di Sant'Ignazio di Loyola",
+      "Roma-Piazza Navona",
+      "Roma-Piazza Navona",
+      "Roma-Piazza Navona",
+      "Roma-Monument to Marco Minghetti",
+      "Roma-St. Angelo Bridge",
+      "Roma-Ara Pacis Museum",
+      "Roma-Ara Pacis Museum",
+      "Roma-Ara Pacis Museum",
+      "Roma-View from Viale della Trinità dei Monti",
+      "Roma-Terrazza del Pincio",
+      "Roma-Pincian Hill",
+      "Roma-Pincian Hill",
+      "Roma-Pincian Hill",
+      "Roma-Pincian Hill",
+      "Roma-Pincian Hill",
+      "Roma-Pincian Hill",
+      "Roma-Esculapio boat",
+      "Roma-Temple of Aesculapius",
+      "Roma-Temple of Aesculapius",
+      "Roma-MAXXI-National Museum of 21st Century Art"
+    ];
+    
+    let currentIndex = 0;
+    const imageElement = document.getElementById('current-image');
+    const titleElement = document.querySelector('.image-title');
+    const currentIndexElement = document.getElementById('current-index');
+    const totalCountElement = document.getElementById('total-count');
+    
+    // 初始化
+    totalCountElement.textContent = images.length;
+    
+    // 更新显示的图片和标题
+    function updateDisplay() {
+      imageElement.src = `../assets/pic-roma/${images[currentIndex]}`;
+      titleElement.textContent = titles[currentIndex];
+      currentIndexElement.textContent = currentIndex + 1;
+    }
+    
+    // 上一张按钮
+    document.querySelector('.prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateDisplay();
+    });
+    
+    // 下一张按钮
+    document.querySelector('.next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateDisplay();
+    });
+    
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateDisplay();
+      } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateDisplay();
+      }
+    });
+    
+    // 初始化显示
+    updateDisplay();
+  </script>
+</body>
+</html>

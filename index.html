@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-main-page.css" />
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+    .main-page {
+      width: 1440px;
+      height: 900px;
+      position: absolute;
+      transform-origin: top left;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    /* 图层顺序控制 */
+    .svg-box-back,
+    .svg-box-left {
+      position: absolute;
+      z-index: 0;
+    }
+
+
+
+    .svg-box-front,
+    .svg-box-right {
+      position: absolute;
+      z-index: 5;
+    }
+
+    .svg-music,
+    .svg-rectangle-25,
+    .svg-rectangle-26,
+    .svg-rectangle-27,
+    .svg-rectangle-28 {
+      position: absolute;
+      z-index: 1;
+    }
+
+
+    .svg-photography-directory,
+    .svg-rectangle-21,
+    .svg-rectangle-22,
+    .svg-rectangle-23,
+    .svg-rectangle-24 {
+      position: absolute;
+      z-index: 2;
+    }
+
+
+    .svg-tech-directory,
+    .svg-rectangle-17,
+    .svg-rectangle-18,
+    .svg-rectangle-19,
+    .svg-rectangle-20 {
+      position: absolute;
+      z-index: 3;
+    }
+
+
+    .svg-architecture-directory,
+    .svg-rectangle-12,
+    .svg-rectangle-13,
+    .svg-rectangle-15,
+    .svg-rectangle-16 {
+      position: absolute;
+      z-index: 4;
+    }
+
+
+    .cao-mai {
+      position: absolute;
+      width: 112px;
+      height: 34px;
+      left: 31px;
+      top: 27px;
+      font-family: 'Inconsolata';
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .mai-archive {
+      position: absolute;
+      width: 220px;
+      height: 42px;
+      left: 493px;
+      top: 509px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 42px;
+      color: #000000;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="main-page">
+      <span class="cao-mai">Cao Mai</span>
+
+      <!-- Box -->
+      <img class="svg-box-back" src="assets/box-back.svg" style="left:652px; top:282px; width:342px; height:222px;" alt="box back" />
+      <img class="svg-box-left" src="assets/box-left.svg" style="left:446px; top:282px; width:208px; height:345px;" alt="box left" />
+
+      <!-- Labels -->
+      <a href="music-main-page.html">
+      <img class="svg-music" src="assets/music.svg" style="left:642px; top:274px; width:340px; height:79px;" alt="music" />
+      </a>
+
+      <a href="photograhy-main-page.html">
+      <img class="svg-photography-directory" src="assets/photography-directory.svg" style="left:593px; top:303px; width:340px; height:78px;" alt="photography" />
+      </a>
+
+      <a href="tech-main-page.html">
+      <img class="svg-tech-directory" src="assets/tech-directory.svg" style="left:545px; top:333px; width:340px; height:77px;" alt="tech" />
+      </a>
+
+      <a href="architecture-main-page.html">
+        <img class="svg-architecture-directory" src="assets/architecture-directory.svg" style="left:495px; top:363px; width:340px; height:76px;" alt="architecture" />
+      </a>
+
+      <!-- Box front/right -->
+      <img class="svg-box-front" src="assets/box-front.svg" style="left:446px; top:405px; width:342px; height:222px;" alt="box front" />
+      <img class="svg-box-right" src="assets/box-right.svg" style="left:786px; top:282px; width:208px; height:345px;" alt="box right" />
+
+      <!-- Rectangles -->
+      <img class="svg-rectangle-25" src="assets/rectangle-25.svg" style="left:632px; top:295px; width:340px; height:58px;" alt="Rectangle 25" />
+      <img class="svg-rectangle-26" src="assets/rectangle-26.svg" style="left:623px; top:300px; width:340px; height:58px;" alt="Rectangle 26" />
+      <img class="svg-rectangle-27" src="assets/rectangle-27.svg" style="left:613px; top:306px; width:340px; height:58px;" alt="Rectangle 27" />
+      <img class="svg-rectangle-28" src="assets/rectangle-28.svg" style="left:603px; top:312px; width:340px; height:58px;" alt="Rectangle 28" />
+      <img class="svg-rectangle-21" src="assets/rectangle-21.svg" style="left:585px; top:323px; width:340px; height:58px;" alt="Rectangle 21" />
+      <img class="svg-rectangle-22" src="assets/rectangle-22.svg" style="left:576px; top:328px; width:340px; height:58px;" alt="Rectangle 22" />
+      <img class="svg-rectangle-23" src="assets/rectangle-23.svg" style="left:566px; top:334px; width:340px; height:58px;" alt="Rectangle 23" />
+      <img class="svg-rectangle-24" src="assets/rectangle-24.svg" style="left:556px; top:340px; width:340px; height:58px;" alt="Rectangle 24" />
+      <img class="svg-rectangle-17" src="assets/rectangle-17.svg" style="left:535px; top:353px; width:340px; height:58px;" alt="Rectangle 17" />
+      <img class="svg-rectangle-18" src="assets/rectangle-18.svg" style="left:526px; top:358px; width:340px; height:58px;" alt="Rectangle 18" />
+      <img class="svg-rectangle-19" src="assets/rectangle-19.svg" style="left:516px; top:364px; width:340px; height:58px;" alt="Rectangle 19" />
+      <img class="svg-rectangle-20" src="assets/rectangle-20.svg" style="left:506px; top:370px; width:340px; height:58px;" alt="Rectangle 20" />
+      <img class="svg-rectangle-16" src="assets/rectangle-16.svg" style="left:485px; top:382px; width:340px; height:58px;" alt="Rectangle 16" />
+      <img class="svg-rectangle-15" src="assets/rectangle-15.svg" style="left:476px; top:387px; width:340px; height:58px;" alt="Rectangle 15" />
+      <img class="svg-rectangle-13" src="assets/rectangle-13.svg" style="left:466px; top:393px; width:340px; height:58px;" alt="Rectangle 13" />
+      <img class="svg-rectangle-12" src="assets/rectangle-12.svg" style="left:456px; top:399px; width:340px; height:58px;" alt="Rectangle 12" />
+      
+      <a href="mydesk.html">
+        <span class="mai-archive">Mai Archive</span>
+      </a>
+      <img src="assets/go-to-my-desk.svg" class="go-to-my-desk" alt="go-to-my-desk" />
+      
+    </div>
+  </div>
+
+  <script>
+    function resizeMainPage() {
+      const scale = Math.min(
+        window.innerWidth / 1440,
+        window.innerHeight / 900
+      );
+      const mainPage = document.querySelector('.main-page');
+      mainPage.style.transform = `scale(${scale})`;
+      mainPage.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+      mainPage.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+    }
+
+    window.addEventListener('resize', resizeMainPage);
+    window.addEventListener('DOMContentLoaded', resizeMainPage);
+  </script>
+</body>
+</html>

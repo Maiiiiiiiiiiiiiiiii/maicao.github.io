@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Archipelago</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 198px;
+      height: 38px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 302px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 221px;
+      height: 14px;
+      left: 133px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 85px;
+      height: 14px;
+      left: 269px;
+      top: 310px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author {
+      position: absolute;
+      width: 46px;
+      height: 14px;
+      left: 308px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 287px; }
+    .line6 { top: 327px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 208px;
+      left: 54px;
+      top: 397px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 305px;
+      left: 537px;
+      top: 397px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Archipelago</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    
+    <div class="location">Shanghai</div>
+    <div class="date">2022.03-2022.06</div>
+    <div class="tags1">Preservation / Adaptive Project,</div>
+    <div class="tags2">Museum Design</div>
+    <div class="author">Mai Cao</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    
+    <div class="description-chinese">
+      本项目并非课程作业，而是我在自主调研中发现的一个具有历史与空间潜力的场地。它位于旧上海军阀混战时期的行政边界，曾是一个"三不管"地带，长期聚集着大量游民，具有独特的社会历史背景。如今该地块面临转型的契机，我决定将其改造为一座历史博物馆，以纪念并重构这段被遗忘的城市记忆。原有建筑群由不同时期的建筑逐渐叠加而成，形态杂乱。设计的第一步是"化零为整"——通过重新组织交通流线与空间关系，建立整体性。在其中一个圆形体块上，我加建了一座塔楼，用于拓展展览路径并提供更广阔的观景视野。设计语言参考了米兰 Prada 基金会的处理手法，在保留历史痕迹的基础上，加入现代的空间介入。
+    </div>
+    
+    <div class="description-english">
+      This project is not a course assignment but stems from my independent research and site exploration. The site is located on the historical administrative border of Shanghai during the Warlord Era—a politically ambiguous "no man's land" that once served as a refuge for the city's marginalized and displaced populations. Today, it presents a unique opportunity for adaptive reuse, and I proposed transforming it into a historical museum to commemorate and reinterpret this overlooked urban memory. The existing buildings were constructed across different periods, resulting in a fragmented and irregular architectural condition. My first design move was to unify the scattered volumes by reorganizing the circulation and spatial structure. On one of the circular volumes, I added a tower to extend the exhibition route and provide elevated views of the surroundings. The design approach is inspired by the Prada Foundation in Milan, blending historical preservation with contemporary spatial interventions.
+    </div>
+  </div>
+</body>
+</html>

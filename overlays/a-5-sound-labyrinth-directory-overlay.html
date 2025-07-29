@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound Labyrinth</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 162px;
+      height: 76px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 91px;
+      height: 14px;
+      left: 263px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 189px;
+      height: 14px;
+      left: 165px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 169px;
+      height: 14px;
+      left: 185px;
+      top: 310px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author {
+      position: absolute;
+      width: 130px;
+      height: 14px;
+      left: 224px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 287px; }
+    .line6 { top: 327px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 211px;
+      left: 54px;
+      top: 377px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 211px;
+      left: 537px;
+      top: 377px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Sound Labyrinth</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    
+    <div class="location">Ya'an, Sichuan</div>
+    <div class="date">2023.07-2023.10</div>
+    <div class="tags1">Architectural Design Project,</div>
+    <div class="tags2">Museum Design, Competition</div>
+    <div class="author">Mai Cao, Chenyu Yang</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    
+    <div class="description-chinese">
+      这是一个竞赛项目——雅安百丈湖水美乡村建筑国际设计竞赛，任务是设计一座"声音博物馆"。在这个项目中，大多数感官被有意淡化，人们回归到最本真的感知状态，在其中可以清晰地听见风声、鸟鸣，甚至是自己的呼吸与心跳。设计灵感来源于雅安独特的自然环境与人文背景。我们希望在这片静谧的湖畔，通过持续的声音实验，营造一个声学表现极致的空间。在这个博物馆中，展品不再是视觉的主角，而是人自身感知的觉醒——因为心灵才是灵感最深的来源。
+    </div>
+    
+    <div class="description-english">
+      This project was developed for the Baizhang Lake "Sound Museum" International Design Competition in Ya'an. The challenge was to create a museum centered on sound—where most sensory distractions are intentionally removed, allowing visitors to return to a primal state of awareness. Here, one can clearly hear the wind, birdsong, and even the subtle rhythm of their own breath and heartbeat. The design draws upon Ya'an's unique natural setting and cultural context. By conducting continuous on-site acoustic experiments, we sought to craft a space where sound becomes the primary medium of experience. In this museum, traditional exhibits are no longer necessary—because the truest source of inspiration lies within the human mind itself.
+    </div>
+  </div>
+</body>
+</html>

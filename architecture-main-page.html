@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-architecture-main-page.css" />
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+
+
+    /* 图层顺序控制 */
+    .svg-architecture-directory-bottom-black,
+    .svg-tech-directory-bottom,
+    .svg-photography-directory-bottom,
+    .svg-music-directory-bottom,
+    .svg-landscape-planning-project-button,
+    .svg-architectural-design-project-botton,
+    .svg-preservation-adaptive-project-botton,
+    .svg-construction-project-botton,
+    .svg-architectural-theory-botton,
+    .svg-architectural-installations-botton {
+      position: absolute;
+      z-index: 0;
+    }
+
+
+    .svg-a-1-rhythum-directory {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .svg-a-2-suzhou-sensory-museum-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-3-scenery-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-4-archipelago-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-5-sound-labyrinth-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-6-life-itself-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-7-fire-pond-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-8-street-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-9-xiushui-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-10-nature-for-health-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-11-loop-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-12-monlue-sport-condensor-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-13-back-to-nature-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-a-14-townscape-directory {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .cao-mai {
+      position: absolute;
+      width: 112px;
+      height: 34px;
+      left: 31px;
+      top: 27px;
+      font-family: 'Inconsolata';
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .back {
+      position: absolute;
+      width: 64px;
+      height: 34px;
+      left: 1337px;
+      top: 27px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+    }
+
+    .directory {
+      position: absolute;
+      top: 700px;
+      transition: top 0.2s, filter 0.2s;
+    }
+    .category-button {
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="architecture-main-page">
+      <span class="cao-mai">Cao Mai</span>
+      
+      <a href="index.html">
+        <span class="back">Back</span>
+      </a>
+
+      
+      <!--page-directory -->
+      <img class="svg-architecture-directory-bottom-black" src="assets/architecture-directory-bottom-black.svg" style="left:40.78px; top:873px; width:142.73px; height:26.51px;" alt="architecture-directory-bottom-black" />
+      <a href="tech-main-page.html">
+      <img class="svg-tech-directory-bottom" src="assets/tech-directory-bottom.svg" style="left:424.51px; top:873px; width:184.53px; height:26.51px;" alt="tech-directory-bottom" />
+      </a>
+      <a href="photograhy-main-page.html">
+      <img class="svg-photography-directory-bottom" src="assets/photography-directory-bottom.svg" style="left:871.01px; top:869px; width:142.73px; height:30.58px;" alt="photography-directory-bottom" />
+      </a>
+      <a href="music-main-page.html">
+      <img class="svg-music-directory-bottom" src="assets/music-directory-bottom.svg" style="left:1319.87px; top:869px; width:61.17px; height:30.58px;" alt="music-directory-bottom" />
+      </a>
+
+      <!-- project -->
+      <img class="svg-a-1-rhythum-directory" src="assets/a-1-rhythum-directory.svg" style="left:195px; top:700px; width:100px; height:100px;" alt="a-1-rhythum-directory" class="directory" id="a-1" data-group="architectural-design-project-botton"/>
+      <img class="svg-a-2-suzhou-sensory-museum-directory" src="assets/a-2-suzhou-sensory-museum-directory.svg" style="left:270px; top:700px; width:100px; height:100px;" alt="a-2-suzhou-sensory-museum-directory" class="directory" id="a-2" data-group="preservation-adaptive-project-botton"/>
+      <img class="svg-a-3-scenery-directory" src="assets/a-3-scenery-directory.svg" style="left:345px; top:700px; width:100px; height:100px;" alt="a-3-scenery-directory" class="directory" id="a-3" data-group="architectural-design-project-botton"/>
+      <img class="svg-a-4-archipelago-directory" src="assets/a-4-archipelago-directory.svg" style="left:420px; top:700px; width:100px; height:100px;" alt="a-4-archipelago-directory" class="directory" id="a-4" data-group="preservation-adaptive-project-botton"/>
+      <img class="svg-a-5-sound-labyrinth-directory" src="assets/a-5-sound-labyrinth-directory.svg" style="left:495px; top:700px; width:100px; height:100px;" alt="a-5-sound-labyrinth-directory" class="directory" id="a-5" data-group="architectural-design-project-botton"/>
+      <img class="svg-a-6-life-itself-directory" src="assets/a-6-life-itself-directory.svg" style="left:570px; top:700px; width:100px; height:100px;" alt="a-6-life-itself-directory" class="directory" id="a-6" data-group="architectural-design-project-botton"/>
+      <img class="svg-a-7-fire-pond-directory" src="assets/a-7-fire-pond-directory.svg" style="left:645px; top:700px; width:100px; height:100px;" alt="a-7-fire-pond-directory" class="directory" id="a-7" data-group="architectural-installations-botton"/>
+      <img class="svg-a-8-street-directory" src="assets/a-8-street-directory.svg" style="left:720px; top:700px; width:100px; height:100px;" alt="a-8-street-directory" class="directory" id="a-8" data-group="architectural-design-project-botton"/>
+      <img class="svg-a-9-xiushui-directory" src="assets/a-9-xiushui-directory.svg" style="left:795px; top:700px; width:100px; height:100px;" alt="a-9-xiushui-directory" class="directory" id="a-9" data-group="landscape-planning-project-button,preservation-adaptive-project-botton"/>
+      <img class="svg-a-10-nature-for-health-directory" src="assets/a-10-nature-for-health-directory.svg" style="left:870px; top:700px; width:100px; height:100px;" alt="a-10-nature-for-health-directory" class="directory" id="a-10" data-group="landscape-planning-project-button,preservation-adaptive-project-botton"/>
+      <img class="svg-a-11-loop-directory" src="assets/a-11-loop-directory.svg" style="left:945px; top:700px; width:100px; height:100px;" alt="a-11-loop-directory" class="directory" id="a-11" data-group="landscape-planning-project-button,architectural-design-project-botton"/>
+      <img class="svg-a-12-monlue-sport-condensor-directory" src="assets/a-12-monlue-sport-condensor-directory.svg" style="left:1020px; top:700px; width:100px; height:100px;" alt="a-12-monlue-sport-condensor-directory" class="directory" id="a-12" data-group="construction-project-botton"/>
+      <img class="svg-a-13-back-to-nature-directory" src="assets/a-13-back-to-nature-directory.svg" style="left:1095px; top:700px; width:100px; height:100px;" alt="a-13-back-to-nature-directory" class="directory" id="a-13" data-group="construction-project-botton,architectural-design-project-botton"/>
+      <img class="svg-a-14-townscape-directory" src="assets/a-14-townscape-directory.svg" style="left:1170px; top:700px; width:100px; height:100px;" alt="a-14-townscape-directory" class="directory" id="a-14" data-group="architectural-theory-botton"/>
+      
+      <!--bottom -->
+      <img class="svg-landscape-planning-project-button" src="assets/landscape-planning-project-button.svg" style="left:207px; top:40px; width:176px; height:20px;" alt="landscape-planning-project-button" class="category-button" id="landscape-planning-project-button" data-group="a-9,a-10,a-11"/>
+      <img class="svg-architectural-design-project-botton" src="assets/architectural-design-project-botton.svg" style="left:399px; top:40px; width:176px; height:20px;" alt="architectural-design-project-botton" class="category-button" id="architectural-design-project-botton" data-group="a-1,a-3,a-5,a-6,a-8,a-11,a-13"/>
+      <img class="svg-preservation-adaptive-project-botton" src="assets/preservation-adaptive-project-botton.svg" style="left:588px; top:40px; width:214px; height:20px;" alt="preservation-adaptive-project-botton" class="category-button" id="preservation-adaptive-project-botton" data-group="a-2,a-4,a-9,a-10,a-12"/>
+      <img class="svg-construction-project-botton" src="assets/construction-project-botton.svg" style="left:815px; top:40px; width:130px; height:20px;" alt="construction-project-botton" class="category-button" id="construction-project-botton" data-group="a-13"/>
+      <img class="svg-architectural-theory-botton" src="assets/architectural-theory-botton.svg" style="left:958px; top:40px; width:132px; height:20px;" alt="architectural-theory-botton" class="category-button" id="architectural-theory-botton" data-group="a-14"/>
+      <img class="svg-architectural-installations-botton" src="assets/architectural-installations-botton.svg" style="left:1103px; top:40px; width:171px; height:20px;" alt="architectural-installations-botton" class="category-button" id="architectural-installations-botton" data-group="a-7"/>
+      
+  </div>
+
+  <script>
+    function resizeArchitectureMainPage() {
+      const scale = Math.min(
+        window.innerWidth / 1440,
+        window.innerHeight / 900
+      );
+      const architectureMainPage = document.querySelector('.architecture-main-page');
+      if (architectureMainPage) {
+        architectureMainPage.style.transform = `scale(${scale})`;
+        architectureMainPage.style.position = 'absolute';
+        architectureMainPage.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+        architectureMainPage.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+      }
+    }
+  
+    window.addEventListener('resize', resizeArchitectureMainPage);
+    window.addEventListener('DOMContentLoaded', resizeArchitectureMainPage);
+
+    // 项目数组
+    const projectItems = [
+      "a-1-rhythum-directory",
+      "a-2-suzhou-sensory-museum-directory",
+      "a-3-scenery-directory",
+      "a-4-archipelago-directory",
+      "a-5-sound-labyrinth-directory",
+      "a-6-life-itself-directory",
+      "a-7-fire-pond-directory",
+      "a-8-street-directory",
+      "a-9-xiushui-directory",
+      "a-10-nature-for-health-directory",
+      "a-11-loop-directory",
+      "a-12-monlue-sport-condensor-directory",
+      "a-13-back-to-nature-directory",
+      "a-14-townscape-directory"
+    ];
+
+    // 按钮数组
+    const buttonItems = [
+      "landscape-planning-project-button",
+      "architectural-design-project-botton",
+      "preservation-adaptive-project-botton",
+      "construction-project-botton",
+      "architectural-theory-botton",
+      "architectural-installations-botton"
+    ];
+
+    // 存储原始图片路径
+    const originalSrcs = {};
+    const blackSrcs = {};
+    const originalTops = {};
+
+    // 初始化项目元素
+    projectItems.forEach(id => {
+      const el = document.querySelector(`.svg-${id}`);
+      if (!el) return;
+
+      originalSrcs[id] = el.src;
+      blackSrcs[id] = originalSrcs[id].replace('.svg', '-black.svg');
+      originalTops[id] = parseFloat(el.style.top);
+
+      el.addEventListener('mouseenter', () => {
+        // 改变当前元素
+        el.src = blackSrcs[id];
+        el.style.top = '650px';
+        
+        // 获取关联的按钮并改变它们
+        const relatedButtons = el.getAttribute('data-group').split(',');
+        relatedButtons.forEach(buttonId => {
+          const buttonEl = document.querySelector(`#${buttonId}`);
+          if (buttonEl) {
+            const buttonOriginalSrc = buttonEl.src;
+            const buttonBlackSrc = buttonOriginalSrc.replace('.svg', '-black.svg');
+            buttonEl.src = buttonBlackSrc;
+            
+            // 存储原始src以便恢复
+            if (!originalSrcs[buttonId]) {
+              originalSrcs[buttonId] = buttonOriginalSrc;
+            }
+          }
+        });
+      });
+
+      el.addEventListener('mouseleave', () => {
+        // 恢复当前元素
+        el.src = originalSrcs[id];
+        el.style.top = originalTops[id] + 'px';
+        
+        // 恢复关联的按钮
+        const relatedButtons = el.getAttribute('data-group').split(',');
+        relatedButtons.forEach(buttonId => {
+          const buttonEl = document.querySelector(`#${buttonId}`);
+          if (buttonEl && originalSrcs[buttonId]) {
+            buttonEl.src = originalSrcs[buttonId];
+          }
+        });
+      });
+
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => {
+        const overlayPath = `overlays/${id}-overlay.html`;
+        openOverlay(overlayPath);
+      });
+    });
+
+     // 为按钮添加悬停效果（反向关系）
+     buttonItems.forEach(id => {
+      const el = document.querySelector(`#${id}`);
+      if (!el) return;
+
+      originalSrcs[id] = el.src;
+      blackSrcs[id] = originalSrcs[id].replace('.svg', '-black.svg');
+
+      el.addEventListener('mouseenter', () => {
+        // 改变当前按钮
+        el.src = blackSrcs[id];
+        
+        // 获取关联的项目并上移它们
+        const relatedProjects = el.getAttribute('data-group').split(',');
+        relatedProjects.forEach(projectId => {
+          const projectEl = document.querySelector(`#${projectId}`);
+          if (projectEl) {
+            projectEl.style.top = '650px'; // 只移动位置，不改变颜色
+          }
+        });
+      });
+
+      el.addEventListener('mouseleave', () => {
+        // 恢复当前按钮
+        el.src = originalSrcs[id];
+        
+        // 恢复关联的项目位置
+        const relatedProjects = el.getAttribute('data-group').split(',');
+        relatedProjects.forEach(projectId => {
+          const projectEl = document.querySelector(`#${projectId}`);
+          if (projectEl) {
+            projectEl.style.top = '700px'; // 明确恢复到700px
+          }
+        });
+      });
+    });
+
+    function openOverlay(url) {
+      const overlay = document.getElementById('overlay');
+      const iframe = document.getElementById('overlay-iframe');
+      iframe.src = url;
+      overlay.style.display = 'block';
+    }
+
+    function closeOverlay() {
+      const overlay = document.getElementById('overlay');
+      const iframe = document.getElementById('overlay-iframe');
+      iframe.src = '';
+      overlay.style.display = 'none';
+    }
+
+  </script>
+  <!-- 遮罩背景 -->
+<div id="overlay-background" style="
+display: none;
+position: fixed;
+top: 0; left: 0;
+width: 100vw; height: 100vh;
+background-color: rgba(0,0,0,0.5);
+z-index: 9998;
+"></div>
+
+<!-- 主体 Overlay -->
+<div id="overlay" style="
+display: none;
+position: fixed;
+top: 50%; left: 50%;
+width: 1024px; height: 768px;
+transform: translate(-50%, -50%);
+background-color: white;
+border: 1px solid black;
+z-index: 9999;
+overflow: hidden;
+">
+<!-- 关闭按钮 -->
+<img
+  src="assets/close.svg"
+  alt="Close"
+  onclick="closeOverlay()"
+  style="position: absolute;
+         top: 20px;
+         right: 20px;
+         width: 32px;
+         height: 32px;
+         cursor: pointer;
+         z-index: 10000;"
+/>
+
+<!-- 加载外部页面 -->
+<iframe id="overlay-iframe"
+  src=""
+  style="width: 100%; height: 100%; border: none;">
+</iframe>
+</div>
+<script>
+  function resizeOverlay() {
+  const scale = Math.min(
+    window.innerWidth / 1440,
+    window.innerHeight / 900
+  );
+  const overlay = document.querySelector('#overlay');
+  if (overlay) {
+    overlay.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    overlay.style.left = '50%';
+    overlay.style.top = '50%';
+    overlay.style.position = 'fixed'; // 确保是 fixed
+  }
+}
+  
+    window.addEventListener('resize', resizeOverlay);
+    window.addEventListener('DOMContentLoaded', resizeOverlay);
+
+</script> 
+</body>
+</html>

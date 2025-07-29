@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <title>Milan</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inconsolata', monospace;
+      background: #fff;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .overlay-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    .image-title {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      z-index: 10;
+    }
+    
+    .image-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .image-container img {
+      max-width: 90%;
+      max-height: 80%;
+      object-fit: contain;
+    }
+    
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    
+    .prev {
+      left: 20px;
+    }
+    
+    .next {
+      right: 20px;
+    }
+    
+    .image-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay-container">
+    <div class="image-title">无</div>
+    
+    <div class="image-container">
+      <button class="nav-button prev">←</button>
+      <img id="current-image" src="../assets/pic-milan/P1014601.jpg" alt="Milan Photo">
+      <button class="nav-button next">→</button>
+    </div>
+    
+    <div class="image-counter">
+      <span id="current-index">1</span> / <span id="total-count">33</span>
+    </div>
+  </div>
+
+  <script>
+    // 图片列表 (按名称排序)
+    const images = [
+      'P1014601.jpg',
+      'P1014609.jpg',
+      'P1014619.jpg',
+      'P1014621.jpg',
+      'P1014623.jpg',
+      'P1014628.jpg',
+      'P1014629.jpg',
+      'P1014645.jpg',
+      'P1014647.jpg',
+      'P1014652.jpg',
+      'P1014662.jpg',
+      'P1014687.jpg',
+      'P1014692.jpg',
+      'P1014724.jpg',
+      'P1014732.jpg',
+      'P1014759.jpg',
+      'P1014767.jpg',
+      'P1014781.jpg',
+      'P1014900.jpg',
+      'P1014903.jpg',
+      'P1014907.jpg',
+      'P1014912.jpg',
+      'P1014918.jpg',
+      'P1014919.jpg',
+      'P1014923.jpg',
+      'P1014933.jpg',
+      'P1014936.jpg',
+      'P1014942.jpg',
+      'P1014981.jpg',
+      'P1015043.jpg',
+      'P1016070.jpg',
+      'P1016077.jpg',
+      'P1016774.jpg'
+    ];
+    
+    // 标题列表 (在此处直接修改每个图片的标题)
+    const titles = [
+      " Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Aldo Rossi + Carlo Aymonino / Gallaratese Quarter",
+      "Navigli Antique Market",
+      "Navigli Antique Market",
+      "Villa Arconati",
+      "Villa Arconati",
+      "Villa Arconati",
+      "Villa Arconati",
+      "Villa Arconati",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Monumental Cemetery of Milan",
+      "Duomo di Milano",
+      "Duomo di Milano-Christmas tree",
+      "Wakeparadise",
+      "Wakeparadise",
+      "Chen Yaoguang-The Gift"
+    ];
+    
+    let currentIndex = 0;
+    const imageElement = document.getElementById('current-image');
+    const titleElement = document.querySelector('.image-title');
+    const currentIndexElement = document.getElementById('current-index');
+    const totalCountElement = document.getElementById('total-count');
+    
+    // 初始化
+    totalCountElement.textContent = images.length;
+    
+    // 更新显示的图片和标题
+    function updateDisplay() {
+      imageElement.src = `../assets/pic-milan/${images[currentIndex]}`;
+      titleElement.textContent = titles[currentIndex];
+      currentIndexElement.textContent = currentIndex + 1;
+    }
+    
+    // 上一张按钮
+    document.querySelector('.prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateDisplay();
+    });
+    
+    // 下一张按钮
+    document.querySelector('.next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateDisplay();
+    });
+    
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateDisplay();
+      } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateDisplay();
+      }
+    });
+    
+    // 初始化显示
+    updateDisplay();
+  </script>
+</body>
+</html>

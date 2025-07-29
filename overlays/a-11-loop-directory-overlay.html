@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loop</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 72px;
+      height: 38px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 329px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tutor-label {
+      position: absolute;
+      width: 33px;
+      height: 14px;
+      left: 59px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 117px;
+      height: 14px;
+      left: 237px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 189px;
+      height: 14px;
+      left: 165px;
+      top: 329px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 182px;
+      height: 14px;
+      left: 172px;
+      top: 350px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author {
+      position: absolute;
+      width: 124px;
+      height: 14px;
+      left: 230px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor1 {
+      position: absolute;
+      width: 221px;
+      height: 14px;
+      left: 133px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor2 {
+      position: absolute;
+      width: 182px;
+      height: 14px;
+      left: 172px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 287px; }
+    .line6 { top: 327px; }
+    .line7 { top: 367px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 503px;
+      left: 54px;
+      top: 417px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 503px;
+      left: 537px;
+      top: 417px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Loop</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    <div class="tutor-label">Tutor</div>
+    
+    <div class="location">Gallaratese, Milan</div>
+    <div class="date">2024.09-2025.01</div>
+    <div class="tags1">Landscape / Planning Project,</div>
+    <div class="tags2">Architectural Design Project</div>
+    <div class="author">Yingyi Sun, Mai Cao</div>
+    <div class="tutor1">Barbara Coppetti, Emma Garavaglia,</div>
+    <div class="tutor2">Raffaella Cavallaro, Xu Zhou</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    <div class="line7"></div>
+    
+    <div class="description-chinese">
+      这是我在米兰理工大学研一秋季学期建筑设计课（Architectural Design Studio）中的课程项目，目标是对Gallaratese区域内三所学校前的绿地进行规划与更新设计。整个项目共分为三个阶段：在前期阶段，我们对Gallaratese区域进行总体分析，包括基础的Mapping以及社会学层面的研究，并在1:1000的尺度上提出初步规划策略；中期阶段聚焦于1:500的尺度，我们对景观系统、路径组织、活动节点等内容进行了更为细致的设计；在后期阶段，我们进一步深化至1:200和1:100的尺度，设计一个具体的构筑物，回应场地功能与空间需求。最初，我们希望将场地与区域内的Monte Stella山体建立联系，并回应Bottoni在20世纪对该地区的原始规划，因此确立了一个基础的线性设计方向。在深入设计景观后，我们小组从康定斯基与蒙德里安的绘画中获得灵感，采用抽象几何的语言组织场地。我们围绕三所学校和地铁站布置了一个环形跑道，将场地中的多种元素聚集于此，形成一个社区的活动焦点。最终，在学校前的广场空间，我们设计了一个具有连续拱结构的线性亭子，为家长接送孩子、亲子互动提供了一个具有庇荫功能的共享空间。
+    </div>
+    
+    <div class="description-english">
+      This is a course project from my Architectural Design Studio in the fall semester of my first year at Politecnico di Milano. The objective was to replan and revitalize the green areas in front of three schools in the Gallaratese district. The project was developed in three main phases: In the first phase, we carried out a comprehensive analysis of the Gallaratese area, including basic mapping and sociological studies, followed by a planning proposal at the 1:1000 scale; During the second phase, we moved to the 1:500 scale to refine the landscape design, pedestrian circulation, and activity nodes; In the final phase, we focused on the 1:200/1:100 scale, designing an architectural intervention that responded to the functional and spatial needs of the site. Our initial concept aimed to create a spatial connection with Monte Stella, a local landmark, while also responding to Bottoni's original modernist planning of the area. This led to a linear spatial strategy. As the design developed, our team drew inspiration from the paintings of Kandinsky and Mondrian, applying abstract geometric principles to the landscape organization. A circular running track was introduced as a central feature around the schools and metro station, bringing together surrounding elements and forming a vibrant community focal point. Finally, in the square space in front of the schools, we designed a pavilion with a series of continuous arches. It serves as a shaded area for parents waiting for their children and a shared space for family-friendly interactions.
+    </div>
+  </div>
+</body>
+</html>

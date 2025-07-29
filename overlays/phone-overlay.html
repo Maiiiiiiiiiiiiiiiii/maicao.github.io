@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai Desk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: transparent;
+      font-family: 'Inconsolata', monospace;
+    }
+    
+    .phone-container {
+      position: relative;
+      width: 288.43px;
+      height: 610.51px;
+      margin: 0 auto;
+      background: transparent;
+    }
+    
+    .svg-phone-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none; /* 允许点击穿透到内容区域 */
+    }
+    
+    /* 文本内容区域 - 精确符合您要求的尺寸和位置 */
+    .content-scrollable {
+      box-sizing: border-box;
+      position: absolute;
+      width: 249.97px;
+      height: 435.05px;
+      left: 25px;
+      top: 120px;
+      z-index: 2;
+      padding: 15px;
+      overflow-y: auto; /* 垂直滚动 */
+      overflow-x: hidden; /* 禁止水平滚动 */
+      
+      /* 自定义滚动条样式 */
+      scrollbar-width: thin;
+      scrollbar-color: #888 transparent;
+    }
+    
+    /* Chrome滚动条样式 */
+    .content-scrollable::-webkit-scrollbar {
+      width: 6px;
+    }
+    .content-scrollable::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 3px;
+    }
+    .content-scrollable::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    h1 {
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-style: normal;
+      color: #ffffff;
+      font-family: 'Press Start 2P', monospace;
+      font-weight: 400;
+      line-height: 38px;
+      z-index: 1000;
+    }
+    
+    p {
+      font-size: 10px;
+      line-height: 1;
+      color: #ffffff;
+      margin-bottom: 15px;
+      font-family: 'Press Start 2P', monospace;
+      font-weight: 400;
+      line-height: 17px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-container">
+    <!-- SVG背景层 -->
+    <img class="svg-phone-overlay" src="../assets/phone-overlay.svg" alt="phone-overlay" />
+    
+    <!-- 可滚动内容区 -->
+    <div class="content-scrollable">
+      <h1>Phone</h1>
+      <p>China:+86 18176783890</p>
+      <!-- 更多内容会自动产生滚动条 -->
+      <p>Italy:+39 3242612837</p>
+
+      <h1>Email</h1>
+      <p>Personal:</p>
+      <p>caom5761@gmail.com</p>
+      <p>Educational:</p>
+      <p>mai.cao@mail.polimi.it</p>
+    </div>
+  </div>
+</body>
+</html>

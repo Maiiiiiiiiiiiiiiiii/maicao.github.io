@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fire Pond</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 72px;
+      height: 76px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 124px;
+      height: 14px;
+      left: 230px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 156px;
+      height: 14px;
+      left: 198px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 117px;
+      height: 14px;
+      left: 237px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author {
+      position: absolute;
+      width: 46px;
+      height: 14px;
+      left: 308px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 287px; }
+    .line6 { top: 327px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 261px;
+      left: 54px;
+      top: 355px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 323px;
+      left: 537px;
+      top: 355px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Fire Pond</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    
+    <div class="location">Dulongjiang, Yunnan</div>
+    <div class="date">2023.10-2023.11</div>
+    <div class="tags1">Planning and Renovation,</div>
+    <div class="tags2">Graduation Project</div>
+    <div class="author">Mai Cao</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    
+    <div class="description-chinese">
+      本项目是受大理的民俗文化所启发而作。选址位于中国云南省的独龙江乡，这里居住着独龙族人民——他们是极少数直接从原始社会过渡到社会主义社会的民族之一。独龙族长期生活在地势陡峭、交通不便的独龙江流域，较少受到外界干扰，因而保留了大量原始的生活方式与文化习俗。在独龙族的日常生活中，"火塘"是住宅的核心空间，集烹饪、社交与祭祀功能于一体，具有深厚的社会与宗教意义。本设计正是以火塘文化为出发点，对传统独龙民居的结构与空间进行解构与重组，将其转译为一种具有仪式感的当代公共空间。建筑通过一座桥梁跨越独龙江，连接对岸的山路与洞穴，象征性地将火塘所代表的精神空间延展至山外，构建出一条连接自然与人文、传统与未来的精神路径。
+    </div>
+    
+    <div class="description-english">
+      This project is inspired by the folk culture of Dali, Yunnan Province. It is located in Dulongjiang Township, home to the Dulong ethnic group—one of the few communities in China that transitioned directly from a primitive society to a socialist one. Living in the steep and isolated valleys along the Dulong River, the Dulong people have remained largely untouched by outside influences, preserving their traditional lifestyle and cultural practices. At the heart of Dulong domestic life is the fire pit, a multifunctional space used for cooking, socializing, and ritual worship. It holds deep social and spiritual meaning. Drawing from this cultural element, the design deconstructs and reinterprets the traditional spatial structure of Dulong dwellings, transforming it into a contemporary ceremonial public space. A bridge spans the Dulong River, connecting the site to a mountain path and natural cave on the opposite bank. This gesture symbolically extends the spiritual space of the fire pit beyond the mountains—creating a metaphoric passage between nature and humanity, tradition and future.
+    </div>
+  </div>
+</body>
+</html>

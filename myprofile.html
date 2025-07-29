@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cao Mai</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inconsolata', sans-serif;
+            background: #FFFFFF;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .svg-me-awake {
+            position: absolute;
+            z-index: 0;
+        }
+        
+        /* 曹 麦 Cao Mai */
+        .name {
+            position: absolute;
+            width: 126px;
+            height: 76px;
+            left: 54px;
+            top: 107px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 36px;
+            line-height: 38px;
+            color: #000000;
+        }
+        
+        /* Rectangle 121 */
+        .rectangle {
+            box-sizing: border-box;
+            position: absolute;
+            width: 362px;
+            height: 512px;
+            left: 554px;
+            top: 118px;
+            border: 1px solid #000000;
+        }
+        
+        /* Vector 123 */
+        .line1 {
+            position: absolute;
+            width: 461px;
+            height: 0px;
+            left: 249px;
+            top: 229px;
+            border: 1px dashed #000000;
+        }
+        
+        /* Vector 124 */
+        .line2 {
+            position: absolute;
+            width: 490px;
+            height: 0px;
+            left: 249px;
+            top: 281px;
+            border: 1px dashed #000000;
+        }
+        
+        /* Vector 125 */
+        .line3 {
+            position: absolute;
+            width: 490px;
+            height: 0px;
+            left: 249px;
+            top: 368px;
+            border: 1px dashed #000000;
+        }
+        
+        /* Vector 126 */
+        .line4 {
+            position: absolute;
+            width: 588px;
+            height: 0px;
+            left: 211px;
+            top: 499px;
+            border: 1px dashed #000000;
+        }
+        
+        /* Whimsical brain */
+        .item1 {
+            position: absolute;
+            width: 235px;
+            height: 22px;
+            left: 54px;
+            top: 215px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 25px;
+            color: #000000;
+        }
+        
+        /* Nearsighted eye */
+        .item2 {
+            position: absolute;
+            width: 235px;
+            height: 22px;
+            left: 54px;
+            top: 266px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 25px;
+            color: #000000;
+        }
+        
+        /* Melodious voice */
+        .item3 {
+            position: absolute;
+            width: 235px;
+            height: 21px;
+            left: 54px;
+            top: 355px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 25px;
+            color: #000000;
+        }
+        
+        /* Strong heart */
+        .item4 {
+            position: absolute;
+            width: 188px;
+            height: 21px;
+            left: 54px;
+            top: 486px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 24px;
+            line-height: 25px;
+            color: #000000;
+        }
+        
+        /* that chase Wonders */
+        .desc1 {
+            position: absolute;
+            width: 191px;
+            height: 16px;
+            left: 249px;
+            top: 268px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 13px;
+            color: #000000;
+        }
+        
+        /* but with a faint breath */
+        .desc2 {
+            position: absolute;
+            width: 189px;
+            height: 11px;
+            left: 247px;
+            top: 355px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 13px;
+            color: #000000;
+        }
+        
+        /* is just for young age */
+        .desc3 {
+            position: absolute;
+            width: 174px;
+            height: 11px;
+            left: 211px;
+            top: 485px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 12px;
+            line-height: 13px;
+            color: #000000;
+        }
+
+        /* ========== 简历部分新样式 ========== */
+        .resume-container {
+            position: absolute;
+            left: 50px;
+            top: 650px;
+            width: 90%;
+            max-width: 1200px;
+            font-family: 'Inconsolata', monospace;
+            color: #000000;
+            padding-bottom: 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .resume-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-group {
+            display: contents;
+        }
+
+        h2 {
+            font-size: 18px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            margin: 0 0 15px 0;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1;
+            padding-top: 10px;
+            margin-top: -10px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin: 15px 0 5px 0;
+        }
+
+        p, li {
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 5px 0;
+        }
+
+        ul {
+            list-style-type: circle;
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+
+        a {
+            color: #000;
+            text-decoration: underline;
+        }
+
+        .award-item, .experience-item, .education-item, .exhibition-item, .skills-item {
+            margin-bottom: 20px;
+        }
+
+        .award-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .experience-date {
+            font-style: italic;
+            margin: 5px 0;
+            display: block;
+        }
+
+        .chinese {
+            font-family: 'Inconsolata', 'Microsoft YaHei', sans-serif;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .resume-column {
+                gap: 15px;
+            }
+            
+            h2 {
+                position: static;
+                padding-top: 0;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="name">曹 麦 Cao Mai</div>
+    <div class="rectangle"></div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    
+    <div class="item1">Whimsical brain</div>
+    <div class="item2">Nearsighted eye</div>
+    <div class="item3">Melodious voice</div>
+    <div class="item4">Strong heart</div>
+    
+    <div class="desc1">that chase Wonders</div>
+    <div class="desc2">but with a faint breath</div>
+    <div class="desc3"> </div>
+    <img class="svg-me-awake" src="assets/me-awake.svg" style="left:559.52px; top:163.04px; width:356.48px; height:469.04px;" alt="me-awake" />
+   
+    <!-- 简历部分 -->
+    <div class="resume-container">
+        <!-- 教育经历 -->
+        <div class="resume-column chinese">
+            <div class="section-group">
+                <h2>教育经历</h2>
+                <div class="education-item">
+                    <p><strong>米兰理工大学</strong> 建筑学理学硕士, 建成环境与室内方向, GPA:29.9/30<br>
+                    ~ 09/2024 - 06/2026</p>
+                    
+                    <p><strong>苏州大学</strong> 建筑学学士学位, GPA:3.6/4.0<br>
+                    ~ 09/2019 - 06/2024</p>
+                </div>
+            </div>
+
+            <!-- 荣誉与奖项 -->
+            <div class="section-group">
+                <h2>荣誉与奖项</h2>
+                <div class="award-item">
+                    <div class="award-title">苏州大学建筑学院2019级优秀毕业设计</div>
+                    <p><u>曹麦</u></p>
+                    <p><em>传统现代化——秀水观音堂地块微更新与张上周宅改造利用</em></p>
+                    <p>以"考现学"为调研方法，结合历史文献与田野访谈，梳理秀水古镇的空间演变与族群记忆，重点聚焦观音堂及张上周宅的遗产保护与社区再激活策略。</p>
+                    <p>强调建筑作为"社会设计"工具的作用，设计过程涵盖社区沟通、历史叙事重建、代际关系调和，探索地方性与现代性之间的共生可能。</p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">2022、2023年国家励志奖学金、学习优秀奖学金</div>
+                    <p><u>曹麦</u></p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">2023上海"街巷-再生"青年建筑设计竞赛 入围终评</div>
+                    <p><u>曹麦</u></p>
+                    <p><em>"有界相生"——基于场所精神重塑的文化与社区中心设计</em></p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">第二、三届ICAD国际当代青年美术设计大赛 铜奖</div>
+                    <p><u>曹麦</u></p>
+                    <p><em>《节奏——仓街三官弄地块更新》/《感·苏——基于感官人类学的情绪化体验型文化展览空间设计》</em></p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">2023 米兰设计周中国高校设计学科师生优秀作品展 三等奖</div>
+                    <p><u>曹麦</u>, 王天元, 闫鑫鑫</p>
+                    <p><em>Nomad Station · 游民中转站——弹性应对疫情危机的临时住所设计</em></p>
+                </div>
+            </div>
+
+            <!-- 实习与专业经历 -->
+            <div class="section-group">
+                <h2>实习与专业经历</h2>
+                <div class="experience-item">
+                    <h3>黑客马拉松:构思、发明、创新：从创意到原型</h3>
+                    <p class="experience-date">米兰理工大学 NECST laboratory ~ 05/2025</p>
+                    <ul>
+                        <li><em>成果：儿童脊柱侧弯监测-可穿戴设备与监控app</em></li>
+                        <li><u>曹麦</u>, 程奕宁</li>
+                        <li>针对青少年脊柱侧弯的风险(世界卫生组织：全球发病率为2-3%)，合作开发了用于实时姿势监测的可穿戴设备的用户体验研究和原型开发</li>
+                        <li>使用React Native设计和编程移动界面，实现与基于Arduino的传感器的蓝牙通信</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>第三届全国大学生人类学研训营</h3>
+                    <p class="experience-date">浙江大学 ~ 07/2023</p>
+                    <ul>
+                        <li><em>成果：果核融解——场关于遗产、社区与城市嵌套关系的思考</em></li>
+                        <li>聚焦"历史遗产—社区—城市"三重关系的空间嵌套性，探讨地方遗产在城市扩张中的生存现状与社区认同转变</li>
+                        <li><u>曹麦</u>, 魏子茹</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>"建筑遗产保护与可持续发展"研究生国际学术创新论坛</h3>
+                    <p class="experience-date">中国-葡萄牙文化遗产保护科学"一带一路"联合实验室 ~ 12/2022</p>
+                    <ul>
+                        <li><em>成果：应对全球变暖导致海平面上升的粞息地搬迁快速施工技术</em></li>
+                        <li>围绕全球气候变迁下的滨海聚落生存危机，提出基于"轻量建造"策略的快速迁建方案，探索建筑在生态脆弱区域中的应变机制与可持续转移模式</li>
+                        <li><u>曹麦</u>, 张玺, 邵佳怡, 陈文菁</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>赵扬建筑事务所实习</h3>
+                    <p class="experience-date">云南大理 ~ 04/2023 - 11/2023</p>
+                    <ul>
+                        <li><em>参与项目：杨卓的家、凤阳邑先锋书店</em></li>
+                        <li>在书店项目中，参与夯土与毛石等在地材料的构造设计，协助完成施工图深化与模型推演，探索传统技艺的当代表达</li>
+                        <li>在住宅项目中，负责场地测绘与环境分析，提出因地制宜的空间布局，强化建筑与地形、风向、光影的自然协调</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 活动与展览 -->
+            <div class="section-group">
+                <h2>活动与展览</h2>
+                <div class="exhibition-item">
+                    <h3>米兰体育城市 — Architecture of Interiors Design Studio 优秀作品展</h3>
+                    <ul>
+                        <li><em>Monluè Sport Condensor — Monluè体育中心-旧建筑改造设计</em> ~ 2025.06</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>PIUMA — Design and Construction Studio 优秀作品展</h3>
+                    <ul>
+                        <li><em>Back to Nature — 重返自然-木结构预制装配式幼儿园设计</em> ~ 2025.06</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>Villa Arconati 历史建筑改造项目—— Architectural Preservation Studio 优秀作品展</h3>
+                    <ul>
+                        <li><em>Nature for health——历史建筑策划改造项目参展</em> ~ 01/2025</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>Gallaratese 社区学校改造项目—— Architectural Design Studio 优秀作品展</h3>
+                    <ul>
+                        <li><em>Loop——社区学校改造参展</em> ~ 01/2025</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>苏州国际设计周</h3>
+                    <ul>
+                        <li><em>酒店设计——仓街三官弄地块更新项目参展(见P4)</em> ~ 12/2021</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>苏州大学苏大羽卿汉服社活动策划</h3>
+                    <ul>
+                        <li><em>作为副社长策划 苏州文庙花朝节成人礼、第五届建筑艺术文化节等</em> ~ 2020-2022</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>第九届大学生新媒体创意大赛 一等奖</h3>
+                    <ul>
+                        <li><em>古韵之声——H5创意作品，作为配音参与作品</em> ~ 2021</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>广西师范大学附属中学校刊第十期主编</h3>
+                    <ul>
+                        <li><em>作为主编编辑、排版广西师范大学附属中学校刊《逆晨》第十期(十周年特刊)，广受好评，至今为母校校刊经典</em> ~ 2017</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 技能与证书 -->
+            <div class="section-group">
+                <h2>技能与证书</h2>
+                <div class="skills-item">
+                    <ul>
+                        <li><strong>设计表达:</strong> 制图: Adobe系列(Photoshop, Illustrator等), AutoCAD; 建模: SketchUp, Rhino 3D, Grasshopper(参数化), Metashape; 渲染: Enscape, D5;</li>
+                        <li><strong>媒体:</strong> Adobe After effects, Adobe Premiere, DaVinci Resolve</li>
+                        <li><strong>数据分析:</strong> 环境分析: ArcGIS, QGIS, Grasshopper, Climate studio, Climate Consultant; 统计分析: SPSS; 可视化: Storymap, Datawrapper</li>
+                        <li><strong>编程语言:</strong> Python, JavaScript</li>
+                        <li><strong>软件制作与现实交互:</strong> Android studio, react native, Arduino</li>
+                        <li><strong>办公协同:</strong> Microsoft系列(Word, Excel, PowerPoint等), Figma, Miro, Notion, Obsidian</li>
+                        <li><strong>AI辅助:</strong> ChatGPT, DeepSeek, Midjourney, Stable diffuse, Cursor</li>
+                        <li><strong>语言:</strong> 英语(雅思C1), 意大利语(初级)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 英文栏 -->
+        <div class="resume-column">
+            <!-- Education -->
+            <div class="section-group">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <p><strong>Politecnico di Milano</strong> Master's in Architecture - Built Environment - Interiors, GPA 29.9/30<br>
+                    ~ 09/2024 - 06/2026</p>
+                    
+                    <p><strong>Soochow University</strong> Bachelor in Architecture, GPA 3.6/4.0<br>
+                    ~ 09/2019 - 06/2024</p>
+                </div>
+            </div>
+
+            <!-- Awards & Honors -->
+            <div class="section-group">
+                <h2>Awards & Honors</h2>
+                <div class="award-item">
+                    <div class="award-title">Outstanding Graduation Design, Soochow University School of Architecture, Class of 2019</div>
+                    <p><u>Cao Mai</u></p>
+                    <p><em>Modernization of Tradition — Micro-Renewal of Xiushui Guanyin Temple Block and Adaptive Reuse of Zhang Shangzhou's Residence</em></p>
+                    <p>Conducted multiscale research using kougen-gaku (field sociology-inspired methodology), combining spatial mapping, oral history, and historical documentation to reconstruct the socio-spatial evolution of Xiushui Ancient Town.</p>
+                    <p>Treated architectural design as a tool for social intervention, engaging with local families across generations to understand land memory, post-disaster traces, and inter-family dynamics under historical pressures.</p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">National Endeavor Scholarship & Academic Excellence Award, 2022 & 2023</div>
+                    <p><u>Cao Mai</u></p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">Finalist Award, 2023 Shanghai "Block Micro-Renewal" Youth Architecture Design Competition</div>
+                    <p><u>Cao Mai</u></p>
+                    <p><em>Coexistence Within Boundaries — Cultural & Community Center Design Based on Genius Loci</em></p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">Bronze Award, 2nd & 3rd ICAD International Contemporary Youth Art & Design Competition</div>
+                    <p><u>Cao Mai</u></p>
+                    <p><em>Rhythm — Urban Renewal of Sanguan Lane, Cang Street / Sense of Su — Sensory Anthropology-Inspired Cultural Exhibition Design</em></p>
+                </div>
+                
+                <div class="award-item">
+                    <div class="award-title">Third Prize, 2023 Milan Design Week Exhibition of Chinese Universities' Design Works</div>
+                    <p><u>Cao Mai</u>, Wang Tianyuan, Yan Xinxin</p>
+                    <p><em>Nomad Station — Temporary Housing Design for Crisis Response</em></p>
+                </div>
+            </div>
+
+            <!-- Practice & Professional Experience -->
+            <div class="section-group">
+                <h2>Practice & Professional Experience</h2>
+                <div class="experience-item">
+                    <h3>Hackathon: From Concept to Prototype - Creativity & Invention</h3>
+                    <p class="experience-date">Politecnico di Milano, NECST Lab ~ 2025.05</p>
+                    <ul>
+                        <li><em>Outcome: Wearable Monitoring Device & App for Adolescent Scoliosis</em></li>
+                        <li><u>Cao Mai</u>, Cheng Yining</li>
+                        <li>Collaborated on user experience research and prototyping of wearable devices for real-time postural monitoring, targeting the risk of scoliosis in adolescents (World Health Organisation: global prevalence 2-3%)</li>
+                        <li>Designed and programmed the mobile interface using React Native, enabling Bluetooth communication with Arduino-based sensors</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <h3>3rd National Field Anthropology Training Camp for University Students</h3>
+                    <p class="experience-date">Zhejiang University ~ 2023.07</p>
+                    <ul>
+                        <li><em>Outcome: Core Integration — Field Reflection on the Nested Relationship Between Heritage, Community, and City</em></li>
+                        <li>Focusing on the spatial nestedness of the triple relationship of "historical heritage-community-city", the study explores the survival of local heritage and the transformation of community identity in the midst of urban expansion</li>
+                        <li><u>Cao Mai</u>, Wei Ziru</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>International Academic Forum on "Architectural Heritage Conservation and Sustainable Development" (China-Portugal)</h3>
+                    <p class="experience-date">"Belt and Road" Cultural Heritage Joint Laboratory ~ 2022.12</p>
+                    <ul>
+                        <li><em>Outcome: Exploring Lightweight Construction for Rapid Relocation of Endangered Coastal Settlements Amid Rising Sea Levels</em></li>
+                        <li>Explored strategies for the relocation of endangered coastal settlements in response to climate-induced sea level rise, focusing on lightweight construction and mobile architecture as adaptive solutions for fragile ecosystems</li>
+                        <li><u>Cao Mai</u>, Zhang Xi, Shao Jiayi, Chen Wenjing</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Internship at Zhaoyang Architects</h3>
+                    <p class="experience-date">Dali, Yunnan ~ 2023.04 - 2023.11</p>
+                    <ul>
+                        <li><em>Projects Involved: Yang Zhuo's Residence, Phoenix Pioneer Bookstore</em></li>
+                        <li>For the bookstore project, contributed to structural detailing with local materials such as rammed earth and fieldstone, assisting in construction drawings and physical modeling to explore contemporary use of traditional craft</li>
+                        <li>For the residence, conducted site survey and climate analysis, proposing a context-responsive layout that aligns with topography, wind, and natural light</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Activities & Exhibitions -->
+            <div class="section-group">
+                <h2>Activities & Exhibitions</h2>
+                <div class="exhibition-item">
+                    <h3>Milan Sport City — Architecture of Interiors Design Studio</h3>
+                    <ul>
+                        <li><em>Monluè Sport Condensor — Renovation design-Participated in Strategy Exhibition</em> ~ 2025.06</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>PIUMA — Design and Construction Studio</h3>
+                    <ul>
+                        <li><em>Back to Nature — Wooden prefabricated kindergarten design-Participated in Strategy Exhibition</em> ~ 2025.06</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>Villa Arconati Historic Building Renovation — Architecture Conservation Studio Exhibition</h3>
+                    <ul>
+                        <li><em>Nature for Health — Planning & strategy design-Participated in Strategy Exhibition</em> ~ 2025.01</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>Gallaratese Community School Renovation — Architectural Design Studio Exhibition</h3>
+                    <ul>
+                        <li><em>Loop — Planning design-Participated in Community School Renewal Proposal</em> ~ 2025.01</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>Suzhou International Design Week</h3>
+                    <ul>
+                        <li><em>Hotel Design — Urban Renewal of Sanguan Lane, Cang Street (see P4)</em> ~ 2021.12</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>Hanfu Society "YuQing Society" Event Planning, Soochow University</h3>
+                    <ul>
+                        <li><em>As Vice President, organized Confucian Coming-of-Age Ceremony and 5th Architecture & Arts Cultural Festival</em> ~ 2020-2022</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>First Prize, 9th National College New Media Creativity Competition</h3>
+                    <ul>
+                        <li><em>Ancient Sounds, New Voices — H5 Creative Project, Role: Voice Actor</em> ~ 2021</li>
+                    </ul>
+                </div>
+                
+                <div class="exhibition-item">
+                    <h3>Editor-in-Chief, 10th Issue of GXNU High School Journal</h3>
+                    <ul>
+                        <li><em>Edited and designed the 10th Anniversary Issue of "Against the Morning Light", widely praised as one of the best editions</em> ~ 2017</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Skills & Certifications -->
+            <div class="section-group">
+                <h2>Skills & Certifications</h2>
+                <div class="skills-item">
+                    <ul>
+                        <li><strong>Design Representation:</strong> Drawing: Adobe (PS, AI, etc.), AutoCAD; Modeling: SketchUp, Rhino, Grasshopper, Metashape; Rendering: Enscape, D5;</li>
+                        <li><strong>Media Tools:</strong> AE, PR, DaVinci</li>
+                        <li><strong>Data Analysis:</strong> Environmental Analysis: ArcGIS, QGIS, Grasshopper, Climate Studio, Climate Consultant; Statistical Analysis: SPSS; Visualization: Storymap, Datawrapper</li>
+                        <li><strong>Programming Languages:</strong> Python, JavaScript</li>
+                        <li><strong>Software Development & Interactive Systems:</strong> Android Studio, React Native, Arduino</li>
+                        <li><strong>Collaboration Tools:</strong> Office (Word, Excel, PPT, etc.), Figma, Miro, Notion, Obsidian</li>
+                        <li><strong>AI Tools:</strong> ChatGPT, DeepSeek, Midjourney, Stable Diffuse, Cursor</li>
+                        <li><strong>Languages:</strong> English (IELTS C1), Italian (Beginner)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

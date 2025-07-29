@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Townscape</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            background: white;
+        }
+        
+        .container {
+            position: relative;
+            width: 1024px;
+            height: 768px;
+            overflow-y: scroll;
+            background: #FFFFFF;
+            margin: 0 auto;
+        }
+        
+        .title {
+            position: absolute;
+            width: 162px;
+            height: 38px;
+            left: 54px;
+            top: 80px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 38px;
+            color: #000000;
+        }
+        
+        .location-label {
+            position: absolute;
+            width: 52px;
+            height: 14px;
+            left: 59px;
+            top: 230px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .date-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tags-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 309px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .author-label {
+            position: absolute;
+            width: 39px;
+            height: 14px;
+            left: 59px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tutor-label {
+            position: absolute;
+            width: 33px;
+            height: 14px;
+            left: 59px;
+            top: 289px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .location-value {
+            position: absolute;
+            width: 13px;
+            height: 14px;
+            left: 341px;
+            top: 230px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .date-value {
+            position: absolute;
+            width: 98px;
+            height: 14px;
+            left: 256px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag1-value {
+            position: absolute;
+            width: 202px;
+            height: 14px;
+            left: 152px;
+            top: 309px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag2-value {
+            position: absolute;
+            width: 52px;
+            height: 14px;
+            left: 302px;
+            top: 329px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .author-value {
+            position: absolute;
+            width: 221px;
+            height: 14px;
+            left: 133px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor-value {
+            position: absolute;
+            width: 208px;
+            height: 14px;
+            left: 146px;
+            top: 289px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
+            position: absolute;
+            width: 300px;
+            height: 0px;
+            left: 54px;
+            border: 0.5px solid #000000;
+        }
+        
+        .line1 { top: 227px; }
+        .line2 { top: 247px; }
+        .line3 { top: 247px; }
+        .line4 { top: 267px; }
+        .line5 { top: 287px; }
+        .line6 { top: 307px; }
+        .line7 { top: 347px; }
+        
+        .description-chinese {
+            position: absolute;
+            width: 433px;
+            height: 445px;
+            left: 54px;
+            top: 397px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 19px;
+            text-align: justify;
+            letter-spacing: 0.05em;
+            color: #000000;
+        }
+        
+        .description-english {
+            position: absolute;
+            width: 433px;
+            height: 449px;
+            left: 537px;
+            top: 397px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 18px;
+            text-align: justify;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Townscape</div>
+        
+        <div class="location-label">Location</div>
+        <div class="date-label">Date</div>
+        <div class="tags-label">Tags</div>
+        <div class="author-label">Author</div>
+        <div class="tutor-label">Tutor</div>
+        
+        <div class="location-value">UK</div>
+        <div class="date-value">2025.03-2025.06</div>
+        <div class="tag1-value">Architectural Theory, Townscape</div>
+        <div class="tag2-value">Post-war</div>
+        
+        <div class="author-value">Mai Cao,Diana Peterlini, Weiwei Ma</div>
+        <div class="tutor-value">Gaia Caramellino, Valeria Casali</div>
+        
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div class="line4"></div>
+        <div class="line5"></div>
+        <div class="line6"></div>
+        <div class="line7"></div>
+        
+        <div class="description-chinese">
+            本文探讨了《建筑评论》（The Architectural Review）在1945至1955年间，作为推动者与反映者，在英国战后建筑话语中的双重角色。第一部分梳理了这一时期的历史与建筑背景，以及该杂志如何回应重建的紧迫性与对建成环境观念的转变。通过对其编辑风格、撰稿人群、读者群体以及图像表达的梳理，本文将该杂志定位为一个超越专业圈层、引领建筑思潮的文化平台。 文章的第二部分也是核心部分，是对"城市景观"（Townscape）理念的主题性解读。该概念在《建筑评论》杂志中逐步发展，旨在回应对正统现代主义的种种质疑。与其将Townscape视为一套固定理论，本文更将其重构为一种建立于感知、连续性与人类经验基础之上的视觉与空间方法。通过对若干文章、案例与类型的分析，研究指出Townscape为城市提供了一种替代性的构想：碎片化但统一，主观却可共享。 Townscape 表达了一种融合视觉素养与城市批评的新型建筑思维模式。借助《建筑评论》的视角，文章展现了这一方法如何将城市重新定义为一系列富有意义的遭遇序列，在战后寻求认同感的景观中，突出"感知""语境"与"叙事"作为重要的设计工具。
+        </div>
+        
+        <div class="description-english">
+            This essay examines The Architectural Review's role both as instigator and reflection of British post-war architectural argument between 1945 and 1955. The first section outlines the historical and architectural background of the period, and how the magazine reflected the urgency of reconstruction and shifting notions of the built environment. Through an overview of its editorial style, contributors, readership, and graphic identity, the study positions the magazine as a cultural platform that shaped architectural thought outside professional circles. The second and central part of the essay is a thematic reading of the Townscape idea, developed within the pages of The Architectural Review as a response to the perceived failures of orthodox modernism. Rather than treating Townscape as a fixed theory, the essay reconstructs it as a visual and spatial method rooted in perception, continuity, and human experience. Through the analysis of selected articles, examples, and typologies the research highlights how Townscape offered an alternative vision for the city: one that was fragmentary yet coherent, subjective yet sharable. Townscape articulated a new mode of architectural thinking, one that merged visual literacy with urban critique. Through the lens of The Architectural Review, the essay shows how this approach reframed the city as a sequence of meaningful encounters, foregrounding perception, context, and narrative as design tools in a post-war landscape in search of identity.
+        </div>
+    </div>
+</body>
+</html>

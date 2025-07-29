@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Life itself</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 108px;
+      height: 76px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 78px;
+      height: 14px;
+      left: 276px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 189px;
+      height: 14px;
+      left: 165px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 111px;
+      height: 14px;
+      left: 243px;
+      top: 310px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author {
+      position: absolute;
+      width: 46px;
+      height: 14px;
+      left: 308px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 287px; }
+    .line6 { top: 327px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 322px;
+      left: 54px;
+      top: 377px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 503px;
+      left: 537px;
+      top: 377px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Life itself</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    
+    <div class="location">Dali, Yunnan</div>
+    <div class="date">2023.09-2023.11</div>
+    <div class="tags1">Architectural Design Project,</div>
+    <div class="tags2">Cluster Apartment</div>
+    <div class="author">Mai Cao</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    
+    <div class="description-chinese">
+      本项目是受我在大理实习时的所见所闻所启发而设计。在中国云南的大理，存在一种典型的"中产阶级反城市化移民"现象。从最初被《纽约时报》称为"环境难民"，到成为中国"反城市化"趋势的具象代表，大理的新移民被赋予了浪漫与传奇的双重身份，也被贴上了"破坏者"与"游民"的标签。正因这些丰富的故事，大理从一个西南边陲小城转变为人们心中的"理想国"——如"大理国""大理福尼亚"等乌托邦式的存在。大理独特的文化背景、生活方式和传统习俗，也为新大理人带来了新的生活视角。如今，新大理人依托远程工作，成为"数字游民"，在大理寻找室友、合租小院，共同生活与生产。他们不追求名利，而是为"生活本身"而活。他们崇尚手工、原材料、低工业化与亲近自然，常常经营一个小型农场以实现自给自足的生活方式。本项目选址于大理某村落，旨在为这样一群新大理人设计一个舒适、环保、可持续的"聚落式公寓"。它为居民提供有趣的公共活动空间、自给自足的生产空间以及相对私密的居住空间，共同营造一个健康、可持续的社区生活方式。
+    </div>
+    
+    <div class="description-english">
+      This project was inspired by what I saw and heard during my internship in Dali. In Dali, Yunnan, China, a distinctive phenomenon of "middle-class anti-urbanization migration" has emerged. Initially described by The New York Times as "environmental refugees," the new immigrants in Dali have come to represent a broader anti-urbanization movement in China. They are simultaneously seen as romantic and legendary figures, while also labeled as "vandals" or "vagrants." Because of their compelling narratives, Dali has transformed from a remote southwestern town into a utopian destination—nicknamed "The Ideal Land," or even "Dali-fornia." The region's unique cultural heritage, lifestyle, and traditions offer these newcomers a fresh perspective on life. Today, many of the "New Dali" residents work remotely and live as digital nomads. They seek out housemates, co-rent courtyard homes, and build communal lifestyles focused on both production and daily living. Rather than pursuing wealth or fame, they live for life itself—valuing craftsmanship, raw materials, minimal industrialization, and a close relationship with nature. Many even run small farms to support a self-sufficient lifestyle. This project is located in a rural village in Dali and aims to design a comfortable, eco-friendly, and sustainable Cluster Apartment for this group of new Dali residents. The design offers engaging public spaces, self-sustaining production areas, and private living quarters for each resident—together forming a healthy and enduring community model.
+    </div>
+  </div>
+</body>
+</html>

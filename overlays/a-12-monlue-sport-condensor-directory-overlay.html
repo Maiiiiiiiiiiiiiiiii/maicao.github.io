@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monluè Sport Condensor</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+    
+    body {
+      font-family: sans-serif;
+      padding: 0;
+      margin: 0;
+      background: white;
+    }
+    
+    .container {
+      position: relative;
+      width: 1024px;
+      height: 768px;
+      overflow-y: scroll;
+      background: #FFFFFF;
+      margin: 0 auto;
+    }
+    
+    .title {
+      position: absolute;
+      width: 162px;
+      height: 114px;
+      left: 54px;
+      top: 80px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 38px;
+      color: #000000;
+    }
+    
+    .location-label {
+      position: absolute;
+      width: 52px;
+      height: 14px;
+      left: 59px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .date-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tags-label {
+      position: absolute;
+      width: 26px;
+      height: 14px;
+      left: 59px;
+      top: 349px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .author-label {
+      position: absolute;
+      width: 39px;
+      height: 14px;
+      left: 59px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .tutor-label {
+      position: absolute;
+      width: 33px;
+      height: 14px;
+      left: 59px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
+    .location {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 230px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .date {
+      position: absolute;
+      width: 98px;
+      height: 14px;
+      left: 256px;
+      top: 250px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags1 {
+      position: absolute;
+      width: 221px;
+      height: 14px;
+      left: 133px;
+      top: 349px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tags2 {
+      position: absolute;
+      width: 176px;
+      height: 14px;
+      left: 178px;
+      top: 370px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .author {
+      position: absolute;
+      width: 189px;
+      height: 14px;
+      left: 165px;
+      top: 269px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor1 {
+      position: absolute;
+      width: 247px;
+      height: 14px;
+      left: 107px;
+      top: 289px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor2 {
+      position: absolute;
+      width: 241px;
+      height: 14px;
+      left: 113px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor3 {
+      position: absolute;
+      width: 208px;
+      height: 14px;
+      left: 146px;
+      top: 329px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
+      position: absolute;
+      width: 300px;
+      height: 0px;
+      left: 54px;
+      border: 0.5px solid #000000;
+    }
+    
+    .line1 { top: 227px; }
+    .line2 { top: 247px; }
+    .line3 { top: 247px; }
+    .line4 { top: 267px; }
+    .line5 { top: 287px; }
+    .line6 { top: 347px; }
+    .line7 { top: 387px; }
+    
+    .description-chinese {
+      position: absolute;
+      width: 433px;
+      height: 1043px;
+      left: 54px;
+      top: 437px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 19px;
+      text-align: justify;
+      letter-spacing: 0.05em;
+      color: #000000;
+    }
+    
+    .description-english {
+      position: absolute;
+      width: 433px;
+      height: 1043px;
+      left: 537px;
+      top: 437px;
+      font-family: 'Nunito';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      text-align: justify;
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">Monluè Sport Condensor</div>
+    
+    <div class="location-label">Location</div>
+    <div class="date-label">Date</div>
+    <div class="tags-label">Tags</div>
+    <div class="author-label">Author</div>
+    <div class="tutor-label">Tutor</div>
+    
+    <div class="location">Rockspot, Milan</div>
+    <div class="date">2025.03-2025.06</div>
+    <div class="tags1">Preservation / Adaptive Project,</div>
+    <div class="tags2">Interior Design, Sport Hall</div>
+    <div class="author">Mai Cao,Jiahe Wan, Yuxin Tian</div>
+    <div class="tutor1">Giovanni Alessandro Piovene Porto Godi</div>
+    <div class="tutor2">Stamatina Kousidi, Marta Chiara Gobbo</div>
+    <div class="tutor3">Caterina Cameli, Andrea Consonni</div>
+    
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+    <div class="line4"></div>
+    <div class="line5"></div>
+    <div class="line6"></div>
+    <div class="line7"></div>
+    
+    <div class="description-chinese">
+      这是我在米兰理工大学研一春季学期室内设计课（Architecture of Interiors Design Studio）中的课程项目。我所在的导师组以"Milan Sport City"为主题，课程由两位教授共同指导，因此项目分为两个部分：设计项目本体和一个理论支持模块"Dictionary"。"Dictionary"部分旨在提升学生的理论认知，帮助形成更有深度的设计逻辑。整个项目分为三个阶段：集体研究本阶段聚焦体育建筑的类型学研究。去年课程关注的是小尺度的体育空间，今年则拓展至建筑尺度的研究。我们首先将米兰城市地图进行功能分区，每组负责一个片区，并标注五类体育建筑类型：Infill、Carpet、Courtyard、Pool、Palace。随后我们对拍摄到的建筑照片进行分类整理，并挑选典型案例绘制了45°轴测图。最终成果包括：区域地图、图集（Atlas）和类型学轴测图。场地分析与策略制定每组根据兴趣选择一个实际场地进行深入研究，输出包括45°视角的爆炸轴测图，并提出初步的改造策略。设计深化在分析基础上，我们对所选场地进行改造设计，强调体育空间与城市的互动关系。关于我们小组的设计内容：场地概况我们选择的场地是位于米兰的Rockspot，一个典型的"嵌入式（Infill）"体育设施，周边环绕着河流、Linate机场与城市公园。该项目将一座废弃工厂转化为集攀岩、运动与社区交流于一体的活跃空间。建筑潜力原有的工厂结构被保留，并被重新编程为一个综合攀岩馆，配有仓储空间和灵活的活动区域。开放的建筑体量能够支持围绕身体运动展开的多种动态行为。场地策略项目通过一条骑行环道将建筑与周边绿地、河岸与桥下空间相连，使建筑成为路径中的一个重要节点，从而吸引骑行者和体育爱好者停留、使用。建筑转化设计中我们拆除了内部分隔，保留桁架结构与附属体量，并引入了几何与有机并存的形体语言，灵感来自Superstudio、Tschumi与Lina Bo Bardi的设计理念。通过空间开放与形态转译，建筑实现了室内外之间的流动过渡。最终建筑整合了攀岩、轮滑、水上运动等多种与身体相关的体育活动，并设有配套功能如运动装备商店、广场与酒吧，使其成为一处富有活力的"体育聚合体"。
+    </div>
+    
+    <div class="description-english">
+      This is a course project from my Architecture of Interiors Design Studio during the spring semester of my first year at Politecnico di Milano. Our studio, themed "Milan Sport City," was led by two professors, and therefore consisted of two components: a main design project and a theoretical research module titled "Dictionary," which aimed to enhance students' conceptual awareness and support design development. The project was structured in three phases: Collective Research This stage focused on typological analysis of sports architecture. While the previous year addressed small-scale sport spaces, this edition examined building-scale sports facilities. We divided the city of Milan into different zones, with each group responsible for one. Teams mapped and classified five typologies of sports buildings: Infill, Carpet, Courtyard, Pool, and Palace. Typical examples were selected and represented in 45° axonometric drawings. Final outcomes included maps, an atlas, and typology axonometric diagrams. Site Analysis & Strategy Development Each group selected a specific site of interest for in-depth study. We created exploded 45° axonometric drawings and proposed strategic interventions. Design Intervention Based on the previous research and strategy, we developed a detailed architectural proposal, focusing on the interaction between sports spaces and the urban fabric. About Our Group's Project: Site Overview Our selected site is Rockspot, an infill sports facility in Milan, located near a river, Linate Airport, and several public parks. It revitalizes a former industrial building, transforming it into an active space for climbing and community engagement. Architectural Potential The existing factory structure is preserved and reprogrammed as a climbing gym, including storage and flexible areas for activities. The large, open interior volume supports dynamic, movement-oriented behavior. Site Strategy A cycling loop integrates the building with its surroundings—green spaces, the riverfront, and under-bridge areas. This makes the facility a stop along the route, drawing in cyclists and sports users alike. Architectural Transformation By removing interior partitions and preserving the trusses and annexes, the design opens the space and introduces both geometric and organic forms, inspired by Superstudio, Bernard Tschumi, and Lina Bo Bardi. The result is a fluid and immersive connection between interior and exterior spaces. The project accommodates a range of activities related to body, wheel, rock, and water sports. Complementary functions such as a sports gear shop, a public plaza, and a bar are also integrated, turning the building into a vibrant sport condenser.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mai Desk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style-mydesk.css" />
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #fff;
+    }
+    .mydesk {
+      width: 1440px;
+      height: 900px;
+      position: absolute;
+      transform-origin: top left;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    /* 图层顺序控制 */
+    .svg-me-sleepy {
+      position: absolute;
+      z-index: 0;
+    }
+
+
+
+    .svg-table {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .svg-platform,
+    .svg-award,
+    .svg-camera,
+    .svg-book,
+    .svg-clock,
+    .svg-mai-archive,
+    .svg-log,
+    .svg-light,
+    .svg-cup,
+    .svg-phone,
+    .svg-record-player {
+      position: absolute;
+      z-index: 2;
+    }
+
+
+
+
+
+    .cao-mai {
+      position: absolute;
+      width: 112px;
+      height: 34px;
+      left: 31px;
+      top: 27px;
+      font-family: 'Inconsolata';
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    .back {
+      position: absolute;
+      width: 64px;
+      height: 34px;
+      left: 1337px;
+      top: 27px;
+      font-family: 'Inconsolata', monospace;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 34px;
+      color: #000000;
+      z-index: 1000;
+    }
+
+    .mai-desk {
+      position: absolute;
+      width: 384px;
+      height: 48px;
+      left: 528px;
+      top: 811px;
+      font-family: 'Press Start 2P', monospace;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 48px;
+      text-align: center;
+      color: #FFFFFF;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* 提示文字样式 */
+.tooltip {
+  position: absolute;
+  width: auto;
+  height: 34px;
+  left: 50%;
+  top: 27px;
+  transform: translateX(-50%);
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  color: #000000;
+  z-index: 1001;
+  pointer-events: none;
+  white-space: nowrap;
+  padding: 0 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+}
+
+/* 可点击元素 */
+.clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.clickable:hover {
+  transform: scale(1.05);
+}
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="mydesk">
+      <span class="cao-mai">Cao Mai</span>
+      
+      <a href="index.html">
+        <span class="back">Back</span>
+      </a>
+      <div class="tooltip light-tooltip" style="display: none;">Be careful.</div>
+      <div class="tooltip clock-tooltip" style="display: none;">I'm sleepy......</div>
+      <div class="tooltip archive-tooltip" style="display: none;">Go to Mai's archive.</div>
+      <div class="tooltip award-tooltip" style="display: none;">Mai's award</div>
+      <div class="tooltip camera-tooltip" style="display: none;">Go to Mai's photography.</div>
+      <div class="tooltip book-tooltip" style="display: none;">I really need to spend more time on reading.</div>
+      <div class="tooltip log-tooltip" style="display: none;">Read Mai's log</div>
+      <div class="tooltip cup-tooltip" style="display: none;">I like to drink lemonade.</div>
+      <div class="tooltip phone-tooltip" style="display: none;">Contact me</div>
+      <div class="tooltip player-tooltip" style="display: none;">Go to Mai's music.</div>
+      <div class="tooltip me-tooltip" style="display: none;">Welcome! Feel free to check everything.</div>
+      <!-- Me -->
+      <img class="svg-me-sleepy" src="assets/me-sleepy.svg" style="left:475px; top:137px; width:302px; height:407px;" alt="me-sleepy" />
+      
+      <!-- Table -->
+      <img class="svg-table" src="assets/table.svg" style="left:0px; top:541px; width:1440px; height:358px;" alt="table" />
+
+      <!-- Stuffs -->
+      <img class="svg-platform" src="assets/platform.svg" style="left:906px; top:207px; width:375px; height:11px;" alt="platform" />
+      <img class="svg-award" src="assets/award.svg" style="left:1118px; top:104px; width:147px; height:103px;" alt="award" />
+      <img class="svg-camera" src="assets/camera.svg" style="left:1023px; top:143px; width:91px; height:64px;" alt="camera" />
+      <img class="svg-book" src="assets/book.svg" style="left:919px; top:127px; width:100px; height:81px;" alt="book" />
+      <img class="svg-clock" src="assets/clock.svg" style="left:219px; top:94px; width:130px; height:130px;" alt="clock" />
+      <img class="svg-mai-archive" src="assets/mai-archive.svg" style="left:1142px; top:592px; width:204px; height:119px;" alt="mai-archive" />
+      <img class="svg-log" src="assets/log.svg" style="left:36.88%; top:62.56%; right:49.93%; bottom:25.78%;" alt="log" />
+      <img class="svg-light" src="assets/light.svg" style="left:52px; top:296px; width:195px; height:345px;" alt="light" />
+      <img class="svg-cup" src="assets/cup.svg" style="left:406px; top:553px; width:87px; height:67px;" alt="cup" />
+      <img class="svg-phone" src="assets/phone.svg" style="left:222px; top:560px; width:116px; height:116px;" alt="phone" />
+      <img class="svg-record-player" src="assets/record-player.svg" style="left:831px; top:325px; width:293px; height:369px;" alt="record-player" />
+
+
+      <span class="mai-desk">Mai Desk</span>
+      
+    </div>
+  </div>
+
+  <script>
+
+
+    // 缩放函数
+function resizeMyDesk() {
+  const scale = Math.min(
+    window.innerWidth / 1440,
+    window.innerHeight / 900
+  );
+  const mydesk = document.querySelector('.mydesk');
+  mydesk.style.transform = `scale(${scale})`;
+  mydesk.style.position = 'absolute';
+  mydesk.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+  mydesk.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+}
+
+// 悬停和点击效果
+document.addEventListener('DOMContentLoaded', function() {
+  // 创建 overlay 元素
+  const overlayBackground = document.createElement('div');
+  overlayBackground.id = 'overlay-background';
+  overlayBackground.style.display = 'none';
+  overlayBackground.style.position = 'fixed';
+  overlayBackground.style.top = '0';
+  overlayBackground.style.left = '0';
+  overlayBackground.style.width = '100vw';
+  overlayBackground.style.height = '100vh';
+  overlayBackground.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  overlayBackground.style.zIndex = '9998';
+  document.body.appendChild(overlayBackground);
+
+  const overlay = document.createElement('div');
+  overlay.id = 'overlay';
+  overlay.style.display = 'none';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '50%';
+  overlay.style.left = '50%';
+  overlay.style.width = '1024px';
+  overlay.style.height = '768px';
+  overlay.style.transform = 'translate(-50%, -50%)';
+  overlay.style.backgroundColor = 'white';
+  overlay.style.border = '1px solid black';
+  overlay.style.zIndex = '9999';
+  overlay.style.overflow = 'hidden';
+  document.body.appendChild(overlay);
+
+  const closeBtn = document.createElement('img');
+  closeBtn.src = 'assets/close.svg';
+  closeBtn.alt = 'Close';
+  closeBtn.style.position = 'absolute';
+  closeBtn.style.top = '20px';
+  closeBtn.style.right = '20px';
+  closeBtn.style.width = '32px';
+  closeBtn.style.height = '32px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.style.zIndex = '10000';
+  closeBtn.addEventListener('click', closeOverlay);
+  overlay.appendChild(closeBtn);
+
+  const iframe = document.createElement('iframe');
+  iframe.id = 'overlay-iframe';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.border = 'none';
+  overlay.appendChild(iframe);
+
+  // 元素配置
+  const elements = [
+    {
+      element: document.querySelector('.svg-light'),
+      tooltip: document.querySelector('.light-tooltip'),
+      clickable: true,
+      href: 'my-desk-dark.html'
+    },
+    {
+      element: document.querySelector('.svg-clock'),
+      tooltip: document.querySelector('.clock-tooltip')
+    },
+    {
+      element: document.querySelector('.svg-mai-archive'),
+      tooltip: document.querySelector('.archive-tooltip'),
+      clickable: true,
+      href: 'Main-page.html'
+    },
+    {
+      element: document.querySelector('.svg-award'),
+      tooltip: document.querySelector('.award-tooltip'),
+      clickable: true,
+      overlay: 'overlays/award-overlay.html'
+    },
+    {
+      element: document.querySelector('.svg-camera'),
+      tooltip: document.querySelector('.camera-tooltip'),
+      clickable: true,
+      href: 'photograhy-main-page.html'
+    },
+    {
+      element: document.querySelector('.svg-book'),
+      tooltip: document.querySelector('.book-tooltip')
+    },
+    {
+      element: document.querySelector('.svg-log'),
+      tooltip: document.querySelector('.log-tooltip'),
+      clickable: true,
+      overlay: 'overlays/log-overlay.html',
+      transparent: true
+    },
+    {
+      element: document.querySelector('.svg-cup'),
+      tooltip: document.querySelector('.cup-tooltip')
+    },
+    {
+      element: document.querySelector('.svg-phone'),
+      tooltip: document.querySelector('.phone-tooltip'),
+      clickable: true,
+      overlay: 'overlays/phone-overlay.html',
+      transparent: true
+    },
+    {
+      element: document.querySelector('.svg-record-player'),
+      tooltip: document.querySelector('.player-tooltip'),
+      clickable: true,
+      href: 'music-main-page.html'
+    },
+    {
+      element: document.querySelector('.svg-me-sleepy'),
+      tooltip: document.querySelector('.me-tooltip'),
+      clickable: true,
+      overlay: 'myprofile.html',
+      hoverImage: 'assets/me-awake.svg'
+    }
+  ];
+
+  // 为每个元素添加效果
+  elements.forEach(item => {
+    if (item.element && item.tooltip) {
+      // 添加悬停效果
+      item.element.addEventListener('mouseenter', () => {
+        item.tooltip.style.display = 'block';
+        if (item.hoverImage) {
+          item.element.src = item.hoverImage;
+        }
+      });
+      
+      item.element.addEventListener('mouseleave', () => {
+        item.tooltip.style.display = 'none';
+        if (item.hoverImage && item.element.src.includes('me-awake.svg')) {
+          item.element.src = item.element.src.replace('me-awake.svg', 'me-sleepy.svg');
+        }
+      });
+      
+      // 添加点击效果
+      if (item.clickable) {
+        item.element.classList.add('clickable');
+        item.element.style.cursor = 'pointer';
+        
+        item.element.addEventListener('click', () => {
+          if (item.href) {
+            window.location.href = item.href;
+          } else if (item.overlay) {
+            openOverlay(item.overlay, item.transparent);
+          }
+        });
+      }
+    }
+  });
+  
+  // 初始化缩放
+  resizeMyDesk();
+});
+
+function openOverlay(url, transparent = false) {
+  const overlay = document.getElementById('overlay');
+  const overlayBackground = document.getElementById('overlay-background');
+  const iframe = document.getElementById('overlay-iframe');
+  
+  iframe.src = url;
+  overlayBackground.style.display = 'block';
+  overlay.style.display = 'block';
+  
+  if (transparent) {
+    overlay.style.backgroundColor = 'transparent';
+    overlay.style.border = 'none';
+  } else {
+    overlay.style.backgroundColor = 'white';
+    overlay.style.border = '1px solid black';
+  }
+  
+  // 调整 overlay 大小
+  resizeOverlay();
+}
+
+function closeOverlay() {
+  const overlay = document.getElementById('overlay');
+  const overlayBackground = document.getElementById('overlay-background');
+  const iframe = document.getElementById('overlay-iframe');
+  
+  iframe.src = '';
+  overlay.style.display = 'none';
+  overlayBackground.style.display = 'none';
+}
+
+function resizeOverlay() {
+  const scale = Math.min(
+    window.innerWidth / 1440,
+    window.innerHeight / 900
+  );
+  const overlay = document.getElementById('overlay');
+  if (overlay) {
+    overlay.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  }
+}
+
+window.addEventListener('resize', function() {
+  resizeMyDesk();
+  resizeOverlay();
+});
+window.addEventListener('DOMContentLoaded', function() {
+  resizeMyDesk();
+  resizeOverlay();
+});
+  </script>
+  
+</body>
+</html>

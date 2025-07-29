@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back to Nature</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            background: white;
+        }
+        
+        .container {
+            position: relative;
+            width: 1024px;
+            height: 768px;
+            overflow-y: scroll;
+            background: #FFFFFF;
+            margin: 0 auto;
+        }
+        
+        .title {
+            position: absolute;
+            width: 108px;
+            height: 114px;
+            left: 54px;
+            top: 80px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 38px;
+            color: #000000;
+        }
+        
+        .location-label {
+            position: absolute;
+            width: 52px;
+            height: 14px;
+            left: 59px;
+            top: 230px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .date-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tags-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 409px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .author-label {
+            position: absolute;
+            width: 39px;
+            height: 14px;
+            left: 59px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tutor-label {
+            position: absolute;
+            width: 33px;
+            height: 14px;
+            left: 59px;
+            top: 309px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .location-value {
+            position: absolute;
+            width: 85px;
+            height: 14px;
+            left: 269px;
+            top: 230px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .date-value {
+            position: absolute;
+            width: 98px;
+            height: 14px;
+            left: 256px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag1-value {
+            position: absolute;
+            width: 130px;
+            height: 14px;
+            left: 224px;
+            top: 409px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag2-value {
+            position: absolute;
+            width: 182px;
+            height: 14px;
+            left: 172px;
+            top: 430px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .author1-value {
+            position: absolute;
+            width: 137px;
+            height: 14px;
+            left: 217px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .author2-value {
+            position: absolute;
+            width: 169px;
+            height: 14px;
+            left: 185px;
+            top: 289px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor1-value {
+            position: absolute;
+            width: 228px;
+            height: 14px;
+            left: 126px;
+            top: 309px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor2-value {
+            position: absolute;
+            width: 247px;
+            height: 14px;
+            left: 107px;
+            top: 329px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor3-value {
+            position: absolute;
+            width: 254px;
+            height: 14px;
+            left: 100px;
+            top: 349px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor4-value {
+            position: absolute;
+            width: 169px;
+            height: 14px;
+            left: 185px;
+            top: 369px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor5-value {
+            position: absolute;
+            width: 169px;
+            height: 14px;
+            left: 185px;
+            top: 389px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
+            position: absolute;
+            width: 300px;
+            height: 0px;
+            left: 54px;
+            border: 0.5px solid #000000;
+        }
+        
+        .line1 { top: 227px; }
+        .line2 { top: 247px; }
+        .line3 { top: 247px; }
+        .line4 { top: 267px; }
+        .line5 { top: 307px; }
+        .line6 { top: 407px; }
+        .line7 { top: 447px; }
+        
+        .description-chinese {
+            position: absolute;
+            width: 433px;
+            height: 517px;
+            left: 54px;
+            top: 497px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 19px;
+            text-align: justify;
+            letter-spacing: 0.05em;
+            color: #000000;
+        }
+        
+        .description-english {
+            position: absolute;
+            width: 433px;
+            height: 517px;
+            left: 537px;
+            top: 497px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 18px;
+            text-align: justify;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Back to Nature</div>
+        
+        <div class="location-label">Location</div>
+        <div class="date-label">Date</div>
+        <div class="tags-label">Tags</div>
+        <div class="author-label">Author</div>
+        <div class="tutor-label">Tutor</div>
+        
+        <div class="location-value">Bovisa, Milan</div>
+        <div class="date-value">2025.03-2025.06</div>
+        <div class="tag1-value">Construction Project</div>
+        <div class="tag2-value">Architectural Design Project</div>
+        
+        <div class="author1-value">Lubing Chen, Mai Cao,</div>
+        <div class="author2-value">llia Sukhanov, Jiadi Huang</div>
+        
+        <div class="tutor1-value">Giorgio Novati, Alessandra Zanelli,</div>
+        <div class="tutor2-value">Milan Dragoljevic, Markus Karl Neuber,</div>
+        <div class="tutor3-value">Andrea Nino Consiglio, llaria Pugliese,</div>
+        <div class="tutor4-value">Maria Giovanna Di Bitonto,</div>
+        <div class="tutor5-value">Nathaly Michelle Rodriguez</div>
+        
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div class="line4"></div>
+        <div class="line5"></div>
+        <div class="line6"></div>
+        <div class="line7"></div>
+        
+        <div class="description-chinese">
+            这是我在米兰理工大学研一春季学期建筑设计课程（Design and Construction Studio）中的课程项目。设计任务是在米兰理工大学Bovisa校区正在开发的绿地中选定一块场地，设计一座以木结构为主的可持续幼儿园。项目要求充分回应场地环境，建筑材料中需有70%来自于2027年贝尔格莱德世博会（Expo Belgrade 2027）提供的产品体系，其余30%可由学生自由选择。同时，建筑需采用预制装配式建造技术，确保在未来具备可拆卸、可扩展、可适应的能力，实现真正的可持续发展。 我们提出了"回归自然（Return to Nature）"的教育理念，倡导一种"自然即教育"的教学方式，将幼儿园打造为一个与自然深度融合的沉浸式学习空间。整个设计围绕"教育"与"自然"两个核心展开，力图将这两者有机融入城市与生态之间的过渡地带。 在空间构成上，我们采用了模块化预制体系，通过灵活的单元组合实现功能的多样性。这种建筑策略不仅满足当前的教学需求，也具备良好的可拓展性与适应性。各功能单元如同独立生长的"生命体"，沿网格自然排列，象征对每个孩子个体成长路径的尊重。 景观设计方面，我们打破建筑与自然的边界，使绿意从外部渗透至建筑内部，形成连续的自然学习界面。这种空间叙事不仅重塑了幼儿园的物理形式，也深化了儿童与自然之间的互动，最终实现"自然即教育，教育即自然"的理念。
+        </div>
+        
+        <div class="description-english">
+            This project was developed during my spring semester at Politecnico di Milano in the Design and Construction Studio. The assignment required selecting a site within the developing green space of the Bovisa campus and designing a sustainable kindergarten primarily constructed with timber. A key requirement was that 70% of the construction products must come from the Expo Belgrade 2027 catalog, while the remaining 30% could be freely selected. The project also had to employ prefabricated construction techniques, ensuring disassembly, expansion, and adaptability for future use—key principles of sustainability. We proposed a conceptual framework titled "Return to Nature", which promotes a philosophy of natural pedagogy, envisioning the kindergarten as an immersive learning space deeply integrated with the natural environment. The design centers around two core ideas—education and nature—interwoven within the ecological and urban context of Bovisa. In terms of spatial organization, a modular prefabrication system is employed to allow flexible combinations of functional units. This adaptive approach not only meets current educational needs but also supports future growth and reconfiguration. The units are arranged like individual living organisms along a rational grid, metaphorically expressing respect for each child's unique developmental path. The landscape strategy blurs the boundary between built and natural environments, allowing vegetation to extend from the outside into the architectural framework, creating a continuous interface for nature-based learning. This spatial narrative redefines the kindergarten's physical form while enriching the relationship between children and nature, fulfilling the vision of "nature as education, education as nature."
+        </div>
+    </div>
+</body>
+</html>

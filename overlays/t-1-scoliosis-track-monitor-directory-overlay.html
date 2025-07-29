@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoliosis Track Monitor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            background: white;
+        }
+        
+        .container {
+            position: relative;
+            width: 1024px;
+            height: 768px;
+            overflow-y: scroll;
+            background: #FFFFFF;
+            margin: 0 auto;
+        }
+        
+        .title {
+            position: absolute;
+            width: 162px;
+            height: 114px;
+            left: 54px;
+            top: 80px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 38px;
+            color: #000000;
+        }
+        
+        .location-label {
+            position: absolute;
+            width: 52px;
+            height: 14px;
+            left: 59px;
+            top: 230px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .date-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tags-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 329px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .author-label {
+            position: absolute;
+            width: 39px;
+            height: 14px;
+            left: 59px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tutor-label {
+            position: absolute;
+            width: 33px;
+            height: 14px;
+            left: 59px;
+            top: 289px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .location-value {
+            position: absolute;
+            width: 104px;
+            height: 14px;
+            left: 250px;
+            top: 230px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .date-value {
+            position: absolute;
+            width: 137px;
+            height: 14px;
+            left: 217px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag1-value {
+            position: absolute;
+            width: 215px;
+            height: 14px;
+            left: 139px;
+            top: 329px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag2-value {
+            position: absolute;
+            width: 247px;
+            height: 14px;
+            left: 107px;
+            top: 350px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .author-value {
+            position: absolute;
+            width: 137px;
+            height: 14px;
+            left: 217px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor1-value {
+            position: absolute;
+            width: 176px;
+            height: 14px;
+            left: 178px;
+            top: 289px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor2-value {
+            position: absolute;
+            width: 98px;
+            height: 14px;
+            left: 256px;
+            top: 309px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
+            position: absolute;
+            width: 300px;
+            height: 0px;
+            left: 54px;
+            border: 0.5px solid #000000;
+        }
+        
+        .line1 { top: 227px; }
+        .line2 { top: 247px; }
+        .line3 { top: 247px; }
+        .line4 { top: 267px; }
+        .line5 { top: 287px; }
+        .line6 { top: 327px; }
+        .line7 { top: 367px; }
+        
+        .description-chinese {
+            position: absolute;
+            width: 433px;
+            height: 121px;
+            left: 54px;
+            top: 417px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 19px;
+            text-align: justify;
+            letter-spacing: 0.05em;
+            color: #000000;
+        }
+        
+        .description-english {
+            position: absolute;
+            width: 433px;
+            height: 125px;
+            left: 537px;
+            top: 417px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 18px;
+            text-align: justify;
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Scoliosis Track Monitor</div>
+        
+        <div class="location-label">Location</div>
+        <div class="date-label">Date</div>
+        <div class="tags-label">Tags</div>
+        <div class="author-label">Author</div>
+        <div class="tutor-label">Tutor</div>
+        
+        <div class="location-value">NECST Laboratory</div>
+        <div class="date-value">2025.05.24-2025.05.25</div>
+        <div class="tag1-value">Human-Computer Interaction (HCI),</div>
+        <div class="tag2-value">Arduino, React Native, Wearable Device</div>
+        
+        <div class="author-value">Yining Cheng, Mai Cao</div>
+        <div class="tutor1-value">Marco Domenico Santambrogio</div>
+        <div class="tutor2-value">Susanna Bardini</div>
+        
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div class="line4"></div>
+        <div class="line5"></div>
+        <div class="line6"></div>
+        <div class="line7"></div>
+        
+        <div class="description-chinese">
+            Scoliosis Track Monitor 是一个在米兰理工大学 NECST Laboratory 举办的 Hackathon —— "Creativity, Science and Innovation: Ideate, Invent, Innovate" 中开发的原型项目。该系统通过三点式传感器测量背部角度，实时计算 Cobb 角，并通过蓝牙传输至手机 App，实现可视化追踪与历史数据分析。项目面向青少年脊柱侧弯的早期筛查，强调低成本、无辐射、家庭可用，提供了一种技术介入健康管理的全新方式。
+        </div>
+        
+        <div class="description-english">
+            Scoliosis Track Monitor is a prototype developed during the Hackathon "Creativity, Science and Innovation: Ideate, Invent, Innovate" at the NECST Laboratory, Politecnico di Milano. Using a three-point sensor system to calculate Cobb angles, it transmits data via Bluetooth to a mobile app for real-time monitoring and historical analysis. Targeted at early scoliosis screening in adolescents, it offers a low-cost, radiation-free, family-friendly solution for proactive spinal health management.
+        </div>
+    </div>
+</body>
+</html>
