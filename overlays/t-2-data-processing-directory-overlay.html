@@ -352,6 +352,7 @@
         .pdf-viewer {
             width: 100%;
             height: 100%;
+            display: block;
         }
 
         .pdf-controls {
@@ -365,6 +366,7 @@
             background: rgba(255, 255, 255, 0.8);
             padding: 5px 10px;
             border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         .pdf-controls button {
@@ -373,6 +375,8 @@
             background: #f0f0f0;
             border: 1px solid #ccc;
             border-radius: 3px;
+            font-family: 'Inconsolata';
+            font-size: 12px;
         }
 
         .pdf-controls button:hover {
@@ -383,6 +387,21 @@
             padding: 5px 10px;
             font-family: 'Inconsolata';
             font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* PDF canvas wrapper for better zoom control */
+        .pdf-canvas-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            cursor: grab;
+        }
+
+        .pdf-canvas-wrapper.grabbing {
+            cursor: grabbing;
         }
     </style>
     <!-- PDF.js library -->
@@ -442,14 +461,18 @@
 
         <!-- PDF Viewer Section -->
         <div class="pdf-container">
-            <canvas id="pdf-viewer" class="pdf-viewer"></canvas>
+            <div class="pdf-canvas-wrapper" id="pdf-canvas-wrapper">
+                <canvas id="pdf-viewer" class="pdf-viewer"></canvas>
+            </div>
             <div class="pdf-controls">
                 <button id="prev-page">Previous</button>
                 <span class="pdf-page-info">Page <span id="page-num">1</span> of <span id="page-count">0</span></span>
                 <button id="next-page">Next</button>
                 <button id="zoom-in">Zoom In</button>
                 <button id="zoom-out">Zoom Out</button>
+                <button id="fit-width">Fit Width</button>
                 <button id="fit-height">Fit Height</button>
+                <button id="fit-page">Fit Page</button>
             </div>
         </div>
     </div>
@@ -466,7 +489,13 @@
             scale = 1.0,
             canvas = document.getElementById('pdf-viewer'),
             ctx = canvas.getContext('2d'),
-            container = document.querySelector('.pdf-container');
+            container = document.querySelector('.pdf-container'),
+            wrapper = document.getElementById('pdf-canvas-wrapper'),
+            isDragging = false,
+            startPos = { x: 0, y: 0 },
+            currentTranslate = { x: 0, y: 0 },
+            maxScale = 3.0,
+            minScale = 0.5;
         
         // Load the PDF
         function loadPDF() {
@@ -477,12 +506,12 @@
                 document.getElementById('page-count').textContent = pdfDoc.numPages;
                 
                 // Initial page render
-            renderPage(1, true);
-        }).catch(function(error) {
-            console.error('Error loading PDF: ', error);
-            alert('Error loading PDF at: ' + url + '. Please check the file path.');
-        });
-    }
+                renderPage(1, true);
+            }).catch(function(error) {
+                console.error('Error loading PDF: ', error);
+                alert('Error loading PDF at: ' + url + '. Please check the file path.');
+            });
+        }
         
         // Render a page
         function renderPage(num, initialRender = false) {
@@ -492,17 +521,25 @@
                 const viewport = page.getViewport({ scale: 1.0 });
                 
                 if (initialRender) {
-                    // Calculate scale to fit height initially
-                    scale = container.offsetHeight / viewport.height;
+                    // Calculate scale to fit width initially
+                    const containerWidth = wrapper.offsetWidth - 40; // account for padding
+                    const containerHeight = wrapper.offsetHeight - 40;
+                    
+                    // Choose scale based on which dimension is more constrained
+                    const widthScale = containerWidth / viewport.width;
+                    const heightScale = containerHeight / viewport.height;
+                    
+                    scale = Math.min(widthScale, heightScale);
+                    
+                    // Reset translation
+                    currentTranslate = { x: 0, y: 0 };
+                    updateCanvasPosition();
                 }
                 
                 const scaledViewport = page.getViewport({ scale: scale });
                 
                 canvas.height = scaledViewport.height;
                 canvas.width = scaledViewport.width;
-                
-                // Center the canvas horizontally
-                canvas.style.marginLeft = (container.offsetWidth - canvas.width) / 2 + 'px';
                 
                 const renderContext = {
                     canvasContext: ctx,
@@ -548,23 +585,116 @@
         
         // Zoom in
         function onZoomIn() {
+            if (scale >= maxScale) return;
             scale *= 1.2;
             queueRenderPage(pageNum);
         }
         
         // Zoom out
         function onZoomOut() {
+            if (scale <= minScale) return;
             scale /= 1.2;
             queueRenderPage(pageNum);
+        }
+        
+        // Fit to width
+        function onFitWidth() {
+            pdfDoc.getPage(pageNum).then(function(page) {
+                const viewport = page.getViewport({ scale: 1.0 });
+                scale = (wrapper.offsetWidth - 40) / viewport.width;
+                currentTranslate = { x: 0, y: 0 };
+                updateCanvasPosition();
+                queueRenderPage(pageNum);
+            });
         }
         
         // Fit to height
         function onFitHeight() {
             pdfDoc.getPage(pageNum).then(function(page) {
                 const viewport = page.getViewport({ scale: 1.0 });
-                scale = container.offsetHeight / viewport.height;
+                scale = (wrapper.offsetHeight - 40) / viewport.height;
+                currentTranslate = { x: 0, y: 0 };
+                updateCanvasPosition();
                 queueRenderPage(pageNum);
             });
+        }
+        
+        // Fit to page (auto)
+        function onFitPage() {
+            pdfDoc.getPage(pageNum).then(function(page) {
+                const viewport = page.getViewport({ scale: 1.0 });
+                const widthScale = (wrapper.offsetWidth - 40) / viewport.width;
+                const heightScale = (wrapper.offsetHeight - 40) / viewport.height;
+                scale = Math.min(widthScale, heightScale);
+                currentTranslate = { x: 0, y: 0 };
+                updateCanvasPosition();
+                queueRenderPage(pageNum);
+            });
+        }
+        
+        // Update canvas position with current translation
+        function updateCanvasPosition() {
+            canvas.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px)`;
+        }
+        
+        // Mouse wheel zoom
+        function handleWheel(e) {
+            e.preventDefault();
+            
+            // Get mouse position relative to canvas
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            // Calculate scale factor
+            const delta = -e.deltaY;
+            let scaleFactor = 1.1;
+            if (delta < 0) {
+                scaleFactor = 1 / scaleFactor;
+            }
+            
+            // Calculate new scale with limits
+            const newScale = scale * scaleFactor;
+            if (newScale < minScale || newScale > maxScale) return;
+            
+            // Calculate mouse position in document coordinates
+            const docX = (mouseX - currentTranslate.x) / scale;
+            const docY = (mouseY - currentTranslate.y) / scale;
+            
+            // Apply new scale
+            const oldScale = scale;
+            scale = newScale;
+            
+            // Calculate new translation to keep mouse position stable
+            currentTranslate.x = mouseX - docX * scale;
+            currentTranslate.y = mouseY - docY * scale;
+            
+            queueRenderPage(pageNum);
+        }
+        
+        // Dragging functionality
+        function startDrag(e) {
+            isDragging = true;
+            startPos = {
+                x: e.clientX - currentTranslate.x,
+                y: e.clientY - currentTranslate.y
+            };
+            wrapper.classList.add('grabbing');
+            e.preventDefault();
+        }
+        
+        function drag(e) {
+            if (!isDragging) return;
+            
+            currentTranslate.x = e.clientX - startPos.x;
+            currentTranslate.y = e.clientY - startPos.y;
+            
+            updateCanvasPosition();
+        }
+        
+        function endDrag() {
+            isDragging = false;
+            wrapper.classList.remove('grabbing');
         }
         
         // Event listeners
@@ -572,31 +702,17 @@
         document.getElementById('next-page').addEventListener('click', onNextPage);
         document.getElementById('zoom-in').addEventListener('click', onZoomIn);
         document.getElementById('zoom-out').addEventListener('click', onZoomOut);
+        document.getElementById('fit-width').addEventListener('click', onFitWidth);
         document.getElementById('fit-height').addEventListener('click', onFitHeight);
+        document.getElementById('fit-page').addEventListener('click', onFitPage);
         
-        // Enable dragging
-        let isDragging = false,
-            startPos = 0,
-            currentTranslate = 0;
+        // Mouse events for dragging
+        wrapper.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', drag);
+        window.addEventListener('mouseup', endDrag);
         
-        canvas.addEventListener('mousedown', function(e) {
-            isDragging = true;
-            startPos = e.clientX;
-            e.preventDefault();
-        });
-        
-        window.addEventListener('mousemove', function(e) {
-            if (!isDragging) return;
-            
-            const deltaX = e.clientX - startPos;
-            currentTranslate += deltaX;
-            canvas.style.transform = `translateX(${currentTranslate}px)`;
-            startPos = e.clientX;
-        });
-        
-        window.addEventListener('mouseup', function() {
-            isDragging = false;
-        });
+        // Mouse wheel for zooming
+        wrapper.addEventListener('wheel', handleWheel, { passive: false });
         
         // Load the PDF when the page loads
         window.addEventListener('load', loadPDF);
