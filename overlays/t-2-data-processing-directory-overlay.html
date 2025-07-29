@@ -360,11 +360,10 @@
         }
 
         .pdf-image {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            max-width: none;
+            max-height: none;
             transition: transform 0.1s ease;
-            transform-origin: center center;
+            transform-origin: 0 0;
         }
 
         .pdf-controls {
@@ -487,7 +486,7 @@
                 <button id="next-page">Next</button>
                 <button id="zoom-in">Zoom In</button>
                 <button id="zoom-out">Zoom Out</button>
-                <button id="fit-page">Fit Page</button>
+                <button id="fit-height">Fit Height</button>
             </div>
         </div>
     </div>
@@ -502,6 +501,7 @@
         let currentTranslate = { x: 0, y: 0 };
         const maxScale = 3.0;
         const minScale = 0.5;
+        let isInitialLoad = true;
         
         const imageElement = document.getElementById('pdf-image');
         const wrapper = document.getElementById('image-viewer-wrapper');
@@ -527,7 +527,13 @@
             // Reset zoom and position when changing pages
             scale = 1.0;
             currentTranslate = { x: 0, y: 0 };
+            isInitialLoad = true;
             updateImageTransform();
+            
+            // Force reload to trigger onload
+            if (imageElement.complete) {
+                imageElement.onload();
+            }
         }
         
         // Update the image transform (scale + position)
@@ -535,24 +541,27 @@
             imageElement.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px) scale(${scale})`;
         }
         
-        // Fit the image to the container
-        function fitToPage() {
-            const containerWidth = wrapper.offsetWidth;
+        // Fit the image to container height
+        function fitToHeight() {
             const containerHeight = wrapper.offsetHeight;
             
             imageElement.onload = function() {
-                const imgWidth = this.naturalWidth;
                 const imgHeight = this.naturalHeight;
+                scale = containerHeight / imgHeight;
                 
-                const widthRatio = containerWidth / imgWidth;
-                const heightRatio = containerHeight / imgHeight;
+                // Center horizontally on initial load
+                if (isInitialLoad) {
+                    const containerWidth = wrapper.offsetWidth;
+                    const imgWidth = this.naturalWidth * scale;
+                    currentTranslate.x = (containerWidth - imgWidth) / 2;
+                    currentTranslate.y = 0;
+                    isInitialLoad = false;
+                }
                 
-                scale = Math.min(widthRatio, heightRatio);
-                currentTranslate = { x: 0, y: 0 };
                 updateImageTransform();
             };
             
-            // Reload the image to trigger onload if it's already loaded
+            // Trigger onload if image is already loaded
             if (imageElement.complete) {
                 imageElement.onload();
             }
@@ -603,12 +612,12 @@
         function handleWheel(e) {
             e.preventDefault();
             
-            // Get mouse position relative to image
-            const rect = imageElement.getBoundingClientRect();
+            // Get mouse position relative to wrapper
+            const rect = wrapper.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
             
-            // Calculate scale factor
+            // Calculate scale factor based on wheel direction
             const delta = -e.deltaY;
             let scaleFactor = 1.1;
             if (delta < 0) {
@@ -658,12 +667,33 @@
             wrapper.style.cursor = 'grab';
         }
         
+        // Touch event handlers
+        function handleTouchStart(e) {
+            if (e.touches.length === 1) {
+                startDrag({
+                    clientX: e.touches[0].clientX,
+                    clientY: e.touches[0].clientY,
+                    preventDefault: () => e.preventDefault()
+                });
+            }
+        }
+        
+        function handleTouchMove(e) {
+            if (e.touches.length === 1) {
+                drag({
+                    clientX: e.touches[0].clientX,
+                    clientY: e.touches[0].clientY,
+                    preventDefault: () => e.preventDefault()
+                });
+            }
+        }
+        
         // Event listeners
         document.getElementById('prev-page').addEventListener('click', prevPage);
         document.getElementById('next-page').addEventListener('click', nextPage);
         document.getElementById('zoom-in').addEventListener('click', zoomIn);
         document.getElementById('zoom-out').addEventListener('click', zoomOut);
-        document.getElementById('fit-page').addEventListener('click', fitToPage);
+        document.getElementById('fit-height').addEventListener('click', fitToHeight);
         pageInput.addEventListener('change', handlePageInput);
         
         // Mouse events for dragging
@@ -671,11 +701,31 @@
         window.addEventListener('mousemove', drag);
         window.addEventListener('mouseup', endDrag);
         
+        // Touch events for mobile
+        wrapper.addEventListener('touchstart', handleTouchStart, { passive: false });
+        wrapper.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchend', endDrag);
+        
         // Mouse wheel for zooming
         wrapper.addEventListener('wheel', handleWheel, { passive: false });
         
         // Initialize the viewer when the page loads
-        window.addEventListener('load', initViewer);
+        window.addEventListener('load', function() {
+            initViewer();
+            fitToHeight();
+            
+            // Ensure image is properly fitted after load
+            imageElement.onload = function() {
+                if (isInitialLoad) {
+                    fitToHeight();
+                }
+            };
+            
+            // If image is already loaded, fit it immediately
+            if (imageElement.complete) {
+                fitToHeight();
+            }
+        });
     </script>
 </body>
 </html>
