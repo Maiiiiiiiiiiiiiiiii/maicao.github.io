@@ -243,7 +243,7 @@
       color: #000000;
     }
 
-    /* Image Viewer Styles */
+    /* 图片查看器样式 */
     .pdf-container {
       position: absolute;
       width: 916px;
@@ -361,7 +361,7 @@
       This project was completed during my junior year as a course assignment, with the theme focused on hotel design. The site is located in Sangwan Lane, Suzhou. Drawing from the historical and cultural context of the area, I chose Suzhou Kunqu Opera as the core design concept. The spatial design responds to the performative nature of Kunqu through controlled rhythm and circulation, while the interior incorporates more explicit Kunqu elements, such as opera scores and traditional costumes. Although the work is still quite immature, it marked a significant turning point in the development of my architectural thinking.
     </div>
 
-    <!-- Image Viewer Section -->
+    <!-- 图片查看器部分 -->
     <div class="pdf-container">
       <div class="image-viewer-wrapper" id="image-viewer-wrapper">
         <img id="pdf-image" class="pdf-image" src="" alt="PDF Page">
@@ -381,8 +381,8 @@
   </div>
 
   <script>
-    // Image viewer variables
-    const totalPages = 10; // Total number of pages/images (from your PNG)
+    // 图片查看器变量
+    const totalPages = 10; // 总页数
     let currentPage = 1;
     let scale = 1.0;
     let isDragging = false;
@@ -396,35 +396,50 @@
     const pageCountElement = document.getElementById('page-count');
     const pageInput = document.getElementById('page-input');
     
-    // Initialize the viewer
+    // 图片文件扩展名配置 - 按页码顺序指定每个文件的扩展名
+    const imageExtensions = [
+      'jpg', // 第1页
+      'jpg', // 第2页
+      'jpg', // 第3页
+      'jpg', // 第4页
+      'jpg', // 第5页
+      'jpg', // 第6页
+      'jpg', // 第7页
+      'jpg', // 第8页
+      'jpg', // 第9页
+      'jpg'  // 第10页
+    ];
+    
+    // 初始化查看器
     function initViewer() {
       pageCountElement.textContent = totalPages;
       pageInput.max = totalPages;
       loadPage(1);
     }
     
-    // Load a specific page
+    // 加载特定页面
     function loadPage(pageNum) {
       if (pageNum < 1 || pageNum > totalPages) return;
       
       currentPage = pageNum;
-      // Use the exact filenames from your PNG (1.png, 2.png, etc.)
-      const imageFile = pageNum <= 6 ? `${pageNum}.png` : `${pageNum}.jpg`;
-      imageElement.src = `../assets/doc/a-1/${imageFile}`;
+      // 根据页码获取对应的文件扩展名
+      const ext = imageExtensions[pageNum - 1];
+      // 构建图片路径
+      imageElement.src = `../assets/doc/a-1/${pageNum}.${ext}`;
       pageInput.value = pageNum;
       
-      // Reset zoom and position when changing pages
+      // 切换页面时重置缩放和位置
       scale = 1.0;
       currentTranslate = { x: 0, y: 0 };
       updateImageTransform();
     }
     
-    // Update the image transform (scale + position)
+    // 更新图片变换(缩放+位置)
     function updateImageTransform() {
       imageElement.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px) scale(${scale})`;
     }
     
-    // Fit the image to the container
+    // 适应页面大小
     function fitToPage() {
       const containerWidth = wrapper.offsetWidth;
       const containerHeight = wrapper.offsetHeight;
@@ -441,37 +456,37 @@
         updateImageTransform();
       };
       
-      // Reload the image to trigger onload if it's already loaded
+      // 如果图片已加载，立即触发onload
       if (imageElement.complete) {
         imageElement.onload();
       }
     }
     
-    // Zoom in
+    // 放大
     function zoomIn() {
       if (scale >= maxScale) return;
       scale *= 1.2;
       updateImageTransform();
     }
     
-    // Zoom out
+    // 缩小
     function zoomOut() {
       if (scale <= minScale) return;
       scale /= 1.2;
       updateImageTransform();
     }
     
-    // Go to previous page
+    // 上一页
     function prevPage() {
       loadPage(currentPage - 1);
     }
     
-    // Go to next page
+    // 下一页
     function nextPage() {
       loadPage(currentPage + 1);
     }
     
-    // Handle page input change
+    // 处理页码输入变化
     function handlePageInput() {
       let newPage = parseInt(pageInput.value);
       
@@ -490,41 +505,41 @@
       }
     }
     
-    // Mouse wheel zoom
+    // 鼠标滚轮缩放
     function handleWheel(e) {
       e.preventDefault();
       
-      // Get mouse position relative to image
+      // 获取鼠标相对于图片的位置
       const rect = imageElement.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
       const mouseY = e.clientY - rect.top;
       
-      // Calculate scale factor
+      // 计算缩放因子
       const delta = -e.deltaY;
       let scaleFactor = 1.1;
       if (delta < 0) {
         scaleFactor = 1 / scaleFactor;
       }
       
-      // Calculate new scale with limits
+      // 计算带限制的新缩放比例
       const newScale = scale * scaleFactor;
       if (newScale < minScale || newScale > maxScale) return;
       
-      // Calculate mouse position in image coordinates
+      // 计算图片坐标中的鼠标位置
       const imgX = (mouseX - currentTranslate.x) / scale;
       const imgY = (mouseY - currentTranslate.y) / scale;
       
-      // Apply new scale
+      // 应用新缩放比例
       scale = newScale;
       
-      // Calculate new translation to keep mouse position stable
+      // 计算新平移以保持鼠标位置稳定
       currentTranslate.x = mouseX - imgX * scale;
       currentTranslate.y = mouseY - imgY * scale;
       
       updateImageTransform();
     }
     
-    // Dragging functionality
+    // 拖拽功能
     function startDrag(e) {
       isDragging = true;
       startPos = {
@@ -549,7 +564,7 @@
       wrapper.style.cursor = 'grab';
     }
     
-    // Event listeners
+    // 事件监听器
     document.getElementById('prev-page').addEventListener('click', prevPage);
     document.getElementById('next-page').addEventListener('click', nextPage);
     document.getElementById('zoom-in').addEventListener('click', zoomIn);
@@ -557,15 +572,15 @@
     document.getElementById('fit-page').addEventListener('click', fitToPage);
     pageInput.addEventListener('change', handlePageInput);
     
-    // Mouse events for dragging
+    // 鼠标拖拽事件
     wrapper.addEventListener('mousedown', startDrag);
     window.addEventListener('mousemove', drag);
     window.addEventListener('mouseup', endDrag);
     
-    // Mouse wheel for zooming
+    // 鼠标滚轮缩放事件
     wrapper.addEventListener('wheel', handleWheel, { passive: false });
     
-    // Initialize the viewer when the page loads
+    // 页面加载时初始化查看器
     window.addEventListener('load', initViewer);
   </script>
 </body>
