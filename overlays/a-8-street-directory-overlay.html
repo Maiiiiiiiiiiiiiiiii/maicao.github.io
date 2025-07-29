@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Street</title>
+  <title>Nature for Health</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
     
@@ -24,8 +24,8 @@
     
     .title {
       position: absolute;
-      width: 144px;
-      height: 38px;
+      width: 108px;
+      height: 114px;
       left: 54px;
       top: 80px;
       font-family: 'Inconsolata';
@@ -69,7 +69,7 @@
       width: 26px;
       height: 14px;
       left: 59px;
-      top: 309px;
+      top: 369px;
       font-family: 'Inconsolata';
       font-style: normal;
       font-weight: 600;
@@ -92,11 +92,25 @@
       color: #000000;
     }
     
+    .tutor-label {
+      position: absolute;
+      width: 33px;
+      height: 14px;
+      left: 59px;
+      top: 329px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 14px;
+      color: #000000;
+    }
+    
     .location {
       position: absolute;
-      width: 91px;
+      width: 137px;
       height: 14px;
-      left: 263px;
+      left: 217px;
       top: 230px;
       font-family: 'Inconsolata';
       font-style: normal;
@@ -127,7 +141,7 @@
       width: 189px;
       height: 14px;
       left: 165px;
-      top: 309px;
+      top: 369px;
       font-family: 'Inconsolata';
       font-style: normal;
       font-weight: 300;
@@ -139,10 +153,10 @@
     
     .tags2 {
       position: absolute;
-      width: 169px;
+      width: 215px;
       height: 14px;
-      left: 185px;
-      top: 330px;
+      left: 139px;
+      top: 390px;
       font-family: 'Inconsolata';
       font-style: normal;
       font-weight: 300;
@@ -154,9 +168,9 @@
     
     .author1 {
       position: absolute;
-      width: 117px;
+      width: 176px;
       height: 14px;
-      left: 237px;
+      left: 178px;
       top: 269px;
       font-family: 'Inconsolata';
       font-style: normal;
@@ -169,9 +183,9 @@
     
     .author2 {
       position: absolute;
-      width: 169px;
+      width: 247px;
       height: 14px;
-      left: 185px;
+      left: 107px;
       top: 289px;
       font-family: 'Inconsolata';
       font-style: normal;
@@ -182,7 +196,52 @@
       color: #000000;
     }
     
-    .line1, .line2, .line3, .line4, .line5, .line6 {
+    .author3 {
+      position: absolute;
+      width: 59px;
+      height: 14px;
+      left: 295px;
+      top: 309px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor1 {
+      position: absolute;
+      width: 228px;
+      height: 14px;
+      left: 126px;
+      top: 329px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .tutor2 {
+      position: absolute;
+      width: 241px;
+      height: 14px;
+      left: 113px;
+      top: 349px;
+      font-family: 'Inconsolata';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 14px;
+      text-align: right;
+      color: #000000;
+    }
+    
+    .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
       position: absolute;
       width: 300px;
       height: 0px;
@@ -194,15 +253,16 @@
     .line2 { top: 247px; }
     .line3 { top: 247px; }
     .line4 { top: 267px; }
-    .line5 { top: 307px; }
-    .line6 { top: 347px; }
+    .line5 { top: 327px; }
+    .line6 { top: 367px; }
+    .line7 { top: 407px; }
     
     .description-chinese {
       position: absolute;
       width: 433px;
-      height: 301px;
+      height: 535px;
       left: 54px;
-      top: 397px;
+      top: 457px;
       font-family: 'Nunito';
       font-style: normal;
       font-weight: 400;
@@ -216,9 +276,9 @@
     .description-english {
       position: absolute;
       width: 433px;
-      height: 305px;
+      height: 539px;
       left: 537px;
-      top: 397px;
+      top: 457px;
       font-family: 'Nunito';
       font-style: normal;
       font-weight: 400;
@@ -227,23 +287,111 @@
       text-align: justify;
       color: #000000;
     }
+
+    /* Image Viewer Styles */
+    .pdf-container {
+      position: absolute;
+      width: 916px;
+      height: 648px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 1000px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      margin-bottom: 100px;
+    }
+
+    .image-viewer-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pdf-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.1s ease;
+      transform-origin: center center;
+    }
+
+    .pdf-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .pdf-controls button {
+      padding: 5px 10px;
+      cursor: pointer;
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-family: 'Inconsolata';
+      font-size: 12px;
+    }
+
+    .pdf-controls button:hover {
+      background: #e0e0e0;
+    }
+
+    .pdf-page-info {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Inconsolata';
+      font-size: 13px;
+    }
+
+    .pdf-page-input {
+      width: 40px;
+      padding: 3px;
+      text-align: center;
+      font-family: 'Inconsolata';
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .image-viewer-wrapper.grabbing {
+      cursor: grabbing;
+    }
+
+    .image-viewer-wrapper:hover {
+      cursor: grab;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="title">"Street"</div>
+    <div class="title">Nature for Health</div>
     
     <div class="location-label">Location</div>
     <div class="date-label">Date</div>
     <div class="tags-label">Tags</div>
     <div class="author-label">Author</div>
+    <div class="tutor-label">Tutor</div>
     
-    <div class="location">Turku, Finland</div>
-    <div class="date">2023.11-2024.01</div>
-    <div class="tags1">Architectural Design Project,</div>
-    <div class="tags2">Museum Design, Competition</div>
-    <div class="author1">Mai Cao, Yifan Ji,</div>
-    <div class="author2">Shenchen Peng, Xince Huang</div>
+    <div class="location">Villa Arconati, Milan</div>
+    <div class="date">2024.09-2025.01</div>
+    <div class="tags1">Landscape / Planning Project,</div>
+    <div class="tags2">Preservation / Adaptive Project</div>
+    <div class="author1">Mai Cao, Santiangeli Laura,</div>
+    <div class="author2">Kalantaryan Nane, Varsallona Angelica,</div>
+    <div class="author3">Ma Weiwei</div>
+    <div class="tutor1">Brumana Raffaella, Cazzani Alberta,</div>
+    <div class="tutor2">Gabriele Marzia, Zerbi Carlotta Maria</div>
     
     <div class="line1"></div>
     <div class="line2"></div>
@@ -251,14 +399,223 @@
     <div class="line4"></div>
     <div class="line5"></div>
     <div class="line6"></div>
+    <div class="line7"></div>
     
     <div class="description-chinese">
-      本项目为芬兰图尔库"历史与未来博物馆"国际建筑设计竞赛的参赛作品。项目选址于图尔库港口区域，兼具悠久的历史与广阔的发展前景。设计的核心理念在于消解建筑体量，使其自然融入城市肌理，并以一条贯穿性的公共空间组织建筑，满足多样化的活动需求，激活场地的城市活力。建筑结构采用CLT（交错层压木）系统，强调可持续性与生态责任。该博物馆不仅是承载历史记忆与未来想象的文化载体，更被设想为一个激发灵感的公共空间，成为连接本地与国际的文化地标。博物馆将成为图尔库市民的重要交流场所，讲述芬兰最古老城市的历史与当代生活故事，增强人们对过去与当下的理解与共鸣。
+      这是我在米兰理工大学研一秋季学期的建筑遗产保护设计课（Architectural Preservation Studio）中的课程项目。整个项目分为三个阶段：在前期阶段，我们利用QGIS对场地的道路、水系、景观以及城市化过程进行历史演变分析，同时梳理了Villa Arconati自身的发展脉络；中期阶段，我们以Villa Arconati的马厩区域为研究对象，通过Metashape构建三维模型进行衰败分析，并进一步研究其当前的结构状态与使用情况；在后期阶段，我们基于前期的调研成果，提出了针对Villa Arconati的整体干预、更新与改造策略。我们小组认为，Villa Arconati不仅具有重要的历史文化价值，同时也拥有珍贵的自然资源。它坐落于一片宁静的森林中，自然环境优越，非常适合发展为一个自然疗愈空间。因此我们提出了"以自然疗愈健康"（Nature for Health）为项目主题。我们首先将整个Villa区域进行分区评估，并根据每一区域的现状提出针对性的更新策略。接着，我们分析了潜在的使用人群，提出了"五感疗愈"的概念，在不同区域中嵌入嗅觉、听觉、视觉、触觉与味觉的体验装置，营造多样化的感官互动空间。最终我们聚焦于马厩的更新设计，将其改造成游客接待中心，并在庭院中延续了巴洛克式花园的几何布局，构建一个浓缩的"五感导览路径"，作为整个Villa疗愈体验的起点和汇聚点。
     </div>
     
     <div class="description-english">
-      This project is a competition entry for the International Architectural Design Competition for the Museum of History and the Future in Turku, Finland. The site is located in the port area of Turku—a place rich in history and full of promise for future development. The design aims to dissolve the building's mass, allowing it to blend into the surrounding urban fabric. A continuous public space runs through the structure, supporting diverse activities and reactivating the vibrancy of the site. The building adopts a CLT (Cross-Laminated Timber) structural system, highlighting principles of sustainability and environmental responsibility. The museum is envisioned as both a cultural archive and a platform for future imagination—a source of inspiration and a landmark for both local and international communities. As a civic space, the museum will serve as a meeting point for the people of Turku, telling the stories of Finland's oldest city and its people, and deepening our collective understanding of the past and the present.
+      This is a project from my Architectural Preservation Studio during the first year of my Master's studies at Politecnico di Milano, in the fall semester. The project was carried out in three main phases: In the initial phase, we used QGIS to analyze the historical evolution of the site's roads, water systems, landscape, and urbanization patterns, along with a timeline study of Villa Arconati's development; In the middle phase, we focused on the stable area of Villa Arconati. We built a 3D model using Metashape for decay analysis and conducted in-depth research on its current physical and functional condition; In the final phase, we proposed a comprehensive strategy for intervention, renewal, and adaptive reuse based on our research findings. Our group identified that Villa Arconati not only holds significant historical value but is also endowed with precious natural surroundings. Nestled in a quiet forest, the site offers ideal conditions to be reimagined as a place for nature-based healing. This led us to develop the project under the theme "Nature for Health." We began by conducting a zoning assessment of the entire Villa complex and proposed tailored renewal strategies for each area. After analyzing the needs of potential users, we introduced the concept of "Five Senses Healing," embedding sensory experiences—smell, hearing, sight, touch, and taste—into each zone to create rich and interactive environments. Finally, we concentrated on the transformation of the stable into a visitors' center. In its courtyard, we reinterpreted the geometry of the Baroque garden to create a condensed experiential path based on the five senses, serving as both an introduction and culmination to the healing journey throughout the villa.
+    </div>
+
+    <!-- Image Viewer Section -->
+    <div class="pdf-container">
+      <div class="image-viewer-wrapper" id="image-viewer-wrapper">
+        <img id="pdf-image" class="pdf-image" src="" alt="PDF Page">
+      </div>
+      <div class="pdf-controls">
+        <button id="prev-page">Previous</button>
+        <span class="pdf-page-info">
+          Page <input type="number" id="page-input" class="pdf-page-input" min="1" value="1"> 
+          of <span id="page-count">85</span>
+        </span>
+        <button id="next-page">Next</button>
+        <button id="zoom-in">Zoom In</button>
+        <button id="zoom-out">Zoom Out</button>
+        <button id="fit-page">Fit Page</button>
+      </div>
     </div>
   </div>
+
+  <script>
+    // Image viewer variables
+    const totalPages = 85; // Updated to 85 pages
+    let currentPage = 1;
+    let scale = 1.0;
+    let isDragging = false;
+    let startPos = { x: 0, y: 0 };
+    let currentTranslate = { x: 0, y: 0 };
+    const maxScale = 3.0;
+    const minScale = 0.5;
+    
+    const imageElement = document.getElementById('pdf-image');
+    const wrapper = document.getElementById('image-viewer-wrapper');
+    const pageCountElement = document.getElementById('page-count');
+    const pageInput = document.getElementById('page-input');
+    
+    // Initialize the viewer
+    function initViewer() {
+      pageCountElement.textContent = totalPages;
+      pageInput.max = totalPages;
+      loadPage(1);
+    }
+    
+    // Load a specific page
+    function loadPage(pageNum) {
+      if (pageNum < 1 || pageNum > totalPages) return;
+      
+      currentPage = pageNum;
+      // Updated image path to match the provided files
+      if (pageNum === 1) {
+        imageElement.src = `../assets/doc/a-10/Group09_booklet.jpg`;
+      } else {
+        imageElement.src = `../assets/doc/a-10/Group09_booklet${pageNum}.jpg`;
+      }
+      pageInput.value = pageNum;
+      
+      // Reset zoom and position when changing pages
+      scale = 1.0;
+      currentTranslate = { x: 0, y: 0 };
+      updateImageTransform();
+    }
+    
+    // Update the image transform (scale + position)
+    function updateImageTransform() {
+      imageElement.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px) scale(${scale})`;
+    }
+    
+    // Fit the image to the container
+    function fitToPage() {
+      const containerWidth = wrapper.offsetWidth;
+      const containerHeight = wrapper.offsetHeight;
+      
+      imageElement.onload = function() {
+        const imgWidth = this.naturalWidth;
+        const imgHeight = this.naturalHeight;
+        
+        const widthRatio = containerWidth / imgWidth;
+        const heightRatio = containerHeight / imgHeight;
+        
+        scale = Math.min(widthRatio, heightRatio);
+        currentTranslate = { x: 0, y: 0 };
+        updateImageTransform();
+      };
+      
+      // Reload the image to trigger onload if it's already loaded
+      if (imageElement.complete) {
+        imageElement.onload();
+      }
+    }
+    
+    // Zoom in
+    function zoomIn() {
+      if (scale >= maxScale) return;
+      scale *= 1.2;
+      updateImageTransform();
+    }
+    
+    // Zoom out
+    function zoomOut() {
+      if (scale <= minScale) return;
+      scale /= 1.2;
+      updateImageTransform();
+    }
+    
+    // Go to previous page
+    function prevPage() {
+      loadPage(currentPage - 1);
+    }
+    
+    // Go to next page
+    function nextPage() {
+      loadPage(currentPage + 1);
+    }
+    
+    // Handle page input change
+    function handlePageInput() {
+      let newPage = parseInt(pageInput.value);
+      
+      if (isNaN(newPage) || newPage < 1) {
+        newPage = 1;
+      } else if (newPage > totalPages) {
+        newPage = totalPages;
+      }
+      
+      pageInput.value = newPage;
+      
+      if (newPage !== currentPage) {
+        loadPage(newPage);
+      }
+    }
+    
+    // Mouse wheel zoom
+    function handleWheel(e) {
+      e.preventDefault();
+      
+      // Get mouse position relative to image
+      const rect = imageElement.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      
+      // Calculate scale factor
+      const delta = -e.deltaY;
+      let scaleFactor = 1.1;
+      if (delta < 0) {
+        scaleFactor = 1 / scaleFactor;
+      }
+      
+      // Calculate new scale with limits
+      const newScale = scale * scaleFactor;
+      if (newScale < minScale || newScale > maxScale) return;
+      
+      // Calculate mouse position in image coordinates
+      const imgX = (mouseX - currentTranslate.x) / scale;
+      const imgY = (mouseY - currentTranslate.y) / scale;
+      
+      // Apply new scale
+      scale = newScale;
+      
+      // Calculate new translation to keep mouse position stable
+      currentTranslate.x = mouseX - imgX * scale;
+      currentTranslate.y = mouseY - imgY * scale;
+      
+      updateImageTransform();
+    }
+    
+    // Dragging functionality
+    function startDrag(e) {
+      isDragging = true;
+      startPos = {
+        x: e.clientX - currentTranslate.x,
+        y: e.clientY - currentTranslate.y
+      };
+      wrapper.style.cursor = 'grabbing';
+      e.preventDefault();
+    }
+    
+    function drag(e) {
+      if (!isDragging) return;
+      
+      currentTranslate.x = e.clientX - startPos.x;
+      currentTranslate.y = e.clientY - startPos.y;
+      
+      updateImageTransform();
+    }
+    
+    function endDrag() {
+      isDragging = false;
+      wrapper.style.cursor = 'grab';
+    }
+    
+    // Event listeners
+    document.getElementById('prev-page').addEventListener('click', prevPage);
+    document.getElementById('next-page').addEventListener('click', nextPage);
+    document.getElementById('zoom-in').addEventListener('click', zoomIn);
+    document.getElementById('zoom-out').addEventListener('click', zoomOut);
+    document.getElementById('fit-page').addEventListener('click', fitToPage);
+    pageInput.addEventListener('change', handlePageInput);
+    
+    // Mouse events for dragging
+    wrapper.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', drag);
+    window.addEventListener('mouseup', endDrag);
+    
+    // Mouse wheel for zooming
+    wrapper.addEventListener('wheel', handleWheel, { passive: false });
+    
+    // Initialize the viewer when the page loads
+    window.addEventListener('load', initViewer);
+  </script>
 </body>
 </html>
