@@ -336,7 +336,7 @@
             color: #000000;
         }
 
-        /* PDF Viewer Styles */
+        /* Image Viewer Styles */
         .pdf-container {
             position: absolute;
             width: 916px;
@@ -349,7 +349,7 @@
             margin-bottom: 100px;
         }
 
-        .pdf-canvas-wrapper {
+        .image-viewer-wrapper {
             position: relative;
             width: 100%;
             height: 100%;
@@ -359,11 +359,12 @@
             align-items: center;
         }
 
-        .pdf-viewer {
+        .pdf-image {
             max-width: 100%;
             max-height: 100%;
-            display: block;
+            object-fit: contain;
             transition: transform 0.1s ease;
+            transform-origin: center center;
         }
 
         .pdf-controls {
@@ -411,16 +412,14 @@
             border-radius: 3px;
         }
 
-        .pdf-canvas-wrapper.grabbing {
+        .image-viewer-wrapper.grabbing {
             cursor: grabbing;
         }
 
-        .pdf-canvas-wrapper:hover {
+        .image-viewer-wrapper:hover {
             cursor: grab;
         }
     </style>
-    <!-- PDF.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -474,16 +473,16 @@
             Overall, this course helped me develop a structured statistical mindset, enabling me to extract meaningful insights from different types of data and evaluate results in a more rigorous and critical manner.
         </div>
 
-        <!-- PDF Viewer Section -->
+        <!-- Image Viewer Section -->
         <div class="pdf-container">
-            <div class="pdf-canvas-wrapper" id="pdf-canvas-wrapper">
-                <canvas id="pdf-viewer" class="pdf-viewer"></canvas>
+            <div class="image-viewer-wrapper" id="image-viewer-wrapper">
+                <img id="pdf-image" class="pdf-image" src="" alt="PDF Page">
             </div>
             <div class="pdf-controls">
                 <button id="prev-page">Previous</button>
                 <span class="pdf-page-info">
                     Page <input type="number" id="page-input" class="pdf-page-input" min="1" value="1"> 
-                    of <span id="page-count">0</span>
+                    of <span id="page-count">64</span>
                 </span>
                 <button id="next-page">Next</button>
                 <button id="zoom-in">Zoom In</button>
@@ -494,174 +493,118 @@
     </div>
 
     <script>
-        // PDF.js worker path
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+        // Image viewer variables
+        const totalPages = 64; // Total number of pages/images
+        let currentPage = 1;
+        let scale = 1.0;
+        let isDragging = false;
+        let startPos = { x: 0, y: 0 };
+        let currentTranslate = { x: 0, y: 0 };
+        const maxScale = 3.0;
+        const minScale = 0.5;
         
-        // Initialize PDF variables
-        let pdfDoc = null,
-            pageNum = 1,
-            pageRendering = false,
-            pageNumPending = null,
-            scale = 1.0,
-            canvas = document.getElementById('pdf-viewer'),
-            ctx = canvas.getContext('2d'),
-            container = document.querySelector('.pdf-container'),
-            wrapper = document.getElementById('pdf-canvas-wrapper'),
-            isDragging = false,
-            startPos = { x: 0, y: 0 },
-            currentTranslate = { x: 0, y: 0 },
-            maxScale = 3.0,
-            minScale = 0.5;
+        const imageElement = document.getElementById('pdf-image');
+        const wrapper = document.getElementById('image-viewer-wrapper');
+        const pageCountElement = document.getElementById('page-count');
+        const pageInput = document.getElementById('page-input');
         
-        // Load the PDF
-        function loadPDF() {
-            const url = '../assets/doc/t-2.pdf';
-            
-            pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
-                pdfDoc = pdfDoc_;
-                const pageCount = pdfDoc.numPages;
-                document.getElementById('page-count').textContent = pageCount;
-                document.getElementById('page-input').max = pageCount;
-                
-                // Initial page render
-                renderPage(1, true);
-            }).catch(function(error) {
-                console.error('Error loading PDF: ', error);
-                alert('Error loading PDF at: ' + url + '. Please check the file path.');
-            });
+        // Initialize the viewer
+        function initViewer() {
+            pageCountElement.textContent = totalPages;
+            pageInput.max = totalPages;
+            loadPage(1);
         }
         
-        // Render a page
-        function renderPage(num, initialRender = false) {
-            pageRendering = true;
+        // Load a specific page
+        function loadPage(pageNum) {
+            if (pageNum < 1 || pageNum > totalPages) return;
             
-            pdfDoc.getPage(num).then(function(page) {
-                const viewport = page.getViewport({ scale: 1.0 });
-                
-                if (initialRender) {
-                    // Calculate scale to fit page initially
-                    const containerWidth = wrapper.offsetWidth - 40;
-                    const containerHeight = wrapper.offsetHeight - 40;
-                    
-                    const widthScale = containerWidth / viewport.width;
-                    const heightScale = containerHeight / viewport.height;
-                    
-                    scale = Math.min(widthScale, heightScale);
-                    
-                    // Reset translation
-                    currentTranslate = { x: 0, y: 0 };
-                    updateCanvasPosition();
-                }
-                
-                const scaledViewport = page.getViewport({ scale: scale });
-                
-                canvas.height = scaledViewport.height;
-                canvas.width = scaledViewport.width;
-                
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: scaledViewport
-                };
-                
-                const renderTask = page.render(renderContext);
-                
-                renderTask.promise.then(function() {
-                    pageRendering = false;
-                    if (pageNumPending !== null) {
-                        renderPage(pageNumPending);
-                        pageNumPending = null;
-                    }
-                });
-                
-                document.getElementById('page-num').textContent = num;
-                document.getElementById('page-input').value = num;
-            });
+            currentPage = pageNum;
+            const pageStr = pageNum.toString().padStart(2, '0');
+            imageElement.src = `../assets/doc/t-2/t-2_Page_${pageStr}.jpg`;
+            pageInput.value = pageNum;
+            
+            // Reset zoom and position when changing pages
+            scale = 1.0;
+            currentTranslate = { x: 0, y: 0 };
+            updateImageTransform();
         }
         
-        // Queue a page render if one is in progress
-        function queueRenderPage(num) {
-            if (pageRendering) {
-                pageNumPending = num;
-            } else {
-                renderPage(num);
-            }
+        // Update the image transform (scale + position)
+        function updateImageTransform() {
+            imageElement.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px) scale(${scale})`;
         }
         
-        // Go to previous page
-        function onPrevPage() {
-            if (pageNum <= 1) return;
-            pageNum--;
-            queueRenderPage(pageNum);
-        }
-        
-        // Go to next page
-        function onNextPage() {
-            if (pageNum >= pdfDoc.numPages) return;
-            pageNum++;
-            queueRenderPage(pageNum);
-        }
-        
-        // Go to specific page
-        function onPageInput() {
-            const input = document.getElementById('page-input');
-            let newPage = parseInt(input.value);
+        // Fit the image to the container
+        function fitToPage() {
+            const containerWidth = wrapper.offsetWidth;
+            const containerHeight = wrapper.offsetHeight;
             
-            if (isNaN(newPage) || newPage < 1) {
-                newPage = 1;
-            } else if (newPage > pdfDoc.numPages) {
-                newPage = pdfDoc.numPages;
-            }
+            imageElement.onload = function() {
+                const imgWidth = this.naturalWidth;
+                const imgHeight = this.naturalHeight;
+                
+                const widthRatio = containerWidth / imgWidth;
+                const heightRatio = containerHeight / imgHeight;
+                
+                scale = Math.min(widthRatio, heightRatio);
+                currentTranslate = { x: 0, y: 0 };
+                updateImageTransform();
+            };
             
-            input.value = newPage;
-            
-            if (newPage !== pageNum) {
-                pageNum = newPage;
-                queueRenderPage(pageNum);
+            // Reload the image to trigger onload if it's already loaded
+            if (imageElement.complete) {
+                imageElement.onload();
             }
         }
         
         // Zoom in
-        function onZoomIn() {
+        function zoomIn() {
             if (scale >= maxScale) return;
             scale *= 1.2;
-            queueRenderPage(pageNum);
+            updateImageTransform();
         }
         
         // Zoom out
-        function onZoomOut() {
+        function zoomOut() {
             if (scale <= minScale) return;
             scale /= 1.2;
-            queueRenderPage(pageNum);
+            updateImageTransform();
         }
         
-        // Fit to page
-        function onFitPage() {
-            pdfDoc.getPage(pageNum).then(function(page) {
-                const viewport = page.getViewport({ scale: 1.0 });
-                const containerWidth = wrapper.offsetWidth - 40;
-                const containerHeight = wrapper.offsetHeight - 40;
-                
-                const widthScale = containerWidth / viewport.width;
-                const heightScale = containerHeight / viewport.height;
-                
-                scale = Math.min(widthScale, heightScale);
-                currentTranslate = { x: 0, y: 0 };
-                updateCanvasPosition();
-                queueRenderPage(pageNum);
-            });
+        // Go to previous page
+        function prevPage() {
+            loadPage(currentPage - 1);
         }
         
-        // Update canvas position with current translation
-        function updateCanvasPosition() {
-            canvas.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px) scale(${scale})`;
+        // Go to next page
+        function nextPage() {
+            loadPage(currentPage + 1);
+        }
+        
+        // Handle page input change
+        function handlePageInput() {
+            let newPage = parseInt(pageInput.value);
+            
+            if (isNaN(newPage) || newPage < 1) {
+                newPage = 1;
+            } else if (newPage > totalPages) {
+                newPage = totalPages;
+            }
+            
+            pageInput.value = newPage;
+            
+            if (newPage !== currentPage) {
+                loadPage(newPage);
+            }
         }
         
         // Mouse wheel zoom
         function handleWheel(e) {
             e.preventDefault();
             
-            // Get mouse position relative to canvas
-            const rect = canvas.getBoundingClientRect();
+            // Get mouse position relative to image
+            const rect = imageElement.getBoundingClientRect();
             const mouseX = e.clientX - rect.left;
             const mouseY = e.clientY - rect.top;
             
@@ -676,19 +619,18 @@
             const newScale = scale * scaleFactor;
             if (newScale < minScale || newScale > maxScale) return;
             
-            // Calculate mouse position in document coordinates
-            const docX = (mouseX - currentTranslate.x) / scale;
-            const docY = (mouseY - currentTranslate.y) / scale;
+            // Calculate mouse position in image coordinates
+            const imgX = (mouseX - currentTranslate.x) / scale;
+            const imgY = (mouseY - currentTranslate.y) / scale;
             
             // Apply new scale
-            const oldScale = scale;
             scale = newScale;
             
             // Calculate new translation to keep mouse position stable
-            currentTranslate.x = mouseX - docX * scale;
-            currentTranslate.y = mouseY - docY * scale;
+            currentTranslate.x = mouseX - imgX * scale;
+            currentTranslate.y = mouseY - imgY * scale;
             
-            queueRenderPage(pageNum);
+            updateImageTransform();
         }
         
         // Dragging functionality
@@ -708,7 +650,7 @@
             currentTranslate.x = e.clientX - startPos.x;
             currentTranslate.y = e.clientY - startPos.y;
             
-            updateCanvasPosition();
+            updateImageTransform();
         }
         
         function endDrag() {
@@ -717,12 +659,12 @@
         }
         
         // Event listeners
-        document.getElementById('prev-page').addEventListener('click', onPrevPage);
-        document.getElementById('next-page').addEventListener('click', onNextPage);
-        document.getElementById('page-input').addEventListener('change', onPageInput);
-        document.getElementById('zoom-in').addEventListener('click', onZoomIn);
-        document.getElementById('zoom-out').addEventListener('click', onZoomOut);
-        document.getElementById('fit-page').addEventListener('click', onFitPage);
+        document.getElementById('prev-page').addEventListener('click', prevPage);
+        document.getElementById('next-page').addEventListener('click', nextPage);
+        document.getElementById('zoom-in').addEventListener('click', zoomIn);
+        document.getElementById('zoom-out').addEventListener('click', zoomOut);
+        document.getElementById('fit-page').addEventListener('click', fitToPage);
+        pageInput.addEventListener('change', handlePageInput);
         
         // Mouse events for dragging
         wrapper.addEventListener('mousedown', startDrag);
@@ -732,8 +674,8 @@
         // Mouse wheel for zooming
         wrapper.addEventListener('wheel', handleWheel, { passive: false });
         
-        // Load the PDF when the page loads
-        window.addEventListener('load', loadPDF);
+        // Initialize the viewer when the page loads
+        window.addEventListener('load', initViewer);
     </script>
 </body>
 </html>
