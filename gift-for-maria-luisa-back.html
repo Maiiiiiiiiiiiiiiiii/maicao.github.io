@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift for Maria Luisa</title>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .gift-container {
+      width: 1440px;
+      height: 900px;
+      position: absolute;
+      transform-origin: top left;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    /* To. Maria Luisa */
+    .to-maria {
+      position: absolute;
+      width: 536px;
+      height: 106px;
+      left: 60px;
+      top: 53px;
+      font-family: 'STLiti';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 64px;
+      line-height: 68px;
+      color: #FFFFFF;
+      -webkit-text-stroke: 1px black;
+      text-stroke: 1px black;
+      z-index: 1000;
+    }
+
+    @font-face {
+      font-family: 'STLiti';
+      src: url('path-to-your-font/STLiti.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+
+    /* Stamp */
+    .stamp {
+      position: absolute;
+      width: 180px;
+      height: 227px;
+      left: 1128px;
+      top: 76px;
+    }
+
+    /* From. Cao Mai */
+    .from-cao {
+      position: absolute;
+      width: 298px;
+      height: 68px;
+      left: 1080px;
+      top: 775px;
+      font-family: 'STLiti';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 42px;
+      color: #FFFFFF;
+      -webkit-text-stroke: 1px black;
+      text-stroke: 1px black;
+      z-index: 1000;
+    }
+
+    @font-face {
+      font-family: 'STLiti';
+      src: url('path-to-your-font/STLiti.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* Lines */
+    .line-vertical {
+      position: absolute;
+      width: 636px;
+      height: 0px;
+      left:350px;
+      top: 500px;
+      border: 0.5px solid #000000;
+      transform: rotate(90deg);
+    }
+
+    .line-dashed {
+      position: absolute;
+      width: 554px;
+      height: 0px;
+      border: 1px dashed #000000;
+    }
+
+    .line-dashed-1 { left: 748px; top: 455px; }
+    .line-dashed-2 { left: 748px; top: 528px; }
+    .line-dashed-3 { left: 748px; top: 601px; }
+    .line-dashed-4 { left: 748px; top: 674px; }
+    .line-dashed-5 { left: 748px; top: 747px; }
+
+    @font-face {
+      font-family: 'STLiti';
+      src: url('path-to-your-font/STLiti.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="gift-container">
+      <!-- Text Elements -->
+      <a href="gift-for-maria-luisa.html">
+      <div class="to-maria">To. Maria Luisa</div>
+      </a>
+
+      <a href="mydesk.html"> 
+      <div class="from-cao">From. Cao Mai</div>
+      </a>
+      
+      <!-- Stamp -->
+      <img class="stamp" src="assets/stamp.svg" alt="Stamp">
+      
+      <!-- Lines -->
+      <div class="line-vertical"></div>
+      <div class="line-dashed line-dashed-1"></div>
+      <div class="line-dashed line-dashed-2"></div>
+      <div class="line-dashed line-dashed-3"></div>
+      <div class="line-dashed line-dashed-4"></div>
+      <div class="line-dashed line-dashed-5"></div>
+    </div>
+  </div>
+
+  <script>
+    // 缩放函数
+    function resizeGiftContainer() {
+      const scale = Math.min(
+        window.innerWidth / 1440,
+        window.innerHeight / 900
+      );
+      const container = document.querySelector('.gift-container');
+      container.style.transform = `scale(${scale})`;
+      container.style.position = 'absolute';
+      container.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+      container.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+    }
+
+    window.addEventListener('resize', function() {
+      resizeGiftContainer();
+    });
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      resizeGiftContainer();
+    });
+  </script>
+</body>
+</html>
