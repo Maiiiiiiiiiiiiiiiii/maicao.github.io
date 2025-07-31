@@ -1,44 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>My Test Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift for Maria Luisa</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #C3D2D3;
     }
-    h1 {
-      color: #333;
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #ffffff;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
+    .gift-container {
+      width: 1440px;
+      height: 900px;
+      position: absolute;
+      transform-origin: top left;
+      background: #C3D2D3;
+      overflow: hidden;
+    }
+
+    /* 图层顺序控制 */
+    .svg-person {
+      position: absolute;
+      z-index: 1;
+    }
+    .svg-texture {
+      position: absolute;
+      z-index: 0;
+    }
+    
+    .svg-silver {
+      position: absolute;
+      z-index: 2;
+    }
+
+    .svg-leave,
+    .svg-gold-brooch {
+      position: absolute;
+      z-index: 3;
+    }
+
+    .svg-ear-ring2,
+    .svg-ear-ring1 {
+      position: absolute;
+      z-index: 4;
+    }
+
+    /* 星星样式 */
+    .svg-star {
+      position: absolute;
+      z-index: 5;
+    }
+
+    /* 字母样式 */
+    .letter {
+      position: absolute;
+      font-family: 'STLiti';
+      font-size: 128px;
+      line-height: 136px;
       color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      -webkit-text-stroke: 1px black;
+      text-stroke: 1px black;
+      z-index: 1000;
     }
-    button:hover {
-      background-color: #45a049;
+
+    @font-face {
+      font-family: 'STLiti';
+      src: url('path-to-your-font/STLiti.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
     }
-    img {
-      margin-top: 20px;
-      width: 200px;
+
+    /* 浮动动画 */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
     }
+    
+    .floating-slow {
+      animation: floating 5s ease-in-out infinite;
+    }
+    
+    .floating-fast {
+      animation: floating 2s ease-in-out infinite;
+    }
+    
+    .star-twinkle {
+  animation: 
+    twinkle 2s ease-in-out infinite, 
+    floating 3s ease-in-out infinite,
+    scaling 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes scaling {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(0.9); }
+  75% { transform: scale(1.05); }
+}
   </style>
 </head>
 <body>
+  <div class="body-bg">
+    <div class="gift-container">
+      <!-- 星星 -->
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 1240px; top: 802px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 1314px; top: 472px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 1189px; top: 563px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 1104px; top: 714px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 1004px; top: 769px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 917px; top: 804px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 510px; top: 752px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 127px; top: 799px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 183px; top: 531px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 98px; top: 464px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 738px; top: 130px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 1373px; top: 98px;">
+      <img class="svg-star star-twinkle" src="assets/star.svg" style="width: 40px; height: 70px;left: 93px; top: 93px;">
 
-  <h1>Hello, this is a test page!</h1>
-  <p>This is a paragraph. Click the button below:</p>
+      <!-- 字母 -->
+      <div class="letter floating" style="width: 87px; height: 136px; left: 1286px; top: 136px;">H</div>
+      <div class="letter floating" style="width: 64px; height: 136px; left: 1286px; top: 234px;">T</div>
+      <div class="letter floating" style="width: 49px; height: 136px; left: 1258px; top: 284px;">I</div>
+      <div class="letter floating" style="width: 108px; height: 136px; left: 1195px; top: 367px;">M</div>
+      <div class="letter floating" style="width: 59px; height: 136px; left: 1150px; top: 452px;">S</div>
+      <div class="letter floating" style="width: 90px; height: 136px; left: 151px; top: 420px;">D</div>
+      <div class="letter floating" style="width: 75px; height: 136px; left: 101px; top: 333px;">L</div>
+      <div class="letter floating" style="width: 77px; height: 136px; left: 53px; top: 273px;">O</div>
+      <div class="letter floating" style="width: 80px; height: 136px; left: 26px; top: 163px;">G</div>
 
-  <button onclick="alert('Button clicked!')">Click Me</button>
+      <!-- SVG元素 -->
+      <img class="svg-ear-ring2 floating-slow" src="assets/ear-ring2.svg" style="width: 170px; height: 395.94px; left: 1235px; top: 462px;">
+      <img class="svg-ear-ring1 floating-slow" src="assets/ear-ring1.svg" style="width: 170px; height: 394.94px; left: 13px; top: 455px;">
+      <img class="svg-leave floating-fast" src="assets/leave.svg" style="width: 668.13px; height:392.15px; left: 683px; top: 540px;">
+      <img class="svg-gold-brooch floating" src="assets/gold-brooch.svg" style="width: 517.49px; height: 519.01px; left: 118px; top: 420px;">
+      
+      <a href="gift-for-maria-luisa-back.html">
+      <img class="svg-silver floating-slow" src="assets/silver.svg" style="width: 964.07px; height: 867px; left: 218px; top: 9px;">
+      </a>
+      
+      <img class="svg-person" src="assets/person.svg" style="width: 858.72px; height: 508.85px; left: 291px; top: 196px;">
+      
 
-  <img src="https://via.placeholder.com/200" alt="Placeholder Image">
+      <img class="svg-texture" src="assets/texture.svg" style="width: 1437.62px; height: 1437.62px; left: -3px; top: -300px;">
+    </div>
+  </div>
 
+  <script>
+    // 缩放函数
+    function resizeGiftContainer() {
+      const scale = Math.min(
+        window.innerWidth / 1440,
+        window.innerHeight / 900
+      );
+      const container = document.querySelector('.gift-container');
+      container.style.transform = `scale(${scale})`;
+      container.style.position = 'absolute';
+      container.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+      container.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+    }
+
+    // 为所有浮动元素添加悬停停止动画功能
+    document.querySelectorAll('.floating, .floating-slow, .floating-fast, .star-twinkle').forEach(el => {
+      el.addEventListener('mouseenter', function() {
+        this.style.animationPlayState = 'paused';
+      });
+      
+      el.addEventListener('mouseleave', function() {
+        this.style.animationPlayState = 'running';
+      });
+    });
+
+    window.addEventListener('resize', function() {
+      resizeGiftContainer();
+    });
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      resizeGiftContainer();
+    });
+
+    // 为每颗星星创建独特的随机动画
+document.querySelectorAll('.svg-star').forEach((star, index) => {
+  // 为每颗星星生成唯一ID（如果原本没有id）
+  if (!star.id) star.id = `star-${index}`;
+  
+  // 随机参数生成
+  const floatHeight = 10 + Math.random() * 20; // 浮动高度10-30px
+  const floatDuration = 3 + Math.random() * 4; // 浮动时长3-7秒
+  const twinkleDuration = 1.5 + Math.random() * 2; // 闪烁时长1.5-3.5秒
+  const scaleMax = 1 + Math.random() * 0.8; // 最大缩放1.0-1.3
+  const scaleMin = 0.9 - Math.random() * 0.1; // 最小缩放0.8-0.9
+  const scaleDuration = 4 + Math.random() * 4; // 缩放时长4-8秒
+  const delay = Math.random() * 5; // 随机延迟0-5秒
+
+  // 创建独特的keyframes
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @keyframes float-${star.id} {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-${floatHeight}px); }
+    }
+    @keyframes twinkle-${star.id} {
+      0%, 100% { opacity: 1; }
+      50% { opacity: ${0.5 + Math.random() * 0.3}; } /* 随机透明度0.5-0.8 */
+    }
+    @keyframes scale-${star.id} {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(${scaleMax}); }
+      50% { transform: scale(${scaleMin}); }
+      75% { transform: scale(${scaleMax * 0.95}); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // 应用动画
+  star.style.animation = `
+    twinkle-${star.id} ${twinkleDuration}s ease-in-out infinite,
+    float-${star.id} ${floatDuration}s ease-in-out infinite,
+    scale-${star.id} ${scaleDuration}s ease-in-out infinite
+  `;
+  star.style.animationDelay = `${delay}s`;
+  star.style.transformOrigin = 'center';
+
+  // 悬停控制（保留原有功能）
+  star.addEventListener('mouseenter', function() {
+    this.style.animationPlayState = 'paused';
+  });
+  star.addEventListener('mouseleave', function() {
+    this.style.animationPlayState = 'running';
+  });
+});
+  </script>
 </body>
 </html>
-
