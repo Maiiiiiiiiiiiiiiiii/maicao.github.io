@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gift for Hisham</title>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .body-bg {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #ffffff;
+    }
+    .gift-container {
+      width: 1440px;
+      height: 900px;
+      position: absolute;
+      transform-origin: top left;
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .background-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      display: none;
+    }
+    .background-image.active {
+      display: block;
+    }
+    .svg-hisham {
+      position: absolute;
+      z-index: 2;
+      cursor: pointer;
+    }
+    .svg-phone-13mini {
+      position: absolute;
+      z-index: 3;
+      transform: translateY(100vh);
+      transition: transform 0.5s ease-in-out;
+      cursor: pointer;
+    }
+    .phone-frame {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="body-bg">
+    <div class="gift-container">
+      <!-- Background images -->
+      <img class="background-image" src="assets/pic-hisham/1754060555242.png" alt="photo1">
+      <img class="background-image" src="assets/pic-hisham/1754060559583.png" alt="photo2">
+      <img class="background-image" src="assets/pic-hisham/1754060564609.png" alt="photo3">
+      <img class="background-image" src="assets/pic-hisham/1754060569901.png" alt="photo4">
+      <img class="background-image" src="assets/pic-hisham/1754060575171.png" alt="photo5">
+      <img class="background-image" src="assets/pic-hisham/1754060580595.png" alt="photo6">
+      <img class="background-image" src="assets/pic-hisham/1754060588486.png" alt="photo7">
+      <img class="background-image" src="assets/pic-hisham/1754060605060.png" alt="photo8">
+      
+      <img class="svg-hisham" src="assets/hisham.svg" style="width: 863.32px; height: 675.35px;left: 289.18px; top: 224.47px;" alt="hisham">
+      
+      <div class="svg-phone-13mini" style="width: 1444.5px; height: 545px;left: 0px; top: 358px;">
+        <img src="assets/phone-13mini.svg" alt="phone-13mini" style="width: 100%; height: 100%;">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 缩放函数
+    function resizeGiftContainer() {
+      const scale = Math.min(
+        window.innerWidth / 1440,
+        window.innerHeight / 900
+      );
+      const container = document.querySelector('.gift-container');
+      container.style.transform = `scale(${scale})`;
+      container.style.position = 'absolute';
+      container.style.left = `${(window.innerWidth - 1440 * scale) / 2}px`;
+      container.style.top = `${(window.innerHeight - 900 * scale) / 2}px`;
+    }
+
+    // 图片轮播逻辑
+    let currentImageIndex = 0;
+    const backgroundImages = document.querySelectorAll('.background-image');
+    const phoneContainer = document.querySelector('.svg-phone-13mini');
+    const hishamImage = document.querySelector('.svg-hisham');
+    let isMouseOverHisham = false;
+    let isMouseOverPhone = false;
+
+    // 显示下一张图片
+    function showNextImage() {
+      backgroundImages[currentImageIndex].classList.remove('active');
+      currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+      backgroundImages[currentImageIndex].classList.add('active');
+    }
+
+    // 鼠标进入hisham区域
+    hishamImage.addEventListener('mouseenter', () => {
+      isMouseOverHisham = true;
+      phoneContainer.style.transform = 'translateY(0)';
+      // 显示第一张图片
+      if (backgroundImages.length > 0) {
+        backgroundImages[currentImageIndex].classList.add('active');
+      }
+    });
+
+    // 鼠标离开hisham区域
+    hishamImage.addEventListener('mouseleave', () => {
+      isMouseOverHisham = false;
+      // 只有当鼠标不在hisham和phone上时才隐藏
+      if (!isMouseOverPhone) {
+        hidePhoneAndImages();
+      }
+    });
+
+    // 鼠标进入phone区域
+    phoneContainer.addEventListener('mouseenter', () => {
+      isMouseOverPhone = true;
+    });
+
+    // 鼠标离开phone区域
+    phoneContainer.addEventListener('mouseleave', () => {
+      isMouseOverPhone = false;
+      // 只有当鼠标不在hisham和phone上时才隐藏
+      if (!isMouseOverHisham) {
+        hidePhoneAndImages();
+      }
+    });
+
+    // 点击事件 - 只切换图片
+    phoneContainer.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showNextImage();
+    });
+
+    // 隐藏手机和图片
+    function hidePhoneAndImages() {
+      phoneContainer.style.transform = 'translateY(100vh)';
+      backgroundImages.forEach(img => img.classList.remove('active'));
+    }
+
+    window.addEventListener('resize', function() {
+      resizeGiftContainer();
+    });
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      resizeGiftContainer();
+      // Preload all images
+      backgroundImages.forEach(img => {
+        const imgObj = new Image();
+        imgObj.src = img.src;
+      });
+    });
+  </script>
+</body>
+</html>
