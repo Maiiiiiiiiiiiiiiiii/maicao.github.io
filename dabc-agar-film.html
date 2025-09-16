@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DABC KITCHEN MENU</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Rationale&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+  <style>
+    /* 基础样式 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* 主容器 */
+    .frame-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .frame {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      background: #FFFFFF;
+      transform-origin: top left;
+    }
+    
+    /* DABC KITCHEN 标题 */
+    .dabc-kitchen {
+      position: absolute;
+      width: 403.41px;
+      height: 46px;
+      left: calc(50% - 403.41px/2 + 1.71px);
+      top: 50px;
+    }
+    
+    .label {
+      position: absolute;
+      font-family: 'Rationale', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 46px;
+      text-align: center;
+      color: #000000;
+      transition: transform 0.5s ease;
+      pointer-events: none; /* 防止标签阻止容器点击 */
+    }
+
+    .label-paper-panel {
+      width: 170px;
+      height: 46px;
+      left: 877px;
+      top: 120px;
+    }
+    
+    .label-paper-panel-2 {
+      width: 222px;
+      height: 46px;
+      left: 562px;
+      top: 485px;
+    }
+
+    .label-paper-panel-3 {
+      width: 253px;
+      height: 46px;
+      left: 537px;
+      top: 626px;
+    }
+
+
+
+    .recipe {
+        position: absolute;
+        width: 87px;
+        height: 29px;
+        left: 866px;
+        top: 367px;
+        font-family: 'Recursive';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        /* identical to box height */
+        text-align: center;
+        color: #000000;
+    }
+    
+    .tutorial-video {
+      /* Tutorial Video */
+      position: absolute;
+      width: 116px;
+      height: 58px;
+      left: 1114px;
+      top: 367px;
+      font-family: 'Recursive';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 29px;
+      color: #000000;
+    }
+    
+    .application {
+        position: absolute;
+        width: 159px;
+        height: 29px;
+        left: 1455px;
+        top: 367px;
+        font-family: 'Recursive';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        /* identical to box height */
+        text-align: center;
+        color: #000000;
+    }
+
+    .chef {
+        position: absolute;
+        width: 58px;
+        height: 29px;
+        left: calc(50% - 58px/2 - 679px);
+        top: 751px;
+        font-family: 'Recursive';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+        /* identical to box height */
+        text-align: center;
+        color: #000000;
+    }
+    
+    .yinong-xue {
+        position: absolute;
+        width: 179px;
+        height: 46px;
+        left: calc(50% - 179px/2 - 678.5px);
+        top: 780px;
+        font-family: 'Reenie Beanie', cursive;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 46px;
+        text-align: center;
+        color: #000000;
+    }
+    
+    /* Logo */
+    .logo-dabc {
+      position: absolute;
+      width: 526px;
+      height: 70px;
+      left: calc(50% - 526px/2);
+      top: 940px;
+    }
+    
+    /* 返回按钮 */
+    .dabc-back {
+      position: absolute;
+      width: 63px;
+      height: 50.5px;
+      left: 1782px;
+      top: 69px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .dabc-back:hover {
+      transform: scale(1.1);
+    }
+    
+    /* 添加的SVG样式 */
+    .portrait-yinong-xue {
+      position: absolute;
+      width: 253px;
+      height: 430px;
+      left: 158px;
+      top: 271px;
+    }
+    
+    .icon-recipe {
+      position: absolute;
+      width: 82px;
+      height: 112px;
+      left: 866px;
+      top: 454px;
+      
+    }
+    
+    .icon-recipe-1 {
+      position: absolute;
+      width: 82px;
+      height: 112px;
+      left: 866px;
+      top: 589px;
+      
+    }
+
+    .icon-video-1 {
+      position: absolute;
+      width: 181px;
+      height: 119px;
+      left: 1114px;
+      top: 454px;
+    }
+
+    .icon-video-1-1 {
+      position: absolute;
+      width: 181px;
+      height: 119px;
+      left: 1114px;
+      top: 589px;
+    }
+    
+
+    .icon-video-2 {
+      position: absolute;
+      width: 181px;
+      height: 119px;
+      left: 1455px;
+      top: 454px;
+    }
+    
+    .icon-video-2-1 {
+      position: absolute;
+      width: 181px;
+      height: 119px;
+      left: 1455px;
+      top: 589px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="frame-container">
+    <div class="frame">
+      <!-- 标题 -->
+      <img class="dabc-kitchen" src="assets/material_asset/dabc-kitchen.svg" alt="DABC KITCHEN">
+      
+      <!-- 添加的SVG图标 -->
+      <img class="portrait-yinong-xue" src="assets/material_asset/portrait-yinong.svg" alt="Yinong Xue Portrait">
+      <img class="icon-recipe" src="assets/material_asset/icon-recipe.svg" alt="Recipe Icon">
+      <img class="icon-recipe-1" src="assets/material_asset/icon-recipe.svg" alt="Recipe Icon">
+      <img class="icon-video-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 1">
+      <img class="icon-video-1-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 1">
+      <img class="icon-video-2" src="assets/material_asset/icon-video.svg" alt="Video Icon 2">
+      <img class="icon-video-2-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 2">
+     
+      <!-- 文字标签 - 保持原有位置 -->
+      <div class="label label-paper-panel">Agar film</div>
+      <div class="label label-paper-panel-2">Jelly Brick</div>
+      <div class="label label-paper-panel-3">Jelly film</div>
+      <div class="recipe">Recipe</div>
+      <div class="tutorial-video">Tutorial Video</div>
+      <div class="application">Application</div>
+      <div class="chef">Chef</div>
+      <div class="yinong-xue">Yinong Xue</div>
+      
+      <!-- Logo -->
+      <img class="logo-dabc" src="assets/material_asset/logo-dabc.svg" alt="DABC Logo">
+      
+      <!-- 返回按钮 -->
+      <a href="dabc-kitchen-menu.html">
+        <img class="dabc-back" src="assets/material_asset/dabc-back.svg" alt="Back">
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // 缩放函数
+    function resizeFrame() {
+      const frame = document.querySelector('.frame');
+      const container = document.querySelector('.frame-container');
+      
+      // 计算缩放比例
+      const scale = Math.min(
+        window.innerWidth / 1920,
+        window.innerHeight / 1080
+      );
+      
+      // 应用缩放
+      frame.style.transform = `scale(${scale})`;
+      
+      // 居中定位
+      frame.style.position = 'absolute';
+      frame.style.left = `${(window.innerWidth - 1920 * scale) / 2}px`;
+      frame.style.top = `${(window.innerHeight - 1080 * scale) / 2}px`;
+    }
+
+    // 初始缩放和窗口调整事件
+    window.addEventListener('load', function() {
+      resizeFrame();
+      // 页面加载后开始动画
+      setTimeout(startHandAnimation, 1000);
+    });
+    window.addEventListener('resize', resizeFrame);
+
+    
+    // SVG加载错误处理
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('error', function() {
+        console.error('无法加载图片: ', this.src);
+        this.style.backgroundColor = '#f0f0f0';
+        this.style.border = '2px dashed #ccc';
+        this.style.display = 'flex';
+        this.style.justifyContent = 'center';
+        this.style.alignItems = 'center';
+        this.style.fontSize = '12px';
+        this.style.color = '#999';
+        
+        // 获取文件名
+        const fileName = this.src.split('/').pop();
+        this.alt = `无法加载: ${fileName}`;
+        
+        // 如果没有替代文本，使用文件名
+        if (!this.nextElementSibling || !this.nextElementSibling.classList.contains('error-message')) {
+          const errorMsg = document.createElement('div');
+          errorMsg.className = 'error-message';
+          errorMsg.textContent = `无法加载: ${fileName}`;
+          errorMsg.style.position = 'absolute';
+          errorMsg.style.top = '50%';
+          errorMsg.style.left = '50%';
+          errorMsg.style.transform = 'translate(-50%, -50%)';
+          errorMsg.style.color = '#ff0000';
+          errorMsg.style.fontSize = '14px';
+          errorMsg.style.fontWeight = 'bold';
+          this.appendChild(errorMsg);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

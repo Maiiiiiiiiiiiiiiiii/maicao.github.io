@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DABC KITCHEN MENU</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Rationale&display=swap" rel="stylesheet">
+  <style>
+    /* 基础样式 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* 主容器 */
+    .frame-container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .frame {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      background: #FFFFFF;
+      transform-origin: top left;
+    }
+    
+    /* DABC KITCHEN 标题 */
+    .dabc-kitchen {
+      position: absolute;
+      width: 403.41px;
+      height: 46px;
+      left: calc(50% - 403.41px/2 + 1.71px);
+      top: 50px;
+    }
+    
+    /* what-would-you-like */
+    .what-would-you-like {
+      position: absolute;
+      width: 1446px;
+      height: 134px;
+      left: 234px;
+      top: 195px;
+    }
+    
+    /* 图标容器 */
+    .icon-container {
+      position: absolute;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .icon-container:hover {
+      transform: scale(1.05);
+    }
+    
+    .icon-container-paper-panel {
+      width: 302px;
+      height: 210.63px;
+      left: 147.5px;
+      top: 544px;
+    }
+    
+    .icon-container-bio-foam {
+      width: 252px;
+      height: 153.54px;
+      left: 601px;
+      top: 574.13px;
+    }
+    
+    .icon-container-coffee-brick {
+      width: 298px;
+      height: 189.5px;
+      left: 1005px;
+      top: 556.13px;
+    }
+    
+    .icon-container-agar-film {
+      width: 285px;
+      height: 172px;
+      left: 1455px;
+      top: 591.13px;
+    }
+    
+    /* 图标样式 */
+    .icon {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+      pointer-events: none; /* 防止图标阻止容器点击 */
+    }
+    
+    /* 图标放大效果 */
+    .icon.enlarged {
+      transform: scale(1.15);
+      z-index: 5;
+    }
+    
+    /* 文字标签样式 - 保持原有位置 */
+    .label {
+      position: absolute;
+      font-family: 'Rationale', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 46px;
+      text-align: center;
+      color: #000000;
+      transition: transform 0.5s ease;
+      pointer-events: none; /* 防止标签阻止容器点击 */
+    }
+    
+    .label.enlarged {
+      transform: scale(1.05);
+    }
+    
+    .label-paper-panel {
+      width: 170px;
+      height: 46px;
+      left: calc(50% - 170px/2 - 647px);
+      top: 452px;
+    }
+    
+    .label-bio-foam {
+      width: 129px;
+      height: 46px;
+      left: calc(50% - 129px/2 - 232.5px);
+      top: 452px;
+    }
+    
+    .label-coffee-brick {
+      width: 169px;
+      height: 46px;
+      left: calc(50% - 169px/2 + 214.5px);
+      top: 452px;
+    }
+    
+    .label-agar-film {
+      width: 133px;
+      height: 46px;
+      left: calc(50% - 133px/2 + 648.5px);
+      top: 452px;
+    }
+    
+    /* Logo */
+    .logo-dabc {
+      position: absolute;
+      width: 526px;
+      height: 70px;
+      left: calc(50% - 526px/2);
+      top: 940px;
+    }
+    
+    /* 返回按钮 */
+    .dabc-back {
+      position: absolute;
+      width: 63px;
+      height: 50.5px;
+      left: 1782px;
+      top: 69px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .dabc-back:hover {
+      transform: scale(1.1);
+    }
+    
+    /* 手形图标 */
+    .hand {
+      position: absolute;
+      width: 75px;
+      height: 60px;
+      left: 412px;
+      top: 811px;
+      z-index: 10;
+      transition: all 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame-container">
+    <div class="frame">
+      <!-- 标题 -->
+      <img class="dabc-kitchen" src="assets/material_asset/dabc-kitchen.svg" alt="DABC KITCHEN">
+      
+      <!-- 欢迎语 -->
+      <img class="what-would-you-like" src="assets/material_asset/what-would-you-like.svg" alt="What would you like?">
+      
+      <!-- 文字标签 - 保持原有位置 -->
+      <div class="label label-paper-panel">Paper panel</div>
+      <div class="label label-bio-foam">Bio foam</div>
+      <div class="label label-coffee-brick">Coffee brick</div>
+      <div class="label label-agar-film">Agar film</div>
+      
+      <!-- Paper panel 容器 -->
+      <a href="dabc-paper-panel.html" class="icon-container icon-container-paper-panel">
+        <img class="icon icon-paper-panel" src="assets/material_asset/icon-paper-panel.svg" alt="Paper panel">
+      </a>
+      
+      <!-- Bio foam 容器 -->
+      <a href="dabc-bio-foam.html" class="icon-container icon-container-bio-foam">
+        <img class="icon icon-bio-foam" src="assets/material_asset/icon-bio-foam.svg" alt="Bio foam">
+      </a>
+      
+      <!-- Coffee brick 容器 -->
+      <a href="dabc-coffee-brick.html" class="icon-container icon-container-coffee-brick">
+        <img class="icon icon-coffee-brick" src="assets/material_asset/icon-coffee-brick.svg" alt="Coffee brick">
+      </a>
+      
+      <!-- Agar film 容器 -->
+      <a href="dabc-agar-film.html" class="icon-container icon-container-agar-film">
+        <img class="icon icon-agar-film" src="assets/material_asset/icon-agar-film.svg" alt="Agar film">
+      </a>
+      
+      <!-- 手形图标 -->
+      <img class="hand" src="assets/material_asset/hand.svg" alt="Hand pointer">
+      
+      <!-- Logo -->
+      <img class="logo-dabc" src="assets/material_asset/logo-dabc.svg" alt="DABC Logo">
+      
+      <!-- 返回按钮 -->
+      <a href="dabc-kitchen.html">
+        <img class="dabc-back" src="assets/material_asset/dabc-back.svg" alt="Back">
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // 缩放函数
+    function resizeFrame() {
+      const frame = document.querySelector('.frame');
+      const container = document.querySelector('.frame-container');
+      
+      // 计算缩放比例
+      const scale = Math.min(
+        window.innerWidth / 1920,
+        window.innerHeight / 1080
+      );
+      
+      // 应用缩放
+      frame.style.transform = `scale(${scale})`;
+      
+      // 居中定位
+      frame.style.position = 'absolute';
+      frame.style.left = `${(window.innerWidth - 1920 * scale) / 2}px`;
+      frame.style.top = `${(window.innerHeight - 1080 * scale) / 2}px`;
+    }
+
+    // 初始缩放和窗口调整事件
+    window.addEventListener('load', function() {
+      resizeFrame();
+      // 页面加载后开始动画
+      setTimeout(startHandAnimation, 1000);
+    });
+    window.addEventListener('resize', resizeFrame);
+
+    // 手形图标动画
+    function startHandAnimation() {
+      const hand = document.querySelector('.hand');
+      const icons = [
+        document.querySelector('.icon-paper-panel'),
+        document.querySelector('.icon-bio-foam'),
+        document.querySelector('.icon-coffee-brick'),
+        document.querySelector('.icon-agar-film')
+      ];
+      
+      const labels = [
+        document.querySelector('.label-paper-panel'),
+        document.querySelector('.label-bio-foam'),
+        document.querySelector('.label-coffee-brick'),
+        document.querySelector('.label-agar-film')
+      ];
+      
+      // 手形图标位置
+      const positions = [
+        { left: 412, top: 811 },  // Paper panel
+        { left: 816, top: 811 },  // Bio foam
+        { left: 1259, top: 811 }, // Coffee brick
+        { left: 1663, top: 811 }  // Agar film
+      ];
+      
+      let currentIndex = 0;
+      
+      function animateHand() {
+        // 移动到下一个位置
+        const nextIndex = (currentIndex + 1) % 4;
+        
+        // 移除当前图标的放大效果
+        icons[currentIndex].classList.remove('enlarged');
+        labels[currentIndex].classList.remove('enlarged');
+        
+        // 移动手形图标
+        hand.style.left = `${positions[nextIndex].left}px`;
+        hand.style.top = `${positions[nextIndex].top}px`;
+        
+        // 添加下一个图标的放大效果
+        setTimeout(() => {
+          icons[nextIndex].classList.add('enlarged');
+          labels[nextIndex].classList.add('enlarged');
+          currentIndex = nextIndex;
+        }, 1000);
+      }
+      
+      // 初始状态：放大第一个图标
+      icons[0].classList.add('enlarged');
+      labels[0].classList.add('enlarged');
+      
+      // 每2秒执行一次动画（1秒移动，1秒停留）
+      setInterval(animateHand, 2000);
+    }
+
+    // SVG加载错误处理
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('error', function() {
+        console.error('无法加载图片: ', this.src);
+        this.style.backgroundColor = '#f0f0f0';
+        this.style.border = '2px dashed #ccc';
+        this.style.display = 'flex';
+        this.style.justifyContent = 'center';
+        this.style.alignItems = 'center';
+        this.style.fontSize = '12px';
+        this.style.color = '#999';
+        
+        // 获取文件名
+        const fileName = this.src.split('/').pop();
+        this.alt = `无法加载: ${fileName}`;
+        
+        // 如果没有替代文本，使用文件名
+        if (!this.nextElementSibling || !this.nextElementSibling.classList.contains('error-message')) {
+          const errorMsg = document.createElement('div');
+          errorMsg.className = 'error-message';
+          errorMsg.textContent = `无法加载: ${fileName}`;
+          errorMsg.style.position = 'absolute';
+          errorMsg.style.top = '50%';
+          errorMsg.style.left = '50%';
+          errorMsg.style.transform = 'translate(-50%, -50%)';
+          errorMsg.style.color = '#ff0000';
+          errorMsg.style.fontSize = '14px';
+          errorMsg.style.fontWeight = 'bold';
+          this.appendChild(errorMsg);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
