@@ -269,6 +269,12 @@
       height: 119px;
       left: 1114px;
       top: 342px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-video-1:hover {
+      transform: scale(1.05);
     }
 
     .icon-video-1-1 {
@@ -277,6 +283,12 @@
       height: 119px;
       left: 1114px;
       top: 477px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-video-1-1:hover {
+      transform: scale(1.05);
     }
     
     .icon-video-1-2 {
@@ -285,6 +297,12 @@
       height: 119px;
       left: 1114px;
       top: 612px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-video-1-2:hover {
+      transform: scale(1.05);
     }
     
     .icon-video-1-3 {
@@ -293,6 +311,12 @@
       height: 119px;
       left: 1114px;
       top: 747px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-video-1-3:hover {
+      transform: scale(1.05);
     }
 
     .icon-video-2 {
@@ -301,6 +325,12 @@
       height: 119px;
       left: 1455px;
       top: 342px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-video-2:hover {
+      transform: scale(1.05);
     }
     
     .icon-video-2-1 {
@@ -323,6 +353,12 @@
       height: 119px;
       left: 1455px;
       top: 612px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-video-2-2:hover {
+      transform: scale(1.05);
     }
 
     .icon-video-2-3 {
@@ -331,6 +367,12 @@
       height: 119px;
       left: 1455px;
       top: 747px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .icon-video-2-3:hover {
+      transform: scale(1.05);
     }
 
     /* 视频覆盖层样式 */
@@ -572,14 +614,18 @@
       <img class="icon-recipe-1" src="assets/material_asset/icon-recipe.svg" alt="Recipe Icon" id="recipe-2">
       <img class="icon-recipe-2" src="assets/material_asset/icon-recipe.svg" alt="Recipe Icon" id="recipe-3">
       <img class="icon-recipe-3" src="assets/material_asset/icon-recipe.svg" alt="Recipe Icon" id="recipe-4">
-      <img class="icon-video-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 1">
-      <img class="icon-video-1-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 1">
-      <img class="icon-video-1-2" src="assets/material_asset/icon-video.svg" alt="Video Icon 1">
-      <img class="icon-video-1-3" src="assets/material_asset/icon-video.svg" alt="Video Icon 1">
-      <img class="icon-video-2" src="assets/material_asset/icon-video.svg" alt="Video Icon 2">
-      <img class="icon-video-2-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 2" id="pink-crunch-video-trigger">
-      <img class="icon-video-2-2" src="assets/material_asset/icon-video.svg" alt="Video Icon 2">
-      <img class="icon-video-2-3" src="assets/material_asset/icon-video.svg" alt="Video Icon 2">
+      
+      <!-- 教程视频图标 -->
+      <img class="icon-video-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 1" data-video="assets/material_asset/video/pink-fluff-foam.mp4">
+      <img class="icon-video-1-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 1" data-video="assets/material_asset/video/pink-crunch-foam.mp4">
+      <img class="icon-video-1-2" src="assets/material_asset/icon-video.svg" alt="Video Icon 1" data-video="assets/material_asset/video/sawdust-foam.mp4">
+      <img class="icon-video-1-3" src="assets/material_asset/icon-video.svg" alt="Video Icon 1" data-video="assets/material_asset/video/marmo-soft-foam.mp4">
+      
+      <!-- 应用视频图标 -->
+      <img class="icon-video-2" src="assets/material_asset/icon-video.svg" alt="Video Icon 2" data-video="assets/material_asset/video/pink-fluff-foam-application.mp4">
+      <img class="icon-video-2-1" src="assets/material_asset/icon-video.svg" alt="Video Icon 2" data-video="assets/material_asset/video/pink-crunch-foam-application.mp4">
+      <img class="icon-video-2-2" src="assets/material_asset/icon-video.svg" alt="Video Icon 2" data-video="assets/material_asset/video/sawdust-foam-application.mp4">
+      <img class="icon-video-2-3" src="assets/material_asset/icon-video.svg" alt="Video Icon 2" data-video="assets/material_asset/video/marmo-soft-foam-application.mp4">
      
       <!-- 文字标签 - 保持原有位置 -->
       <div class="label label-paper-panel">Bio foam</div>
@@ -607,7 +653,6 @@
   <div class="video-overlay" id="video-overlay">
     <div class="video-container">
       <video class="video-player" id="video-player">
-        <source src="assets/material_asset/video/pink-crunch-foam-application.mp4" type="video/mp4">
         您的浏览器不支持视频播放。
       </video>
       <button class="close-btn" id="close-video">×</button>
@@ -697,7 +742,6 @@
 
     // 视频播放功能
     document.addEventListener('DOMContentLoaded', function() {
-      const videoTrigger = document.getElementById('pink-crunch-video-trigger');
       const videoOverlay = document.getElementById('video-overlay');
       const videoPlayer = document.getElementById('video-player');
       const closeVideo = document.getElementById('close-video');
@@ -707,11 +751,15 @@
       const timeDisplay = document.getElementById('time-display');
       const fullscreenBtn = document.getElementById('fullscreen-btn');
       
-      // 打开视频覆盖层
-      videoTrigger.addEventListener('click', function() {
-        videoOverlay.classList.add('active');
-        videoPlayer.play();
-        updatePlayButton();
+      // 为所有视频图标添加点击事件
+      document.querySelectorAll('[data-video]').forEach(videoTrigger => {
+        videoTrigger.addEventListener('click', function() {
+          const videoSrc = this.getAttribute('data-video');
+          videoPlayer.src = videoSrc;
+          videoOverlay.classList.add('active');
+          videoPlayer.play();
+          updatePlayButton();
+        });
       });
       
       // 关闭视频覆盖层
