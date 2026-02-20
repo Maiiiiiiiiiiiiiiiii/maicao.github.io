@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Townscape</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;600&family=Nunito&display=swap');
+        
+        body {
+            font-family: sans-serif;
+            padding: 0;
+            margin: 0;
+            background: white;
+        }
+        
+        .container {
+            position: relative;
+            width: 1024px;
+            height: 768px;
+            overflow-y: scroll;
+            background: #FFFFFF;
+            margin: 0 auto;
+        }
+        
+        .title {
+            position: absolute;
+            width: 162px;
+            height: 38px;
+            left: 54px;
+            top: 80px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 38px;
+            color: #000000;
+        }
+        
+        .location-label {
+            position: absolute;
+            width: 52px;
+            height: 14px;
+            left: 59px;
+            top: 230px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .date-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tags-label {
+            position: absolute;
+            width: 26px;
+            height: 14px;
+            left: 59px;
+            top: 335px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .author-label {
+            position: absolute;
+            width: 39px;
+            height: 14px;
+            left: 59px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .tutor-label {
+            position: absolute;
+            width: 33px;
+            height: 14px;
+            left: 59px;
+            top: 289px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 14px;
+            color: #000000;
+        }
+        
+        .location-value {
+    position: absolute;
+    width: 200px; /* 增加宽度 */
+    height: 14px;
+    left: 154px;  /* 相应调整 left 值，确保右对齐后位置正确 */
+    top: 230px;
+    font-family: 'Inconsolata';
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 14px;
+    text-align: right;
+    color: #000000;
+}
+        
+        .date-value {
+            position: absolute;
+            width: 98px;
+            height: 14px;
+            left: 256px;
+            top: 250px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag1-value {
+            position: absolute;
+            width: 202px;
+            height: 14px;
+            left: 152px;
+            top: 335px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tag2-value {
+            position: absolute;
+            width: 52px;
+            height: 14px;
+            left: 302px;
+            top: 355px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .author-value {
+            position: absolute;
+            width: 221px;
+            height: 14px;
+            left: 133px;
+            top: 269px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .tutor-value {
+            position: absolute;
+            width: 208px;
+            height: 14px;
+            left: 146px;
+            top: 289px;
+            font-family: 'Inconsolata';
+            font-style: normal;
+            font-weight: 300;
+            font-size: 13px;
+            line-height: 14px;
+            text-align: right;
+            color: #000000;
+        }
+        
+        .line1, .line2, .line3, .line4, .line5, .line6, .line7 {
+            position: absolute;
+            width: 300px;
+            height: 0px;
+            left: 54px;
+            border: 0.5px solid #000000;
+        }
+        
+        .line1 { top: 227px; }
+        .line2 { top: 247px; }
+        .line3 { top: 247px; }
+        .line4 { top: 267px; }
+        .line5 { top: 287px; }
+        .line6 { top: 333px; }
+        .line7 { top: 373px; }
+        
+        .description-chinese {
+            position: absolute;
+            width: 433px;
+            height: 445px;
+            left: 54px;
+            top: 397px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 19px;
+            text-align: justify;
+            letter-spacing: 0.05em;
+            color: #000000;
+        }
+        
+        .description-english {
+            position: absolute;
+            width: 433px;
+            height: 449px;
+            left: 537px;
+            top: 397px;
+            font-family: 'Nunito';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 18px;
+            text-align: justify;
+            color: #000000;
+        }
+
+        /* Image Viewer Styles */
+        .pdf-container {
+            position: absolute;
+            width: 916px;
+            height: 648px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 900px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            margin-bottom: 100px;
+        }
+
+        .image-viewer-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdf-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.1s ease;
+            transform-origin: center center;
+        }
+
+        .pdf-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .pdf-controls button {
+            padding: 5px 10px;
+            cursor: pointer;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-family: 'Inconsolata';
+            font-size: 12px;
+        }
+
+        .pdf-controls button:hover {
+            background: #e0e0e0;
+        }
+
+        .pdf-page-info {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Inconsolata';
+            font-size: 13px;
+        }
+
+        .pdf-page-input {
+            width: 40px;
+            padding: 3px;
+            text-align: center;
+            font-family: 'Inconsolata';
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .image-viewer-wrapper.grabbing {
+            cursor: grabbing;
+        }
+
+        .image-viewer-wrapper:hover {
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Porta Ercolano</div>
+        
+        <div class="location-label">Location</div>
+        <div class="date-label">Date</div>
+        <div class="tags-label">Tags</div>
+        <div class="author-label">Author</div>
+        <div class="tutor-label">Tutor</div>
+        
+        <div class="location-value">Pompeii, Italy</div>
+        <div class="date-value">2025.09-2025.12</div>
+        <div class="tag1-value">Architectural Design</div>
+        <div class="tag2-value">Entrance</div>
+        
+        <div class="author-value">Mai Cao,Jiahe Wan, Nicole Bastidas</div>
+        <div class="tutor-value">Paolo Carpi, Andrea Tartaglia, Filippo Bernardini, Silvio Lussana, Davide Cerati</div>
+        
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div class="line4"></div>
+        <div class="line5"></div>
+        <div class="line6"></div>
+        <div class="line7"></div>
+        
+        <div class="description-chinese">
+            该项目被构想为庞贝古城的新入口，沿着埃尔科拉诺门外的墓园路延伸，直抵昔日的萨尔诺运河——这条古道曾连通庞贝与奥普隆蒂斯。项目既回应了当代交通可达性问题，又重塑了这条历史轴线作为重要商业与基础设施走廊的功能，重新激活了西北方向长期中断的连接通道。作为建筑与景观的双重干预，该入口重新界定了古城边界，在公共与私密领域、建筑形态与林地景观之间寻求平衡，并延续庞贝城的模块化逻辑。通过空间过渡、材质延续与景观设计，它构筑出全新的抵达体验，将当代流动性与历史延续性紧密相连。        </div>
+        
+        <div class="description-english">
+            The project is conceived as a new entrance to Pompeii, located along the extension of the Tombs Road outside Porta Ercolano and reaching the former Canal di Sarno, an ancient route once connecting Pompeii to Oplontis. Responding to both present-day accessibility issues and the historical role of this axis as a major commercial and infrastructural corridor, the project reactivates a long-interrupted connection from the north-west. As an architectural and landscape intervention, the entrance redefines the boundary of the ancient city, negotiating public and private realms, built form and woodland, and the modular logic of Pompeii. Through spatial transitions, material continuity, and landscape design, it frames a renewed experience of arrival that links contemporary movement with historical continuity.
+        </div>
+
+        <!-- Image Viewer Section -->
+        <div class="pdf-container">
+            <div class="image-viewer-wrapper" id="image-viewer-wrapper">
+                <img id="pdf-image" class="pdf-image" src="" alt="PDF Page">
+            </div>
+            <div class="pdf-controls">
+                <button id="prev-page">Previous</button>
+                <span class="pdf-page-info">
+                    Page <input type="number" id="page-input" class="pdf-page-input" min="1" value="1"> 
+                    of <span id="page-count">44</span>
+                </span>
+                <button id="next-page">Next</button>
+                <button id="zoom-in">Zoom In</button>
+                <button id="zoom-out">Zoom Out</button>
+                <button id="fit-page">Fit Page</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Image viewer variables
+        const totalPages = 13; // Total number of pages/images
+        let currentPage = 1;
+        let scale = 1.0;
+        let isDragging = false;
+        let startPos = { x: 0, y: 0 };
+        let currentTranslate = { x: 0, y: 0 };
+        const maxScale = 3.0;
+        const minScale = 0.5;
+        
+        const imageElement = document.getElementById('pdf-image');
+        const wrapper = document.getElementById('image-viewer-wrapper');
+        const pageCountElement = document.getElementById('page-count');
+        const pageInput = document.getElementById('page-input');
+        
+        // Initialize the viewer
+        function initViewer() {
+            pageCountElement.textContent = totalPages;
+            pageInput.max = totalPages;
+            loadPage(1);
+        }
+        
+        // Load a specific page
+        function loadPage(pageNum) {
+            if (pageNum < 1 || pageNum > totalPages) return;
+            
+            currentPage = pageNum;
+            const pageStr = pageNum.toString().padStart(2, '0');
+            imageElement.src = `../assets/doc/a-15/a-15_Page_${pageStr}.jpg`;
+            pageInput.value = pageNum;
+            
+            // Reset zoom and position when changing pages
+            scale = 1.0;
+            currentTranslate = { x: 0, y: 0 };
+            updateImageTransform();
+        }
+        
+        // Update the image transform (scale + position)
+        function updateImageTransform() {
+            imageElement.style.transform = `translate(${currentTranslate.x}px, ${currentTranslate.y}px) scale(${scale})`;
+        }
+        
+        // Fit the image to the container
+        function fitToPage() {
+            const containerWidth = wrapper.offsetWidth;
+            const containerHeight = wrapper.offsetHeight;
+            
+            imageElement.onload = function() {
+                const imgWidth = this.naturalWidth;
+                const imgHeight = this.naturalHeight;
+                
+                const widthRatio = containerWidth / imgWidth;
+                const heightRatio = containerHeight / imgHeight;
+                
+                scale = Math.min(widthRatio, heightRatio);
+                currentTranslate = { x: 0, y: 0 };
+                updateImageTransform();
+            };
+            
+            // Reload the image to trigger onload if it's already loaded
+            if (imageElement.complete) {
+                imageElement.onload();
+            }
+        }
+        
+        // Zoom in
+        function zoomIn() {
+            if (scale >= maxScale) return;
+            scale *= 1.2;
+            updateImageTransform();
+        }
+        
+        // Zoom out
+        function zoomOut() {
+            if (scale <= minScale) return;
+            scale /= 1.2;
+            updateImageTransform();
+        }
+        
+        // Go to previous page
+        function prevPage() {
+            loadPage(currentPage - 1);
+        }
+        
+        // Go to next page
+        function nextPage() {
+            loadPage(currentPage + 1);
+        }
+        
+        // Handle page input change
+        function handlePageInput() {
+            let newPage = parseInt(pageInput.value);
+            
+            if (isNaN(newPage) || newPage < 1) {
+                newPage = 1;
+            } else if (newPage > totalPages) {
+                newPage = totalPages;
+            }
+            
+            pageInput.value = newPage;
+            
+            if (newPage !== currentPage) {
+                loadPage(newPage);
+            }
+        }
+        
+        // Mouse wheel zoom
+        function handleWheel(e) {
+            e.preventDefault();
+            
+            // Get mouse position relative to image
+            const rect = imageElement.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            
+            // Calculate scale factor
+            const delta = -e.deltaY;
+            let scaleFactor = 1.1;
+            if (delta < 0) {
+                scaleFactor = 1 / scaleFactor;
+            }
+            
+            // Calculate new scale with limits
+            const newScale = scale * scaleFactor;
+            if (newScale < minScale || newScale > maxScale) return;
+            
+            // Calculate mouse position in image coordinates
+            const imgX = (mouseX - currentTranslate.x) / scale;
+            const imgY = (mouseY - currentTranslate.y) / scale;
+            
+            // Apply new scale
+            scale = newScale;
+            
+            // Calculate new translation to keep mouse position stable
+            currentTranslate.x = mouseX - imgX * scale;
+            currentTranslate.y = mouseY - imgY * scale;
+            
+            updateImageTransform();
+        }
+        
+        // Dragging functionality
+        function startDrag(e) {
+            isDragging = true;
+            startPos = {
+                x: e.clientX - currentTranslate.x,
+                y: e.clientY - currentTranslate.y
+            };
+            wrapper.style.cursor = 'grabbing';
+            e.preventDefault();
+        }
+        
+        function drag(e) {
+            if (!isDragging) return;
+            
+            currentTranslate.x = e.clientX - startPos.x;
+            currentTranslate.y = e.clientY - startPos.y;
+            
+            updateImageTransform();
+        }
+        
+        function endDrag() {
+            isDragging = false;
+            wrapper.style.cursor = 'grab';
+        }
+        
+        // Event listeners
+        document.getElementById('prev-page').addEventListener('click', prevPage);
+        document.getElementById('next-page').addEventListener('click', nextPage);
+        document.getElementById('zoom-in').addEventListener('click', zoomIn);
+        document.getElementById('zoom-out').addEventListener('click', zoomOut);
+        document.getElementById('fit-page').addEventListener('click', fitToPage);
+        pageInput.addEventListener('change', handlePageInput);
+        
+        // Mouse events for dragging
+        wrapper.addEventListener('mousedown', startDrag);
+        window.addEventListener('mousemove', drag);
+        window.addEventListener('mouseup', endDrag);
+        
+        // Mouse wheel for zooming
+        wrapper.addEventListener('wheel', handleWheel, { passive: false });
+        
+        // Initialize the viewer when the page loads
+        window.addEventListener('load', initViewer);
+    </script>
+</body>
+</html>
