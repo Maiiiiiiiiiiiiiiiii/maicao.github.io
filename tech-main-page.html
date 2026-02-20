@@ -33,7 +33,9 @@
     .svg-photography-directory-bottom,
     .svg-music-directory-bottom,
     .svg-human-computer-interaction-botton,
-    .svg-data-processing-botton {
+    .svg-data-processing-botton,
+    .svg-aigc-botton
+     {
       position: absolute;
       z-index: 0;
     }
@@ -49,7 +51,10 @@
       z-index: 2;
     }
 
-
+    .svg-t-3-dabc-kitchen-directory {
+      position: absolute;
+      z-index: 3;
+    }
 
     .cao-mai {
       position: absolute;
@@ -112,13 +117,13 @@
         <img class="svg-music-directory-bottom" src="assets/music-directory-bottom.svg" style="left:1319.87px; top:869px; width:61.17px; height:30.58px;" alt="music-directory-bottom" />
         </a>
       <!-- project -->
-      <img class="svg-t-1-scoliosis-track-monitor-directory" src="assets/t-1-scoliosis-track-monitor-directory.svg" style="left:645px; top:700px; width:100px; height:100px;" alt="t-1-scoliosis-track-monitor-directory" class="directory" id="t-1" data-group="human-computer-interaction-botton"/>
-      <img class="svg-t-2-data-processing-directory" src="assets/t-2-data-processing-directory.svg" style="left:720px; top:700px; width:100px; height:100px;" alt="t-2-data-processing-directory" class="directory" id="t-2" data-group="data-processing-botton"/>
-    
+      <img class="svg-t-1-scoliosis-track-monitor-directory" src="assets/t-1-scoliosis-track-monitor-directory.svg" style="left:610px; top:700px; width:100px; height:100px;" alt="t-1-scoliosis-track-monitor-directory" class="directory" id="t-1" data-group="human-computer-interaction-botton"/>
+      <img class="svg-t-2-data-processing-directory" src="assets/t-2-data-processing-directory.svg" style="left:685px; top:700px; width:100px; height:100px;" alt="t-2-data-processing-directory" class="directory" id="t-2" data-group="data-processing-botton"/>
+      <img class="svg-t-3-dabc-kitchen-directory" src="assets/t-3-dabc-kitchen-directory.svg" style="left:760px; top:700px; width:100px; height:100px;" alt="t-3-dabc-kitchen-directory" class="directory" id="t-3" data-group="aigc-botton"/>
       <!--bottom -->
       <img class="svg-human-computer-interaction-botton" src="assets/human-computer-interaction-botton.svg" style="left:572px; top:40px; width:204px; height:20px;" alt="human-computer-interaction-botton" class="category-button" id="human-computer-interaction-botton" data-group="t-1"/>
       <img class="svg-data-processing-botton" src="assets/data-processing-botton.svg" style="left:789px; top:40px; width:100px; height:20px;" alt="data-processing-botton" class="category-button" id="data-processing-botton" data-group="t-2"/>
-      
+      <img class="svg-aigc-botton" src="assets/aigc-botton.svg" style="left:902px; top:40px; width:34px; height:20px;" alt="aigc-botton" class="category-button" id="aigc-botton" data-group="t-3"/>
     </div>
   </div>
 
@@ -143,13 +148,15 @@
      // 项目数组
      const projectItems = [
       "t-1-scoliosis-track-monitor-directory",
-      "t-2-data-processing-directory"
+      "t-2-data-processing-directory",
+      "t-3-dabc-kitchen-directory"
     ];
 
     // 按钮数组
     const buttonItems = [
       "human-computer-interaction-botton",
-      "data-processing-botton"
+      "data-processing-botton",
+      "aigc-botton"
     ];
 
     // 存储原始图片路径
@@ -327,4 +334,3 @@ overflow: hidden;
   
 </body>
 </html>
-
